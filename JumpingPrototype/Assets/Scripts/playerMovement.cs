@@ -56,11 +56,14 @@ public class playerMovement : MonoBehaviour
     }
 
     bool isGrounded(){
-        // The player is on the ground if a short ray emitted downwards from the player's lower edge hits the ground
-        // For a different shape (i.e. square) two rays will be needed and if either one collides the player is grounded
-        Vector2 playerEdge = new Vector2(transform.position.x, transform.position.y) + (Vector2.down / 2);
-        RaycastHit2D groundCheck = Physics2D.Raycast(playerEdge, Vector2.down, 0.1f);
+        // Since the player is a square, two raycasts are needed to determine if they are on the ground
+        // One raycast from lower left, one from lower right
+        Vector2 playerCenter = new Vector2(transform.position.x, transform.position.y);
+        Vector2 playerLowerLeft = playerCenter + transform.localScale.x * Vector2.left + transform.localScale.y * Vector2.down;
+        Vector2 playerLowerRight = playerCenter + transform.localScale.x * Vector2.right + transform.localScale.y * Vector2.down;
+        RaycastHit2D groundCheckLeft = Physics2D.Raycast(playerLowerLeft, Vector2.down, 0.1f);
+        RaycastHit2D groundCheckRight = Physics2D.Raycast(playerLowerRight, Vector2.down, 0.1f);
 
-        return groundCheck.collider != null;
+        return ((groundCheckLeft.collider != null) || (groundCheckRight.collider != null));
     }
 }
