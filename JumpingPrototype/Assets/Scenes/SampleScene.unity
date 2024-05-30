@@ -717,7 +717,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 01cced35129f74eb8b12fe1cdefff5bf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 468d612ff3de7413387967f82cb9e577, type: 3}
   m_Color: {r: 0.14115556, g: 0, b: 0.5377358, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -742,8 +742,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &1157414021
-CircleCollider2D:
+--- !u!61 &1157414021
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -756,8 +756,18 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 0.04, y: 0.04}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!114 &1157414022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -771,8 +781,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 8
-  moveForce: 8
-  fallAugmentMultiplier: 0.02
+  moveForce: 6.5
+  fallAugmentMultiplier: 0.03
   fallAugmentThreshold: 1
 --- !u!114 &1157414023
 MonoBehaviour:
