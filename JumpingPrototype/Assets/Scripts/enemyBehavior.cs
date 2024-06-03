@@ -15,11 +15,5 @@ public class enemyBehavior : MonoBehaviour
     {
         
     }
-    private void OnCollisionEnter(Collision collider)
-    {
-        if (collider.gameObject.tag == "Pulse")
-        {
-            Debug.Log("Enemy hit by pulse");
-        }
-    }
+
 }

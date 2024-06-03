@@ -15,9 +15,9 @@ public class pulseCollision : MonoBehaviour
     {
         
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("OntriggerEnger call");
+        Debug.Log("OntriggerEnter call");
 
         if (other.gameObject.tag == "Enemy")
         {
