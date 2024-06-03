@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class playerMovement : MonoBehaviour
+public class playerBehavior : MonoBehaviour
 {
     Rigidbody2D rb;
+
+    public GameObject pulse;
 
     [SerializeField]
     float jumpForce;
@@ -47,6 +49,7 @@ public class playerMovement : MonoBehaviour
         }
     }
 
+    //Player Jump
     void OnJump(){
         // Only jump if the player is on the ground
         if (isGrounded()){
@@ -55,6 +58,7 @@ public class playerMovement : MonoBehaviour
         
     }
 
+    //Check if player is touching ground
     bool isGrounded(){
         // Since the player is a square, two raycasts are needed to determine if they are on the ground
         // One raycast from lower left, one from lower right
@@ -66,4 +70,26 @@ public class playerMovement : MonoBehaviour
 
         return ((groundCheckLeft.collider != null) || (groundCheckRight.collider != null));
     }
+
+    //Blue ability spawn
+    void OnFirePulse()
+    {
+        //Spawn Blue pulses above and below the player
+        Instantiate(pulse, gameObject.transform.position + Vector3.up * transform.localScale.y, gameObject.transform.rotation);
+        Instantiate(pulse, gameObject.transform.position + Vector3.down * transform.localScale.y, gameObject.transform.rotation);
+
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("Collision happened");
+
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Debug.Log("Collision with an enemy");
+        }
+    }
+
 }
+
+
