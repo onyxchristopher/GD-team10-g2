@@ -28,6 +28,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "FireProjectile",
+                    "type": "Button",
+                    "id": "e6a13ec1-26d7-45cc-adea-24073857a470",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -89,7 +97,7 @@
                 {
                     "name": "down",
                     "id": "5af857a6-185d-419b-8737-5dd6bf1b073f",
-                    "path": "",
+                    "path": "<Keyboard>/downArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -144,7 +152,7 @@
                 {
                     "name": "down",
                     "id": "bf2d67e1-0f09-44c5-aff7-9cf915094198",
-                    "path": "",
+                    "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -193,6 +201,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "FirePulse",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d023d7c3-d22a-4381-bed5-c59c016c3023",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FireProjectile",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "97c83501-dec2-4779-a36c-aee583b975d3",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FireProjectile",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
