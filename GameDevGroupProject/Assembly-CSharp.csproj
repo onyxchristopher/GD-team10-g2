@@ -55,10 +55,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\cameraMovement.cs" />
      <Compile Include="Assets\Scripts\destroyAfterTime.cs" />
      <Compile Include="Assets\Scripts\enemyBehavior.cs" />
      <Compile Include="Assets\Scripts\playerBehavior.cs" />
+     <Compile Include="Assets\Scripts\playerMovement.cs" />
      <Compile Include="Assets\Scripts\pulseCollision.cs" />
+     <Compile Include="Assets\Scripts\robotDetection.cs" />
  <Reference Include="UnityEngine">
  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>
