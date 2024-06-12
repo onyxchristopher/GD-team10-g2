@@ -632,6 +632,7 @@ PlayerSettings:
       daydreamIconForeground: {fileID: 0}
       daydreamIconBackground: {fileID: 0}
   cloudServicesEnabled:
+    Collab: 0
     UNet: 1
   luminIcon:
     m_Name: 
@@ -645,10 +646,10 @@ PlayerSettings:
     m_VersionCode: 1
     m_VersionName: 
   apiCompatibilityLevel: 6
-  cloudProjectId: e34c9c51-cfa1-493f-919a-7cc96fe331b1
+  cloudProjectId: 652d584b-f0f9-4d7b-a5c2-69b3209540ee
   framebufferDepthMemorylessMode: 0
-  projectName: JumpingPrototype
-  organizationId: onyxchristopher
+  projectName: BlueAbilityPrototype
+  organizationId: linkedblades
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 1
   disableOldInputManagerSupport: 1
