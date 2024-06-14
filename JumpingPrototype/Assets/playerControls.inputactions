@@ -36,6 +36,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "ExplosionPulse",
+                    "type": "Button",
+                    "id": "4b93cc31-e203-45d3-bdc8-abdc48b2f820",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -223,6 +231,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "FireProjectile",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1233c21e-6a8f-4fca-bc7c-1a16623808c0",
+                    "path": "<Keyboard>/z",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ExplosionPulse",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
