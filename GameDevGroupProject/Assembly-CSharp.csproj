@@ -55,6 +55,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\ManagerScripts\eventManager.cs" />
+     <Compile Include="Assets\Scripts\ManagerScripts\sceneManager.cs" />
+     <Compile Include="Assets\Scripts\ManagerScripts\soundManager.cs" />
      <Compile Include="Assets\Scripts\cameraMovement.cs" />
      <Compile Include="Assets\Scripts\destroyAfterTime.cs" />
      <Compile Include="Assets\Scripts\enemyBehavior.cs" />
