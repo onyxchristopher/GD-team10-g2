@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class cameraMovement : MonoBehaviour
 {
+    private sceneManager sManager;
     private GameObject player;
     private float levelBottom;
     private float levelLeft;
