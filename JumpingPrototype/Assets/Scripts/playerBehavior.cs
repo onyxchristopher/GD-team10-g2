@@ -9,6 +9,10 @@ public class playerBehavior : MonoBehaviour
 
     public GameObject pulse;
 
+    public Transform shootingPoint;
+    public GameObject bulletPrefab;
+
+
     [SerializeField]
     float jumpForce;
 
@@ -38,6 +42,13 @@ public class playerBehavior : MonoBehaviour
         rb.freezeRotation = true;
     }
 
+     void Update()
+    {
+        if (Keyboard.current.rKey.wasPressedThisFrame)
+        {
+            Instantiate(bulletPrefab, shootingPoint.position, transform.rotation);
+        }
+    }
     void FixedUpdate(){
         // Move the player left/right using input
         rb.velocity = new Vector2(moveForce * playerMove.ReadValue<Vector2>().x, rb.velocity.y);
@@ -47,6 +58,7 @@ public class playerBehavior : MonoBehaviour
             float fallAugment = (fallAugmentThreshold - rb.velocity.y) * fallAugmentMultiplier;
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y - fallAugment);
         }
+        
     }
 
     //Player Jump
@@ -57,7 +69,18 @@ public class playerBehavior : MonoBehaviour
         }
         
     }
+    void Flip()
+    {
+        if (Keyboard.current.leftArrowKey.wasPressedThisFrame)
+        {
+            transform.Rotate(0, 180, 0);
+        }
+        else
+        {
+            transform.Rotate(0, 180, 0);
+        }
 
+    }
     //Check if player is touching ground
     bool isGrounded(){
         // Since the player is a square, two raycasts are needed to determine if they are on the ground
