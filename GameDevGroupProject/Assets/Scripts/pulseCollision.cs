@@ -19,7 +19,7 @@ public class pulseCollision : MonoBehaviour
     {
         Debug.Log("OntriggerEnter call");
 
-        if (other.gameObject.tag == "Robot")
+        if (other.gameObject.tag == "Enemy")
         {
             Debug.Log("Pulse has collided with enemy");
             Destroy(other.gameObject);
