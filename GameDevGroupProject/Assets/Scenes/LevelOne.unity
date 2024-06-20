@@ -457,11 +457,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Robot
       objectReference: {fileID: 0}
-    - target: {fileID: 2392056145237353537, guid: 20b0e5c5d56c74c44b6e54f26c2424f8,
-        type: 3}
-      propertyPath: m_TagString
-      value: Enemy
-      objectReference: {fileID: 0}
     - target: {fileID: 2392056145237353599, guid: 20b0e5c5d56c74c44b6e54f26c2424f8,
         type: 3}
       propertyPath: m_RootOrder
@@ -517,8 +512,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: -239582351710143679, guid: 20b0e5c5d56c74c44b6e54f26c2424f8, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b0e5c5d56c74c44b6e54f26c2424f8, type: 3}
 --- !u!1 &1405572525
 GameObject:
@@ -670,27 +664,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ac35e5fc1908b141b432410725d98e0, type: 3}
---- !u!1 &1624218212 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2392056145237353537, guid: 20b0e5c5d56c74c44b6e54f26c2424f8,
-    type: 3}
-  m_PrefabInstance: {fileID: 971821975}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1624218218
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1624218212}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: acd3ab48020d39e45b80b992c233a615, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movSpeed: 3
-  movRange: 2
-  patrolPauseTime: 2
 --- !u!1 &1958776826
 GameObject:
   m_ObjectHideFlags: 0
