@@ -6,17 +6,23 @@ using UnityEngine.InputSystem;
 
 public class playerBehavior : MonoBehaviour
 {
-    Rigidbody2D rb;
+    private Rigidbody2D rb;
 
-    eventManager eManager;
+    private BoxCollider2D bc;
 
-    public GameObject pulse;
-
-    [SerializeField]
-    float jumpForce;
+    private gameController gControl;
 
     [SerializeField]
-    float moveForce;
+    GameObject bullet;
+
+    [SerializeField]
+    GameObject pulse;
+
+    [SerializeField]
+    float jumpSpeed;
+
+    [SerializeField]
+    float moveSpeed;
 
     [SerializeField]
     float fallAugmentMultiplier;
@@ -27,8 +33,9 @@ public class playerBehavior : MonoBehaviour
     private PlayerInput playerInput;
     private InputAction playerMove;
 
+    private LayerMask ignorePlayerMask;
 
-    //Awake is called before Start but after every GameObject on the scene is instantiated
+    // Awake is called before Start but after every GameObject on the scene is instantiated
     void Awake()
     {
         
@@ -37,7 +44,9 @@ public class playerBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        eManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<eventManager>();
+        gControl = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameController>();
+
+        ignorePlayerMask = ~(LayerMask.GetMask("Player"));
 
         // Make a reference for the Move action from the player input
         playerInput = GetComponent<PlayerInput>();
@@ -48,16 +57,13 @@ public class playerBehavior : MonoBehaviour
 
         // Freeze the rotation of the player
         rb.freezeRotation = true;
+
+        bc = GetComponent<BoxCollider2D>();
     }
 
     void FixedUpdate(){
-
-        if(eManager.CurrentGameState() == eventManager.gameState.pause) {
-            return;
-        }
-
         // Move the player left/right using input
-        rb.velocity = new Vector2(moveForce * playerMove.ReadValue<Vector2>().x, rb.velocity.y);
+        rb.velocity = new Vector2(moveSpeed * playerMove.ReadValue<Vector2>().x, rb.velocity.y);
 
         // Increase downwards velocity linearly after a certain threshold, creating acceleration
         if (rb.velocity.y < fallAugmentThreshold){
@@ -66,59 +72,54 @@ public class playerBehavior : MonoBehaviour
         }
     }
 
-    //Check if player is touching ground
+    // Check if player is touching ground
     bool isGrounded(){
         // Since the player is a square, two raycasts are needed to determine if they are on the ground
-        // One raycast from lower left, one from lower right
-        Vector2 playerCenter = new Vector2(transform.position.x, transform.position.y);
-        Vector2 playerLowerLeft = playerCenter + transform.localScale.x * Vector2.left + transform.localScale.y * Vector2.down;
-        Vector2 playerLowerRight = playerCenter + transform.localScale.x * Vector2.right + transform.localScale.y * Vector2.down;
-        RaycastHit2D groundCheckLeft = Physics2D.Raycast(playerLowerLeft, Vector2.down, 0.1f);
-        RaycastHit2D groundCheckRight = Physics2D.Raycast(playerLowerRight, Vector2.down, 0.1f);
+        // One raycast from left, one from right
+        Vector2 playerLeft = new Vector2(transform.position.x - bc.bounds.extents.x, transform.position.y);
+        Vector2 playerRight = new Vector2(transform.position.x + bc.bounds.extents.x, transform.position.y);
+        RaycastHit2D groundCheckLeft = Physics2D.Raycast(playerLeft, Vector2.down, bc.bounds.extents.y + 0.1f, ignorePlayerMask);
+        RaycastHit2D groundCheckRight = Physics2D.Raycast(playerRight, Vector2.down, bc.bounds.extents.y + 0.1f, ignorePlayerMask);
 
-        return ((groundCheckLeft.collider != null) || (groundCheckRight.collider != null));
+        return groundCheckLeft || groundCheckRight;
     }
 
-    //Called when Jump button is pressed
-    void OnJump()
+    // Called when Jump button is pressed
+    public void OnJump()
     {
         // Only jump if the player is on the ground
-        if (isGrounded() && eManager.CurrentGameState() == eventManager.gameState.running)
+        if (isGrounded())//&& gControl.CurrentGameState() == gameController.gameState.running)
         {
-            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
         }
 
     }
 
-    //Called when Pause button is pressed
-    void OnPause()
+    // Called when Pause button is pressed
+    public void OnPause()
     {
-        eManager.PauseMenu();
+        gControl.PauseMenu();
     }
 
+    // Called when fire bullet ability button is pressed
 
-    //Called when fire pulse ability button is pressed
-    void OnFirePulse()
+    public void OnFireBullet(){
+        if (gControl.CurrentGameState() == gameController.gameState.running){
+            Instantiate(bullet, transform.position, transform.rotation);
+        }
+    }
+
+    // Called when fire pulse ability button is pressed
+    public void OnFirePulse()
     {
-        //Spawn Blue pulses above and below the player
-        if(eManager.CurrentGameState() == eventManager.gameState.running)
+        // Spawn Blue pulses above and below the player
+        if(gControl.CurrentGameState() == gameController.gameState.running)
         {
             Instantiate(pulse, gameObject.transform.position + Vector3.up * transform.localScale.y, gameObject.transform.rotation);
             Instantiate(pulse, gameObject.transform.position + Vector3.down * transform.localScale.y, gameObject.transform.rotation);
         }
 
     }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log("Collision happened");
-
-        if (collision.gameObject.tag == "Enemy")
-        {
-            Debug.Log("Collision with an enemy");
-        }
-    }
-
 }
 
 

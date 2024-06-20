@@ -1374,7 +1374,12 @@ PrefabInstance:
     - target: {fileID: 8486580111890239277, guid: 2ac35e5fc1908b141b432410725d98e0,
         type: 3}
       propertyPath: m_Name
-      value: Game Manager
+      value: GameController
+      objectReference: {fileID: 0}
+    - target: {fileID: 8486580111890239277, guid: 2ac35e5fc1908b141b432410725d98e0,
+        type: 3}
+      propertyPath: m_TagString
+      value: GameController
       objectReference: {fileID: 0}
     - target: {fileID: 8486580111890239279, guid: 2ac35e5fc1908b141b432410725d98e0,
         type: 3}
