@@ -137,9 +137,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd3ab48020d39e45b80b992c233a615, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movSpeed: 0
-  movRange: 0
-  patrolPauseTime: 0
+  movSpeed: 6
+  movRange: 2
+  patrolPauseTime: 2
 --- !u!1 &3302191138491542166
 GameObject:
   m_ObjectHideFlags: 0
