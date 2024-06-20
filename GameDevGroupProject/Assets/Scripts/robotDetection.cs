@@ -16,7 +16,11 @@ public class robotDetection : MonoBehaviour
     int numRaycasts = 2;
     private Vector2 currentPos;
 
+    private LayerMask ignoreRobotMask;
+
     void OnEnable(){
+
+        ignoreRobotMask = ~(LayerMask.GetMask("Robot"));
 
         Mesh mesh = new Mesh();
         mesh.name = "robotFOV";
@@ -48,7 +52,7 @@ public class robotDetection : MonoBehaviour
         for (int i = 1; i <= numRaycasts; i++){
             float yDir = Mathf.Tan(((fov / 2f) - increments * (i - 1)) * Mathf.PI / 180f);
             Vector2 directionVector = new Vector2(xDir, yDir);
-            RaycastHit2D raycastHit2D = Physics2D.Raycast(currentPos, directionVector);
+            RaycastHit2D raycastHit2D = Physics2D.Raycast(currentPos, directionVector, 100f, ignoreRobotMask);
             points[i] = raycastHit2D.point - currentPos;
             vertices[i] = points[i];
 
