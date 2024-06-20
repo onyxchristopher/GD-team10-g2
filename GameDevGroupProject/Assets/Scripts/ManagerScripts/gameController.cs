@@ -5,17 +5,26 @@ using UnityEngine;
 public class gameController : MonoBehaviour
 {
 
-    //Possible game states
+    // Possible game states
     public enum gameState { running, pause, loading };
     private gameState currentState;
 
-    //Some stats we may want to keep track of 
+    // Some stats we may want to keep track of 
 
-    //Variable to keep track of enemies killed
+    // Variable to keep track of enemies killed
     public int enemyKillCount;
 
-    //Variable to keep track of player deaths
+    // Variable to keep track of player deaths
     public int playerDeaths;
+
+    // For red powerup
+    public bool allowRedPowerup = false;
+
+    // For green powerup
+    public bool allowGreenPowerup = false;
+
+    // For blue powerup
+    public bool allowBluePowerup = false;
 
     // Start is called before the first frame update
     void Start()

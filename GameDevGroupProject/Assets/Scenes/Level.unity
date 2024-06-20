@@ -132,9 +132,9 @@ GameObject:
   - component: {fileID: 132066472}
   - component: {fileID: 132066474}
   - component: {fileID: 132066473}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Platform (8)
-  m_TagString: SolidObject
+  m_TagString: Structure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -240,9 +240,9 @@ GameObject:
   - component: {fileID: 167663740}
   - component: {fileID: 167663739}
   - component: {fileID: 167663738}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Platform
-  m_TagString: SolidObject
+  m_TagString: Structure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -348,9 +348,9 @@ GameObject:
   - component: {fileID: 277468918}
   - component: {fileID: 277468920}
   - component: {fileID: 277468919}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Platform (6)
-  m_TagString: SolidObject
+  m_TagString: Structure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -452,6 +452,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8486580111890239250, guid: 2ac35e5fc1908b141b432410725d98e0,
+        type: 3}
+      propertyPath: allowGreenPowerup
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8486580111890239277, guid: 2ac35e5fc1908b141b432410725d98e0,
         type: 3}
       propertyPath: m_Name
@@ -525,9 +530,9 @@ GameObject:
   - component: {fileID: 377255610}
   - component: {fileID: 377255612}
   - component: {fileID: 377255611}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Platform (9)
-  m_TagString: SolidObject
+  m_TagString: Structure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -633,9 +638,9 @@ GameObject:
   - component: {fileID: 380768400}
   - component: {fileID: 380768402}
   - component: {fileID: 380768401}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Platform (4)
-  m_TagString: SolidObject
+  m_TagString: Structure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -838,9 +843,9 @@ GameObject:
   - component: {fileID: 595477692}
   - component: {fileID: 595477694}
   - component: {fileID: 595477693}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Platform (3)
-  m_TagString: SolidObject
+  m_TagString: Structure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -946,9 +951,9 @@ GameObject:
   - component: {fileID: 988186736}
   - component: {fileID: 988186735}
   - component: {fileID: 988186734}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Platform (2)
-  m_TagString: SolidObject
+  m_TagString: Structure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1076,6 +1081,21 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5429846450685989308, guid: b23e293a0f863fb4091636c480657760,
+        type: 3}
+      propertyPath: jumpSpeed
+      value: 8.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5429846450685989308, guid: b23e293a0f863fb4091636c480657760,
+        type: 3}
+      propertyPath: fallAugmentThreshold
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5429846450685989308, guid: b23e293a0f863fb4091636c480657760,
+        type: 3}
+      propertyPath: fallAugmentMultiplier
+      value: 0.04
+      objectReference: {fileID: 0}
     - target: {fileID: 5429846450685989310, guid: b23e293a0f863fb4091636c480657760,
         type: 3}
       propertyPath: m_RootOrder
@@ -1144,9 +1164,9 @@ GameObject:
   - component: {fileID: 1059306759}
   - component: {fileID: 1059306758}
   - component: {fileID: 1059306757}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Platform (1)
-  m_TagString: SolidObject
+  m_TagString: Structure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1261,7 +1281,7 @@ PrefabInstance:
     - target: {fileID: 1046982433252784060, guid: 20b0e5c5d56c74c44b6e54f26c2424f8,
         type: 3}
       propertyPath: numRaycasts
-      value: 30
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1568693749734570259, guid: 20b0e5c5d56c74c44b6e54f26c2424f8,
         type: 3}
@@ -1371,9 +1391,9 @@ GameObject:
   - component: {fileID: 1170334640}
   - component: {fileID: 1170334642}
   - component: {fileID: 1170334641}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Platform (7)
-  m_TagString: SolidObject
+  m_TagString: Structure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1520,9 +1540,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1667829356}
   - component: {fileID: 1667829357}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Background
-  m_TagString: SolidObject
+  m_TagString: Structure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1716,9 +1736,9 @@ GameObject:
   - component: {fileID: 1814786572}
   - component: {fileID: 1814786574}
   - component: {fileID: 1814786573}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Platform (10)
-  m_TagString: SolidObject
+  m_TagString: Structure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1824,9 +1844,9 @@ GameObject:
   - component: {fileID: 1892852383}
   - component: {fileID: 1892852385}
   - component: {fileID: 1892852384}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Platform (5)
-  m_TagString: SolidObject
+  m_TagString: Structure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

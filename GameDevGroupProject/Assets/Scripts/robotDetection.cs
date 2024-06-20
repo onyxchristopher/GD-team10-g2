@@ -20,7 +20,7 @@ public class robotDetection : MonoBehaviour
 
     void OnEnable(){
 
-        ignoreRobotMask = ~(LayerMask.GetMask("Robot"));
+        ignoreRobotMask = LayerMask.GetMask("Structure");
 
         Mesh mesh = new Mesh();
         mesh.name = "robotFOV";
