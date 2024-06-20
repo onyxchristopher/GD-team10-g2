@@ -35,6 +35,8 @@ public class playerBehavior : MonoBehaviour
 
     private LayerMask ignorePlayerMask;
 
+    private bool facingRight;
+
     // Awake is called before Start but after every GameObject on the scene is instantiated
     void Awake()
     {
@@ -46,7 +48,7 @@ public class playerBehavior : MonoBehaviour
     {
         gControl = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameController>();
 
-        ignorePlayerMask = ~(LayerMask.GetMask("Player"));
+        ignorePlayerMask = LayerMask.GetMask("Structure", "Object");
 
         // Make a reference for the Move action from the player input
         playerInput = GetComponent<PlayerInput>();
@@ -64,6 +66,13 @@ public class playerBehavior : MonoBehaviour
     void FixedUpdate(){
         // Move the player left/right using input
         rb.velocity = new Vector2(moveSpeed * playerMove.ReadValue<Vector2>().x, rb.velocity.y);
+        if (rb.velocity.x > 0 && !facingRight){
+            facingRight = true;
+            transform.Rotate(0, 180, 0);
+        } else if (rb.velocity.x < 0 && facingRight){
+            facingRight = false;
+            transform.Rotate(0, -180, 0);
+        }
 
         // Increase downwards velocity linearly after a certain threshold, creating acceleration
         if (rb.velocity.y < fallAugmentThreshold){
@@ -76,8 +85,8 @@ public class playerBehavior : MonoBehaviour
     bool isGrounded(){
         // Since the player is a square, two raycasts are needed to determine if they are on the ground
         // One raycast from left, one from right
-        Vector2 playerLeft = new Vector2(transform.position.x - bc.bounds.extents.x, transform.position.y);
-        Vector2 playerRight = new Vector2(transform.position.x + bc.bounds.extents.x, transform.position.y);
+        Vector2 playerLeft = new Vector2(transform.position.x - 0.9f * bc.bounds.extents.x, transform.position.y);
+        Vector2 playerRight = new Vector2(transform.position.x + 0.9f * bc.bounds.extents.x, transform.position.y);
         RaycastHit2D groundCheckLeft = Physics2D.Raycast(playerLeft, Vector2.down, bc.bounds.extents.y + 0.1f, ignorePlayerMask);
         RaycastHit2D groundCheckRight = Physics2D.Raycast(playerRight, Vector2.down, bc.bounds.extents.y + 0.1f, ignorePlayerMask);
 
@@ -88,9 +97,13 @@ public class playerBehavior : MonoBehaviour
     public void OnJump()
     {
         // Only jump if the player is on the ground
-        if (isGrounded())//&& gControl.CurrentGameState() == gameController.gameState.running)
+        if (isGrounded() && gControl.CurrentGameState() == gameController.gameState.running)
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
+            var adjustedJumpSpeed = jumpSpeed;
+            if (gControl.allowGreenPowerup){
+                adjustedJumpSpeed = jumpSpeed * 1.4f;
+            }
+            rb.velocity = new Vector2(rb.velocity.x, adjustedJumpSpeed);
         }
 
     }

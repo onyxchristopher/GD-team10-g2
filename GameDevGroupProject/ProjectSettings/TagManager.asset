@@ -8,7 +8,8 @@ TagManager:
   - Enemy
   - Robot
   - Bullet
-  - SolidObject
+  - Structure
+  - Object
   layers:
   - Default
   - TransparentFX
@@ -22,8 +23,8 @@ TagManager:
   - Bullet
   - Pulse
   - Robot
-  - 
-  - 
+  - Structure
+  - Object
   - 
   - 
   - 

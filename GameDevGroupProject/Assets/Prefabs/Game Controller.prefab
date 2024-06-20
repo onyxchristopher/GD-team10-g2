@@ -47,6 +47,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyKillCount: 0
   playerDeaths: 0
+  allowRedPowerup: 0
+  allowGreenPowerup: 0
+  allowBluePowerup: 0
 --- !u!114 &8486580111890239249
 MonoBehaviour:
   m_ObjectHideFlags: 0

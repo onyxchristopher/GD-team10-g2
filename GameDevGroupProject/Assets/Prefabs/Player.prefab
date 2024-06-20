@@ -146,10 +146,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 6385079045240044444, guid: a7080d4489ede914890e57776170a56b, type: 3}
   pulse: {fileID: 4300145099817300729, guid: bd58eabf4a8a5c141bf42fde606f7e3a, type: 3}
-  jumpSpeed: 8
+  jumpSpeed: 8.5
   moveSpeed: 6.5
-  fallAugmentMultiplier: 0.05
-  fallAugmentThreshold: 1
+  fallAugmentMultiplier: 0.035
+  fallAugmentThreshold: 0
 --- !u!114 &474968093255134918
 MonoBehaviour:
   m_ObjectHideFlags: 0
