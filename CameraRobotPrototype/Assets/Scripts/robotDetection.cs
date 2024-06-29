@@ -73,5 +73,7 @@ public class robotDetection : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other){
         Debug.Log("Player detected");
+        if (!other.CompareTag("Player")) return;
+        EventManager.OnPlayerDetected();
     }
 }
