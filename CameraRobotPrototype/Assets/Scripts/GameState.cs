@@ -17,7 +17,7 @@ public class GameState : MonoBehaviour
     }
     public void RestartGame() 
     {
-
+        Debug.Log("RESTART GAME");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     
     }
