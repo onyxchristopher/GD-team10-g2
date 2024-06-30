@@ -4,12 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Pulse
   - Enemy
-  - Robot
-  - Bullet
-  - Structure
-  - Object
+  - Pulse
+  - GameManager
   layers:
   - Default
   - TransparentFX
@@ -19,12 +16,12 @@ TagManager:
   - UI
   - 
   - 
-  - Player
-  - Bullet
-  - Pulse
-  - Robot
-  - Structure
-  - Object
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 
@@ -44,12 +41,6 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Background
-    uniqueID: 1343020329
-    locked: 0
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Foreground
-    uniqueID: 3243567063
     locked: 0
