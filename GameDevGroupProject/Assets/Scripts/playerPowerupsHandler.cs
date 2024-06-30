@@ -51,6 +51,7 @@ public class playerPowerupsHandler : MonoBehaviour
         {
             if (!powerUpsActive.Contains(powerUpComponent))
             {
+                powerUpsActive.Clear();
                 powerUpsActive.Add(powerUpComponent);
 
                 Debug.Log("Player collided with a power-up!");
