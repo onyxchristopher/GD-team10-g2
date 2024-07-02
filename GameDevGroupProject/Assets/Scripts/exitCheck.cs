@@ -8,7 +8,7 @@ public class exitCheck : MonoBehaviour
     private string nextLevel;
 
     [SerializeField] 
-    private string currentLevel;
+    private string prevLevel;
 
     private sceneManager sManager;
     private GameObject player;
@@ -34,8 +34,9 @@ public class exitCheck : MonoBehaviour
         if (other.gameObject == player)
         {
             Debug.Log("Player reached exit");
+
             sManager.NextLevel(nextLevel);
-            sManager.UnloadScene(currentLevel);
+            sManager.UnloadScene(prevLevel);
         }
     }
 
