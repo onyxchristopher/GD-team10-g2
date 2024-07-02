@@ -31,6 +31,8 @@ public class PlayerMovement : MonoBehaviour
         bc = GetComponent<BoxCollider2D>();
 
         playerPowerupsHandler = GetComponent<PlayerPowerupsHandler>();
+
+        groundLayerMask = LayerMask.GetMask("LevelObstacles", "LevelBorders");
     }
 
     private void OnEnable()
@@ -102,17 +104,21 @@ public class PlayerMovement : MonoBehaviour
                 multiplier *= greenPowerUp.playerJumpMultiplier;
             }
 
-            rb.velocity = new Vector2(rb.velocity.x, jumpSpeed * multiplier);
+            rb.AddForce(Vector2.up * jumpSpeed * multiplier, ForceMode2D.Impulse);
+            //     rb.velocity = new Vector2(rb.velocity.x, jumpSpeed * multiplier, );
         }
     }
 
+    private LayerMask groundLayerMask;
+
     private bool IsGrounded()
     {
-        var playerLeft = new Vector2(transform.position.x - bc.bounds.extents.x, transform.position.y);
-        var playerRight = new Vector2(transform.position.x + bc.bounds.extents.x, transform.position.y);
-        var groundCheckLeft = Physics2D.Raycast(playerLeft, Vector2.down, bc.bounds.extents.y + 0.1f);
-        var groundCheckRight = Physics2D.Raycast(playerRight, Vector2.down, bc.bounds.extents.y + 0.1f);
+        Debug.Log("hi");
+        Vector2 boxCenter = new Vector2(transform.position.x, transform.position.y - bc.bounds.extents.y - 0.1f);
+        Vector2 boxSize = new Vector2(bc.bounds.size.x - 0.2f, 0.1f);
 
-        return groundCheckLeft.collider != null || groundCheckRight.collider != null;
+        Collider2D[] colliders = Physics2D.OverlapBoxAll(boxCenter, boxSize, 0f, groundLayerMask);
+
+        return colliders.Length > 0;
     }
 }
