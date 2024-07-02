@@ -19,6 +19,8 @@ public class eventManager : MonoBehaviour
     //Variable to keep track of enemies killed
     public int enemyKillCount;
 
+    public GameObject Player;
+
     //Variable to keep track of player deaths
     public int playerDeahts;
 

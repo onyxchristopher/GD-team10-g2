@@ -4,20 +4,18 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class playerPowerupsHandler : MonoBehaviour
+public class PlayerPowerupsHandler : MonoBehaviour
 {
-    public List<powerUp> powerUpsActive = new List<powerUp>();
-
-    public float duration = 1.0f; // Duration the EMP pulse exists
-    public float radius = 5.0f; // Radius of the EMP pulse
+    public List<PowerUp> powerUpsActive = new List<PowerUp>();
 
     private CircleCollider2D empCollider;
-    private playerMovement playerMovement;
+    private PlayerMovement playerMovement;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        playerMovement = this.GetComponent<playerMovement>();
+        playerMovement = this.GetComponent<PlayerMovement>();
     }
 
     void FixedUpdate()
@@ -36,7 +34,7 @@ public class playerPowerupsHandler : MonoBehaviour
 
         var redPowerUp = powerUpsActive
             .FirstOrDefault(x => x.powerUpType == PowerUpType.Red);
-        
+
         if (redPowerUp)
         {
             LaunchFireball();
@@ -45,18 +43,28 @@ public class playerPowerupsHandler : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        powerUp powerUpComponent = other.gameObject.GetComponent<powerUp>();
+        PowerUp powerUpComponent = other.gameObject.GetComponent<PowerUp>();
 
         if (powerUpComponent != null)
         {
             if (!powerUpsActive.Contains(powerUpComponent))
             {
-                powerUpsActive.Clear();
-                powerUpsActive.Add(powerUpComponent);
+                AddPowerUp(powerUpComponent);
 
                 Debug.Log("Player collided with a power-up!");
             }
         }
+    }
+
+    public void AddPowerUp(PowerUp powerUp)
+    {
+        foreach (var activePowerUp in powerUpsActive)
+        {
+            GameObject.Destroy(activePowerUp.gameObject);
+        }
+        powerUpsActive.Clear(); // make sure one powerup at a time
+
+        powerUpsActive.Add(powerUp);
     }
 
     public GameObject empPrefab; // Assign the EMP prefab in the inspector
@@ -76,12 +84,13 @@ public class playerPowerupsHandler : MonoBehaviour
 
     void LaunchFireball()
     {
-        Vector3 fireballPosition = transform.position + Vector3.right  * 1.0f; // Adjust position if needed
-        
+        Vector3 fireballPosition =
+            transform.position + ((Vector3)playerMovement.FacingDirection) * 1.0f; // Adjust position if needed
+
         var fireballInstance = Instantiate(fireballPrefab, fireballPosition, Quaternion.identity);
-        
+
         Fireball fireballScript = fireballInstance.GetComponent<Fireball>();
-        
+
         fireballScript.speed = 5 * playerMovement.moveSpeed;
     }
 

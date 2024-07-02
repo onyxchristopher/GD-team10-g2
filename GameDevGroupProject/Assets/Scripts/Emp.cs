@@ -26,7 +26,7 @@ public class Emp : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         // Draw the EMP pulse radius for visualization in the editor
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position, radius);
+        // Gizmos.color = Color.blue;
+        // Gizmos.DrawWireSphere(transform.position, radius);
     }
 }
