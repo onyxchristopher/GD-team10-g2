@@ -18,11 +18,17 @@ public class cameraMovement : MonoBehaviour
 
     [SerializeField]
     float smoothingTime;
+
+    //[SerializeField]
+    //GameObject level;
     
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindWithTag("Player");
+
+        //level = GameObject.FindGameObjectWithTag("Level");
+
         // set the level bounds (later these will be fetched from the level manager)
         levelBottom = 0f;
         levelLeft = 0f;

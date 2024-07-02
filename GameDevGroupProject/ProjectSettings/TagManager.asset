@@ -10,6 +10,7 @@ TagManager:
   - Bullet
   - Structure
   - Object
+  - Level
   layers:
   - Default
   - TransparentFX

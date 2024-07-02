@@ -111,12 +111,15 @@ public class playerBehavior : MonoBehaviour
     // Called when Pause button is pressed
     public void OnPause()
     {
+        Debug.Log("Called onpause");
         gControl.PauseMenu();
     }
 
     // Called when fire bullet ability button is pressed
 
     public void OnFireBullet(){
+        Debug.Log("Called bullet");
+
         if (gControl.CurrentGameState() == gameController.gameState.running){
             Instantiate(bullet, transform.position, transform.rotation);
         }
@@ -125,8 +128,10 @@ public class playerBehavior : MonoBehaviour
     // Called when fire pulse ability button is pressed
     public void OnFirePulse()
     {
+        Debug.Log("Called pulse");
+
         // Spawn Blue pulses above and below the player
-        if(gControl.CurrentGameState() == gameController.gameState.running)
+        if (gControl.CurrentGameState() == gameController.gameState.running)
         {
             Instantiate(pulse, gameObject.transform.position + Vector3.up * transform.localScale.y, gameObject.transform.rotation);
             Instantiate(pulse, gameObject.transform.position + Vector3.down * transform.localScale.y, gameObject.transform.rotation);
