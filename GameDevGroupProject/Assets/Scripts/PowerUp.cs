@@ -29,8 +29,6 @@ public class PowerUp : MonoBehaviour
     {
         powerUpRandomMovement = GetComponent<Animator>();
 
-        // powerUpRandomMovement.Play("MoveUpDown",-1);
-
         powerUpRandomMovement.speed = Random.Range(0.75f, 1.25f);
     }
 

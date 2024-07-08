@@ -89,9 +89,9 @@ public class PlayerPowerupsHandler : MonoBehaviour
 
         var fireballInstance = Instantiate(fireballPrefab, fireballPosition, Quaternion.identity);
 
-        Fireball fireballScript = fireballInstance.GetComponent<Fireball>();
-
-        fireballScript.speed = 5 * playerMovement.moveSpeed;
+        // Fireball fireballScript = fireballInstance.GetComponent<Fireball>();
+        //
+        // fireballScript.speed = 5 * playerMovement.moveSpeed;
     }
 
     void OnTriggerEnter2D(Collider2D other)
