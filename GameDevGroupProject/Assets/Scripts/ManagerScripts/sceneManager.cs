@@ -28,14 +28,14 @@ public class sceneManager : MonoBehaviour
     //Loads initial scenes for game to start
     public void StartGame()
     {
-        //Loop throguh all scenes and only load first two. Index starts at one to keep persistent elements loaded
+
+        Scene scene = SceneManager.GetSceneByName("Persistent elements");
+
+        //Loop through all scenes and only load first two. Index starts at one to keep persistent elements loaded
         for (int i = 1; i < SceneManager.sceneCount; i++)
         {
-            Scene scene = SceneManager.GetSceneAt(i);
-            if(scene.name == "PersistentElements")
-            {
-                SceneManager.SetActiveScene(scene);
-            }
+            scene = SceneManager.GetSceneAt(i);
+           
             if (scene.name != "Level_1" && scene.name != "Level_2")
             {
                 SceneManager.UnloadSceneAsync(scene);
