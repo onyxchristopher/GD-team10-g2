@@ -26,6 +26,7 @@ public class gameController : MonoBehaviour
     // For blue powerup
     public bool allowBluePowerup = false;
 
+    public bool onePowerUpOnly = true;
     // Start is called before the first frame update
     void Start()
     {
