@@ -17,20 +17,22 @@ public class playerBehavior : MonoBehaviour
 
     [SerializeField] GameObject pulse;
 
-    [SerializeField] float jumpSpeed;
+    [SerializeField] float jumpSpeed = 19f;
 
-    [SerializeField] float moveSpeed;
+    [SerializeField] float moveSpeed = 10f;
 
-    [SerializeField] float fallAugmentMultiplier;
+    [SerializeField] float fallAugmentMultiplier = 0.05f;
 
-    [SerializeField] float fallAugmentThreshold;
+    [SerializeField] float fallAugmentThreshold = 2f;
+
+    [SerializeField] float fallAugmentMax = -40f;
 
     private PlayerInput playerInput;
     private InputAction playerMove;
 
     private LayerMask ignorePlayerMask;
 
-    private bool facingRight;
+    private bool facingRight = true;
 
     // this is the power ups active on this player
     public List<powerUp> powerUpsActive = new List<powerUp>();
@@ -95,8 +97,9 @@ public class playerBehavior : MonoBehaviour
         {
             xVelocity *= 2;
         }
-
         rb.velocity = new Vector2(moveSpeed * xVelocity, rb.velocity.y);
+
+        // Rotate the player when they change direction
         if (rb.velocity.x > 0 && !facingRight)
         {
             facingRight = true;
@@ -109,7 +112,7 @@ public class playerBehavior : MonoBehaviour
         }
 
         // Increase downwards velocity linearly after a certain threshold, creating acceleration
-        if (rb.velocity.y < fallAugmentThreshold)
+        if (rb.velocity.y < fallAugmentThreshold && rb.velocity.y > fallAugmentMax)
         {
             float fallAugment = (fallAugmentThreshold - rb.velocity.y) * fallAugmentMultiplier;
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y - fallAugment);
@@ -123,10 +126,10 @@ public class playerBehavior : MonoBehaviour
         // One raycast from left, one from right
         Vector2 playerLeft = new Vector2(transform.position.x - 0.9f * bc.bounds.extents.x, transform.position.y);
         Vector2 playerRight = new Vector2(transform.position.x + 0.9f * bc.bounds.extents.x, transform.position.y);
-        RaycastHit2D groundCheckLeft =
-            Physics2D.Raycast(playerLeft, Vector2.down, bc.bounds.extents.y + 0.1f, ignorePlayerMask);
-        RaycastHit2D groundCheckRight =
-            Physics2D.Raycast(playerRight, Vector2.down, bc.bounds.extents.y + 0.1f, ignorePlayerMask);
+        RaycastHit2D groundCheckLeft = Physics2D.Raycast(playerLeft,
+        Vector2.down, bc.bounds.extents.y + 0.1f, ignorePlayerMask);
+        RaycastHit2D groundCheckRight = Physics2D.Raycast(playerRight,
+        Vector2.down, bc.bounds.extents.y + 0.1f, ignorePlayerMask);
 
         return groundCheckLeft || groundCheckRight;
     }
@@ -155,9 +158,7 @@ public class playerBehavior : MonoBehaviour
                 adjustedJumpSpeed *= 2f;
             }
 
-            Debug.Log($"Jumping original speed: {jumpSpeed}, resulting speed: {adjustedJumpSpeed}");
-
-            rb.AddForce(Vector2.up * adjustedJumpSpeed, ForceMode2D.Impulse);
+            rb.velocity = new Vector2(rb.velocity.x, adjustedJumpSpeed);
         }
     }
 
