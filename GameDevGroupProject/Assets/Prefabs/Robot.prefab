@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2392056145237353599}
   - component: {fileID: 3543879548342765252}
   - component: {fileID: 3202204549617678292}
-  - component: {fileID: 1046982433252784060}
   - component: {fileID: -1646631383826902618}
   m_Layer: 11
   m_Name: Robot
@@ -83,21 +82,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &1046982433252784060
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2392056145237353537}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc19e04d395c54673b4a3df92b53a329, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fov: 30
-  facingRight: 1
-  numRaycasts: 2
 --- !u!114 &-1646631383826902618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,6 +97,9 @@ MonoBehaviour:
   movSpeed: 1
   movRange: 2
   patrolPauseTime: 0
+  fov: 25
+  facingRight: 1
+  numRaycasts: 2
 --- !u!1 &3302191138491542166
 GameObject:
   m_ObjectHideFlags: 0
