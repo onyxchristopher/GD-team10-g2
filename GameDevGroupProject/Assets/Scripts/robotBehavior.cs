@@ -36,10 +36,7 @@ public class robotBehavior : MonoBehaviour
     //Variables for drawing the fov
     [SerializeField]
     float fov = 25f;
-    /*[SerializeField]
-    bool moving = false;*/
-    [SerializeField]
-    public bool facingRight = true; // if false, then facing left
+
     [SerializeField]
     int numRaycasts = 2;
 
@@ -55,6 +52,8 @@ public class robotBehavior : MonoBehaviour
 
     private PolygonCollider2D[] allFOVs;
     private PolygonCollider2D pc;
+
+    private SpriteRenderer childSprite;
 
     void Start()
     {
@@ -78,6 +77,8 @@ public class robotBehavior : MonoBehaviour
         }
 
         increments = fov / (numRaycasts - 1);
+
+        childSprite = gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>();
 
     }
 
@@ -157,7 +158,7 @@ public class robotBehavior : MonoBehaviour
         points[0] = Vector2.zero;
         vertices[0] = Vector3.zero;
 
-        //Set triIndex to 0 beforee loop
+        //Set triIndex to 0 before loop
         triIndex = 0;
         for (int i = 1; i <= numRaycasts; i++)
         {
@@ -190,6 +191,7 @@ public class robotBehavior : MonoBehaviour
         faceDir = -faceDir;
         fov = -fov;
         increments = -increments;
+        childSprite.flipX = !childSprite.flipX;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
