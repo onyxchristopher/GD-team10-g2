@@ -93,9 +93,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd3ab48020d39e45b80b992c233a615, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movSpeed: 1
-  movRange: 2
-  patrolPauseTime: 0
+  movSpeed: 3
+  movRange: 4
+  patrolPauseTime: 0.5
   fov: 25
   numRaycasts: 2
 --- !u!1 &3302191138491542166
@@ -111,7 +111,7 @@ GameObject:
   - component: {fileID: 8467428795194199117}
   m_Layer: 0
   m_Name: RobotSprite
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

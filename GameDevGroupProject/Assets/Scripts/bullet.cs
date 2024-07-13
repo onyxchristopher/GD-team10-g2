@@ -11,7 +11,7 @@ public class bullet : MonoBehaviour
     void Start()
     {
         rb=GetComponent<Rigidbody2D>();
-        rb.velocity = -transform.right * speed;
+        rb.velocity = transform.right * speed;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
