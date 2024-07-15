@@ -11,6 +11,7 @@ TagManager:
   - Structure
   - Object
   - Level
+  - Exit Door
   layers:
   - Default
   - TransparentFX

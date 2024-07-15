@@ -23,7 +23,7 @@ public class playerBehavior : MonoBehaviour
 
     [SerializeField] float fallAugmentMultiplier = 0.05f;
 
-    [SerializeField] float fallAugmentThreshold = 2f;
+    [SerializeField] float fallAugmentThreshold = 3f;
 
     [SerializeField] float fallAugmentMax = -40f;
 
@@ -36,6 +36,8 @@ public class playerBehavior : MonoBehaviour
 
     // this is the power ups active on this player
     public List<powerUp> powerUpsActive = new List<powerUp>();
+
+    private Vector3 bulletFireOffset = new Vector3(0, 0.5f, 0);
 
 
     public bool AddPowerUp(powerUp powerUp)
@@ -175,9 +177,7 @@ public class playerBehavior : MonoBehaviour
     {
         if (gControl.CurrentGameState() == gameController.gameState.running && IsPowerUpActive(PowerUpType.Red))
         {
-            Debug.Log("Called fire bullet");
-
-            Instantiate(bullet, transform.position, transform.rotation);
+            Instantiate(bullet, transform.position + bulletFireOffset, transform.rotation);
         }
     }
 
