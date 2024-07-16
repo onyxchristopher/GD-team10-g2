@@ -12,6 +12,7 @@ TagManager:
   - Object
   - Level
   - Exit Door
+  - Audio
   layers:
   - Default
   - TransparentFX

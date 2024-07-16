@@ -7,7 +7,6 @@ using UnityEngine;
 
 public class robotBehavior : MonoBehaviour
 {
-    // Start is called before the first frame update
 
     //Fields to tweak enemy movement range, speed and time still on Unity inspector
     [SerializeField]
@@ -16,6 +15,10 @@ public class robotBehavior : MonoBehaviour
     public float movRange;
     [SerializeField]
     public float patrolPauseTime;
+
+    //References to game controller and sound manager
+    soundManager sndManager;
+    gameController gController;
 
     //If positive looking right, negative looking left
     private int faceDir = 1;
@@ -55,8 +58,17 @@ public class robotBehavior : MonoBehaviour
 
     private SpriteRenderer childSprite;
 
+    void Awake()
+    {
+       
+    }
+
     void Start()
     {
+        //Setting up manager references
+        sndManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<soundManager>();
+        gController = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameController>();
+
         //Setting up intial state and SM logic
         myState = states.MOVING;
         stateLogic.Add(states.MOVING, MoveEnemy);
@@ -196,6 +208,7 @@ public class robotBehavior : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        sndManager.PlaySFX(sndManager.playerDetected);
         Debug.Log("Player detected");
     }
 }

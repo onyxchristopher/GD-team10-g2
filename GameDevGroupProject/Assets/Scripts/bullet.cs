@@ -8,9 +8,13 @@ public class bullet : MonoBehaviour
     float speed;
     private Rigidbody2D rb;
 
+    soundManager sManager;
+
     void Start()
     {
-        rb=GetComponent<Rigidbody2D>();
+        sManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<soundManager>();
+
+        rb = GetComponent<Rigidbody2D>();
         rb.velocity = transform.right * speed;
     }
 
@@ -18,6 +22,7 @@ public class bullet : MonoBehaviour
     {
         if (other.gameObject.tag == "Enemy")
         {
+            sManager.PlaySFX(sManager.enemyDefeated);
             Destroy(gameObject);
             Destroy(other.gameObject.transform.parent.gameObject);
         } else if (other.gameObject.tag == "Structure"){

@@ -10,15 +10,16 @@ public class exitCheck : MonoBehaviour
     [SerializeField] 
     private string prevLevel;
 
-    private sceneManager sManager;
+    private sceneManager scnManager;
     private GameObject player;
+    private soundManager sndManager;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        sManager = GameObject.FindGameObjectWithTag("GameController").GetComponentInChildren<sceneManager>();
-
+        scnManager = GameObject.FindGameObjectWithTag("GameController").GetComponentInChildren<sceneManager>();
+        sndManager = GameObject.FindGameObjectWithTag("Audio").GetComponentInChildren<soundManager>();
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
@@ -34,9 +35,9 @@ public class exitCheck : MonoBehaviour
         if (other.gameObject == player)
         {
             Debug.Log("Player reached exit");
-
-            sManager.NextLevel(nextLevel);
-            sManager.UnloadScene(prevLevel);
+            sndManager.PlaySFX(sndManager.levelComplete);
+            scnManager.NextLevel(nextLevel);
+            scnManager.UnloadScene(prevLevel);
         }
     }
 
