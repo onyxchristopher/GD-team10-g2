@@ -23,6 +23,14 @@ public class powerUp : MonoBehaviour
 
     public GameObject player;
 
+    //References to manangers
+    private soundManager sndManager;
+
+    void Start()
+    {
+        sndManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<soundManager>();
+    }
+
     void OnTriggerEnter2D(Collider2D other)
     {
         var player = GameObject.FindWithTag("Player").GetComponent<playerBehavior>();
@@ -34,6 +42,22 @@ public class powerUp : MonoBehaviour
             if (player.AddPowerUp(this))
             {
                 isActive = true;
+            }
+
+            //Sound effects for powerup pickups
+            if(powerUpType == PowerUpType.Red)
+            {
+                sndManager.PlaySFX(sndManager.powerUpPickUpRed);
+            }
+
+            if (powerUpType == PowerUpType.Green)
+            {
+                sndManager.PlaySFX(sndManager.powerUpPickUpGreen);
+            }
+
+            if (powerUpType == PowerUpType.Blue)
+            {
+                sndManager.PlaySFX(sndManager.powerUpPickUpPulse);
             }
         }
     }

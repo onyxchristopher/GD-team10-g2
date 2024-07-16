@@ -11,7 +11,10 @@ public class playerBehavior : MonoBehaviour
 
     private BoxCollider2D bc;
 
+
+    // Managers references
     private gameController gControl;
+    private soundManager sndManager;
 
     [SerializeField] GameObject bullet;
 
@@ -75,6 +78,7 @@ public class playerBehavior : MonoBehaviour
     void Start()
     {
         gControl = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameController>();
+        sndManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<soundManager>();
 
         ignorePlayerMask = LayerMask.GetMask("Structure", "Object");
 
@@ -153,6 +157,9 @@ public class playerBehavior : MonoBehaviour
         // Only jump if the player is on the ground
         if (isGrounded() && gControl.CurrentGameState() == gameController.gameState.running)
         {
+
+            sndManager.PlaySFX(sndManager.characterJump);
+
             var adjustedJumpSpeed = jumpSpeed;
 
             if (IsPowerUpActive(PowerUpType.Green))
@@ -177,6 +184,7 @@ public class playerBehavior : MonoBehaviour
     {
         if (gControl.CurrentGameState() == gameController.gameState.running && IsPowerUpActive(PowerUpType.Red))
         {
+            sndManager.PlaySFX(sndManager.powerUpFireRed);
             Instantiate(bullet, transform.position + bulletFireOffset, transform.rotation);
         }
     }
@@ -188,6 +196,8 @@ public class playerBehavior : MonoBehaviour
         if (gControl.CurrentGameState() == gameController.gameState.running && IsPowerUpActive(PowerUpType.Blue))
         {
             Debug.Log("Called pulse");
+
+            sndManager.PlaySFX(sndManager.powerUpFirePulse);
 
             Instantiate(pulse, gameObject.transform.position + Vector3.up * transform.localScale.y,
                 gameObject.transform.rotation);
