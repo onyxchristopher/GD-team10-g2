@@ -158,7 +158,7 @@ public class playerBehavior : MonoBehaviour
         if (isGrounded() && gControl.CurrentGameState() == gameController.gameState.running)
         {
 
-            sndManager.PlaySFX(sndManager.characterJump);
+            sndManager.PlaySFX(sndManager.characterJump, 0.25f);
 
             var adjustedJumpSpeed = jumpSpeed;
 
@@ -195,8 +195,6 @@ public class playerBehavior : MonoBehaviour
         // Spawn Blue pulses above and below the player
         if (gControl.CurrentGameState() == gameController.gameState.running && IsPowerUpActive(PowerUpType.Blue))
         {
-            Debug.Log("Called pulse");
-
             sndManager.PlaySFX(sndManager.powerUpFirePulse);
 
             Instantiate(pulse, gameObject.transform.position + Vector3.up * transform.localScale.y,

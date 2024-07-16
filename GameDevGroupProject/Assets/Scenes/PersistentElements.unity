@@ -480,7 +480,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -593,7 +593,7 @@ PrefabInstance:
         type: 3}
       propertyPath: enemyDefeated
       value: 
-      objectReference: {fileID: 8300000, guid: 7e26c9daf4c32483b9c2790e662d3f1b, type: 3}
+      objectReference: {fileID: 8300000, guid: 380a61624a607f042ab5e96218f37633, type: 3}
     - target: {fileID: 286780545678288663, guid: 2ac35e5fc1908b141b432410725d98e0,
         type: 3}
       propertyPath: levelComplete
@@ -608,12 +608,12 @@ PrefabInstance:
         type: 3}
       propertyPath: powerUpFireRed
       value: 
-      objectReference: {fileID: 8300000, guid: 0bd05763df902854a80475577a26666a, type: 3}
+      objectReference: {fileID: 8300000, guid: de812cfb519929c4aad9d296f655c81d, type: 3}
     - target: {fileID: 286780545678288663, guid: 2ac35e5fc1908b141b432410725d98e0,
         type: 3}
       propertyPath: powerUpFirePulse
       value: 
-      objectReference: {fileID: 8300000, guid: 5ff5bd936a30a904da907f35c8dd382e, type: 3}
+      objectReference: {fileID: 8300000, guid: 7f4aa26d5b55226409cda231ffaf869b, type: 3}
     - target: {fileID: 286780545678288663, guid: 2ac35e5fc1908b141b432410725d98e0,
         type: 3}
       propertyPath: powerUpPickUpRed

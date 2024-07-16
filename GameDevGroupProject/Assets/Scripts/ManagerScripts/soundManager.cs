@@ -43,10 +43,9 @@ public class soundManager : MonoBehaviour
         BGMSource.Play();
     }
 
-    public void PlaySFX(AudioClip sample)
+    public void PlaySFX(AudioClip sample, float vol = 1.0f)
     {
-        SFXSource.clip = sample; 
-        SFXSource.Play();
+        SFXSource.PlayOneShot(sample, vol);
     }   
 
 }
