@@ -26,21 +26,24 @@ public class soundManager : MonoBehaviour
 
     public AudioClip powerUpFireRed;
     public AudioClip powerUpFirePulse;
+
+    public AudioClip furnitureBounce;
     
     public AudioClip levelComplete;
 
-
-    // Start is called before the first frame update
     void Start()
     {
-        //Setting up and playing bacground music on game start
-        PlayBGM(BGM);
+        BGMSource.clip = BGM;
     }
 
-    public void PlayBGM(AudioClip sample)
+    public void PlayBGM()
     {
-        BGMSource.clip = sample;
         BGMSource.Play();
+    }
+
+    public void StopBGM()
+    {
+        BGMSource.Stop();
     }
 
     public void PlaySFX(AudioClip sample, float vol = 1.0f)

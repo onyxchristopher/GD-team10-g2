@@ -98,6 +98,8 @@ MonoBehaviour:
   patrolPauseTime: 0.5
   fov: 25
   numRaycasts: 2
+  restartScreen: {fileID: 6472461831051202669, guid: d561775ac02894d048c7916bc2ad68c3,
+    type: 3}
 --- !u!1 &3302191138491542166
 GameObject:
   m_ObjectHideFlags: 0
@@ -109,6 +111,7 @@ GameObject:
   - component: {fileID: 3440418977871616465}
   - component: {fileID: 9079572245942026084}
   - component: {fileID: 8467428795194199117}
+  - component: {fileID: 3450720912195562431}
   m_Layer: 0
   m_Name: RobotSprite
   m_TagString: Enemy
@@ -206,3 +209,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 10.88081, y: 20.34433}
   m_EdgeRadius: 0
+--- !u!114 &3450720912195562431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3302191138491542166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a52cc4d723a7a490788ccc5005d513fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

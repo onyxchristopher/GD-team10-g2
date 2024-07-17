@@ -9,11 +9,22 @@ public class sceneManager : MonoBehaviour
 
     private Scene persistentElements;
     private Scene[] levelCollection;
+    public Vector3[] levelStarts = new Vector3[1];
+    private GameObject player;
+    public int currLevel;
+    private soundManager sndManager;
+    private cameraMovement camMove;
+    [SerializeField] GameObject restartScreen;
 
     // Start is called before the first frame update
     void Start()
     {
+        sndManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<soundManager>();
+        camMove = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<cameraMovement>();
 
+        player = GameObject.FindGameObjectWithTag("Player");
+        currLevel = 1;
+        levelStarts[0] = new Vector3(6, 2, 0);
         StartGame();
 
         //Debug.Log("Amount of loaded sceenes " + sceneCount);
@@ -62,7 +73,10 @@ public class sceneManager : MonoBehaviour
 
     public void RestartLevel()
     {
-
+        SceneManager.UnloadSceneAsync("Level_1");
+        SceneManager.LoadSceneAsync("Level_1", LoadSceneMode.Additive);
+        player.transform.position = levelStarts[currLevel - 1];
+        camMove.SnapToPlayer();
     }
 
 }

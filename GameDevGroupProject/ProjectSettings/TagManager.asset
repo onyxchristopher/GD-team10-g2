@@ -13,6 +13,7 @@ TagManager:
   - Level
   - Exit Door
   - Audio
+  - SceneManager
   layers:
   - Default
   - TransparentFX
