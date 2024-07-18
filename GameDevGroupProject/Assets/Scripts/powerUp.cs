@@ -36,9 +36,7 @@ public class powerUp : MonoBehaviour
         var player = GameObject.FindWithTag("Player").GetComponent<playerBehavior>();
 
         if (player != null && other.gameObject.CompareTag("Player"))
-        {
-            Debug.Log($"Power up hit! {powerUpType}");
-            
+        {   
             if (player.AddPowerUp(this))
             {
                 isActive = true;

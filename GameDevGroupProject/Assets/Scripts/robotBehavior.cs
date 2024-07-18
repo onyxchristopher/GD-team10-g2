@@ -17,8 +17,9 @@ public class robotBehavior : MonoBehaviour
     public float patrolPauseTime;
 
     //References to game controller and sound manager
-    soundManager sndManager;
-    gameController gController;
+    private soundManager sndManager;
+    private gameController gController;
+    private sceneManager sManager;
 
     //If positive looking right, negative looking left
     private int faceDir = 1;
@@ -37,11 +38,9 @@ public class robotBehavior : MonoBehaviour
     private Dictionary<states, Action> stateLogic = new Dictionary<states, Action>();
 
     //Variables for drawing the fov
-    [SerializeField]
-    float fov = 25f;
+    [SerializeField] float fov = 25f;
 
-    [SerializeField]
-    int numRaycasts = 2;
+    [SerializeField] int numRaycasts = 2;
 
     Mesh mesh;
 
@@ -58,6 +57,8 @@ public class robotBehavior : MonoBehaviour
 
     private SpriteRenderer childSprite;
 
+    [SerializeField] GameObject restartScreen;
+
     void Awake()
     {
        
@@ -68,6 +69,7 @@ public class robotBehavior : MonoBehaviour
         //Setting up manager references
         sndManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<soundManager>();
         gController = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameController>();
+        sManager = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<sceneManager>();
 
         //Setting up intial state and SM logic
         myState = states.MOVING;
@@ -157,7 +159,7 @@ public class robotBehavior : MonoBehaviour
         mesh.name = "robotFOV";
         GetComponent<MeshFilter>().mesh = mesh;
 
-        //Create new polygcon collider for nesh
+        //Create new polygcon collider for mesh
         pc = gameObject.AddComponent<PolygonCollider2D>();
         pc.isTrigger = true;
 
@@ -208,7 +210,16 @@ public class robotBehavior : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        sndManager.PlaySFX(sndManager.playerDetected);
-        Debug.Log("Player detected");
+        Detected(other);
+    }
+
+    public void Detected(Collider2D player)
+    {
+        if (!GameObject.FindGameObjectWithTag("Respawn")){
+            Instantiate(restartScreen);
+            sndManager.PlaySFX(sndManager.playerDetected);
+            sndManager.StopBGM();
+            player.transform.position = sManager.levelStarts[sManager.currLevel - 1];
+        }
     }
 }

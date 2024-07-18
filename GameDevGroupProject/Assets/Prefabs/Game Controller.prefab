@@ -50,6 +50,7 @@ MonoBehaviour:
   allowRedPowerup: 0
   allowGreenPowerup: 0
   allowBluePowerup: 0
+  onePowerUpOnly: 1
 --- !u!1 &9062369144361355222
 GameObject:
   m_ObjectHideFlags: 0
@@ -75,7 +76,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9062369144361355222}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.3878752, y: 5.188667, z: -0.34472656}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8486580111890239279}
@@ -93,11 +94,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b30c328a2644cfc4ba5c8868b5ff1b94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLevel:
-    m_Handle: 0
-  nextLeve:
-    m_Handle: 0
-  sceneCount: 0
+  restartScreen: {fileID: 6472461831051202669, guid: d561775ac02894d048c7916bc2ad68c3,
+    type: 3}
 --- !u!1 &9100978245259879288
 GameObject:
   m_ObjectHideFlags: 0
@@ -123,7 +121,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9100978245259879288}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.3878752, y: 5.188667, z: -0.34472656}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8486580111890239279}
@@ -141,3 +139,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a87759f9bc428b4db8fb55451883c53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BGMSource: {fileID: 0}
+  SFXSource: {fileID: 0}
+  BGM: {fileID: 0}
+  characterJump: {fileID: 0}
+  playerDetected: {fileID: 0}
+  enemyDefeated: {fileID: 0}
+  powerUpPickUpRed: {fileID: 0}
+  powerUpPickUpGreen: {fileID: 0}
+  powerUpPickUpPulse: {fileID: 0}
+  powerUpFireRed: {fileID: 0}
+  powerUpFirePulse: {fileID: 0}
+  furnitureBounce: {fileID: 0}
+  levelComplete: {fileID: 0}

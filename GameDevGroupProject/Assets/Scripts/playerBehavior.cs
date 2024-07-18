@@ -15,6 +15,7 @@ public class playerBehavior : MonoBehaviour
     // Managers references
     private gameController gControl;
     private soundManager sndManager;
+    private sceneManager sManager;
 
     [SerializeField] GameObject bullet;
 
@@ -47,14 +48,6 @@ public class playerBehavior : MonoBehaviour
     {
         if (gControl.onePowerUpOnly)
         {
-            // one powerup at a time
-            foreach (var up in powerUpsActive)
-            {
-                Destroy(up.gameObject);
-            }
-
-            Debug.Log($"Only one powerup at a time, destroyed {powerUpsActive.Count} powerups.");
-
             powerUpsActive.Clear();
         }
 
@@ -79,6 +72,7 @@ public class playerBehavior : MonoBehaviour
     {
         gControl = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameController>();
         sndManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<soundManager>();
+        sManager = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<sceneManager>();
 
         ignorePlayerMask = LayerMask.GetMask("Structure", "Object");
 
@@ -158,7 +152,7 @@ public class playerBehavior : MonoBehaviour
         if (isGrounded() && gControl.CurrentGameState() == gameController.gameState.running)
         {
 
-            sndManager.PlaySFX(sndManager.characterJump);
+            sndManager.PlaySFX(sndManager.characterJump, 0.25f);
 
             var adjustedJumpSpeed = jumpSpeed;
 
@@ -195,8 +189,6 @@ public class playerBehavior : MonoBehaviour
         // Spawn Blue pulses above and below the player
         if (gControl.CurrentGameState() == gameController.gameState.running && IsPowerUpActive(PowerUpType.Blue))
         {
-            Debug.Log("Called pulse");
-
             sndManager.PlaySFX(sndManager.powerUpFirePulse);
 
             Instantiate(pulse, gameObject.transform.position + Vector3.up * transform.localScale.y,
@@ -204,5 +196,15 @@ public class playerBehavior : MonoBehaviour
             Instantiate(pulse, gameObject.transform.position + Vector3.down * transform.localScale.y,
                 gameObject.transform.rotation);
         }
+    }
+
+    public void OnRestart()
+    {
+        var restartCanvas = GameObject.FindGameObjectWithTag("Respawn");
+        if (restartCanvas)
+        {
+            restartCanvas.GetComponent<fadeCanvas>().destroyCanvas();
+        }
+        sManager.RestartLevel();
     }
 }

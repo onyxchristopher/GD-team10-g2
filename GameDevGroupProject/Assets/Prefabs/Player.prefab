@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2922327311497747885}
   - component: {fileID: 1013779539267183694}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PlayerTop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 5429846450685989311}
   - component: {fileID: 5429846450685989308}
   - component: {fileID: 474968093255134918}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -225,7 +225,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8699550936887019789}
   - component: {fileID: 3183339554443164809}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PlayerWheels
   m_TagString: Untagged
   m_Icon: {fileID: 0}
