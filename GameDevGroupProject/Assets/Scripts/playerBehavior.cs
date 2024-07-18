@@ -43,6 +43,10 @@ public class playerBehavior : MonoBehaviour
 
     private Vector3 bulletFireOffset = new Vector3(0, 0.5f, 0);
 
+    public void ClearPowerups()
+    {
+        powerUpsActive.Clear();
+    }
 
     public bool AddPowerUp(powerUp powerUp)
     {
@@ -205,6 +209,5 @@ public class playerBehavior : MonoBehaviour
         {
             restartCanvas.GetComponent<fadeCanvas>().destroyCanvas();
         }
-        sManager.RestartLevel();
     }
 }

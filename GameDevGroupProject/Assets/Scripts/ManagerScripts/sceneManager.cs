@@ -11,6 +11,7 @@ public class sceneManager : MonoBehaviour
     private Scene[] levelCollection;
     public Vector3[] levelStarts = new Vector3[1];
     private GameObject player;
+    private playerBehavior pBehavior;
     public int currLevel;
     private soundManager sndManager;
     private cameraMovement camMove;
@@ -23,6 +24,8 @@ public class sceneManager : MonoBehaviour
         camMove = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<cameraMovement>();
 
         player = GameObject.FindGameObjectWithTag("Player");
+        pBehavior = player.GetComponent<playerBehavior>();
+
         currLevel = 1;
         levelStarts[0] = new Vector3(6, 2, 0);
         StartGame();
@@ -30,16 +33,14 @@ public class sceneManager : MonoBehaviour
         //Debug.Log("Amount of loaded sceenes " + sceneCount);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     //Loads initial scenes for game to start
     public void StartGame()
     {
-
+        if (!SceneManager.GetSceneByName("Level_1").isLoaded){
+            SceneManager.LoadSceneAsync("Level_1", LoadSceneMode.Additive);
+        }
+        
+        /*
         Scene scene = SceneManager.GetSceneByName("Persistent elements");
 
         //Loop through all scenes and only load first two. Index starts at one to keep persistent elements loaded
@@ -51,7 +52,7 @@ public class sceneManager : MonoBehaviour
             {
                 SceneManager.UnloadSceneAsync(scene);
             }
-        }
+        }*/
     }
 
     public void NextLevel(string nextLevel)
@@ -74,9 +75,11 @@ public class sceneManager : MonoBehaviour
     public void RestartLevel()
     {
         SceneManager.UnloadSceneAsync("Level_1");
-        SceneManager.LoadSceneAsync("Level_1", LoadSceneMode.Additive);
         player.transform.position = levelStarts[currLevel - 1];
         camMove.SnapToPlayer();
+        SceneManager.LoadSceneAsync("Level_1", LoadSceneMode.Additive);
+        pBehavior.ClearPowerups();
+        
     }
 
 }

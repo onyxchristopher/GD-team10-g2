@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using UnityEditor.PackageManager.Requests;
 using UnityEngine;
 
 public class robotBehavior : MonoBehaviour
@@ -219,7 +218,7 @@ public class robotBehavior : MonoBehaviour
             Instantiate(restartScreen);
             sndManager.PlaySFX(sndManager.playerDetected);
             sndManager.StopBGM();
-            player.transform.position = sManager.levelStarts[sManager.currLevel - 1];
+            sManager.RestartLevel();
         }
     }
 }

@@ -28,9 +28,8 @@ public class exitCheck : MonoBehaviour
     {
         if (other.gameObject == player)
         {
-            Debug.Log("Player reached exit");
             sndManager.PlaySFX(sndManager.levelComplete);
-            sndManager.StopBGM();
+            // sndManager.StopBGM();
             //scnManager.NextLevel(nextLevel);
             //scnManager.UnloadScene(prevLevel);
         }
