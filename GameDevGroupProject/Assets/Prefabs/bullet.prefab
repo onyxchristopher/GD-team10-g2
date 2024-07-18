@@ -134,3 +134,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 40
+  enemyDestroy: {fileID: 1089704551313944457, guid: 816e3d38d880b3449a1e0b83c6f6e994,
+    type: 3}
