@@ -49,6 +49,5 @@ public class soundManager : MonoBehaviour
     public void PlaySFX(AudioClip sample, float vol = 1.0f)
     {
         SFXSource.PlayOneShot(sample, vol);
-    }   
-
+    }
 }
