@@ -45,8 +45,9 @@ public class soundManager : MonoBehaviour
 
     public void PlaySFX(AudioClip sample)
     {
-        SFXSource.clip = sample; 
-        SFXSource.Play();
+        SFXSource.clip = sample;
+        //Should not cut previously playing audio clip
+        SFXSource.PlayOneShot(sample);
     }   
 
 }
