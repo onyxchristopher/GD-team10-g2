@@ -209,5 +209,6 @@ public class playerBehavior : MonoBehaviour
         {
             restartCanvas.GetComponent<fadeCanvas>().destroyCanvas();
         }
+        sManager.RestartLevel();
     }
 }

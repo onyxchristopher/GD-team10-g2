@@ -16,12 +16,10 @@ public class powerUp : MonoBehaviour
 {
     public PowerUpType powerUpType;
 
-    public int playerJumpMultiplier = 2;
-    public int playerSpeedMultiplier = 2;
-
+    [HideInInspector]
     public bool isActive = false;
 
-    public GameObject player;
+    private playerBehavior pBehavior;
 
     //References to manangers
     private soundManager sndManager;
@@ -29,15 +27,14 @@ public class powerUp : MonoBehaviour
     void Start()
     {
         sndManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<soundManager>();
+        pBehavior = GameObject.FindWithTag("Player").GetComponent<playerBehavior>();
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        var player = GameObject.FindWithTag("Player").GetComponent<playerBehavior>();
-
-        if (player != null && other.gameObject.CompareTag("Player"))
+        if (pBehavior != null && other.gameObject.CompareTag("Player"))
         {   
-            if (player.AddPowerUp(this))
+            if (pBehavior.AddPowerUp(this))
             {
                 isActive = true;
             }

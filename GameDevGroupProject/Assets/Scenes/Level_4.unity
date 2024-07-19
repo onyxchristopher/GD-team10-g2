@@ -206,7 +206,7 @@ GameObject:
   m_Component:
   - component: {fileID: 256524111}
   m_Layer: 0
-  m_Name: Level 3
+  m_Name: Level 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -289,7 +289,7 @@ GameObject:
   - component: {fileID: 454671009}
   - component: {fileID: 454671008}
   m_Layer: 0
-  m_Name: Back Wall 3
+  m_Name: Back Wall 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -941,7 +941,7 @@ GameObject:
   - component: {fileID: 626445020}
   - component: {fileID: 626445019}
   m_Layer: 12
-  m_Name: Structure 3
+  m_Name: Structure 4
   m_TagString: Structure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15153,7 +15153,7 @@ GameObject:
   - component: {fileID: 1528666539}
   - component: {fileID: 1528666538}
   m_Layer: 0
-  m_Name: Back Structure 3
+  m_Name: Back Structure 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
