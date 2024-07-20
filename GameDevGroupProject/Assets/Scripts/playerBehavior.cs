@@ -16,6 +16,7 @@ public class playerBehavior : MonoBehaviour
     private gameController gControl;
     private soundManager sndManager;
     private sceneManager sManager;
+    private endTracker endTrack;
 
     [SerializeField] GameObject bullet;
 
@@ -77,6 +78,7 @@ public class playerBehavior : MonoBehaviour
         gControl = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameController>();
         sndManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<soundManager>();
         sManager = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<sceneManager>();
+        endTrack = GameObject.FindGameObjectWithTag("Exit Door").GetComponent<endTracker>();
 
         ignorePlayerMask = LayerMask.GetMask("Structure", "Object");
 
@@ -142,7 +144,7 @@ public class playerBehavior : MonoBehaviour
         RaycastHit2D groundCheckRight = Physics2D.Raycast(playerRight,
         Vector2.down, bc.bounds.extents.y + 0.05f, ignorePlayerMask);
 
-        return groundCheckLeft || groundCheckCenter || groundCheckRight;
+        return (rb.velocity.y < 3) && (groundCheckLeft || groundCheckCenter || groundCheckRight);
     }
 
     private bool IsPowerUpActive(PowerUpType powerUpType)
@@ -216,6 +218,7 @@ public class playerBehavior : MonoBehaviour
         {
             restartCanvas.GetComponent<fadeCanvas>().destroyCanvas();
         }
+        endTrack.ResetAll();
         sManager.RestartLevel();
     }
 }
