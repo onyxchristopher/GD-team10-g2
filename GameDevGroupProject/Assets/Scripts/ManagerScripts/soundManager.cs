@@ -28,6 +28,8 @@ public class soundManager : MonoBehaviour
     public AudioClip powerUpFirePulse;
 
     public AudioClip furnitureBounce;
+
+    public AudioClip powerpackFound;
     
     public AudioClip levelComplete;
 

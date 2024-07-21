@@ -16,6 +16,7 @@ public class playerBehavior : MonoBehaviour
     private gameController gControl;
     private soundManager sndManager;
     private sceneManager sManager;
+    private endTracker endTrack;
 
     [SerializeField] GameObject bullet;
 
@@ -77,6 +78,7 @@ public class playerBehavior : MonoBehaviour
         gControl = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameController>();
         sndManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<soundManager>();
         sManager = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<sceneManager>();
+        endTrack = GameObject.FindGameObjectWithTag("Exit Door").GetComponent<endTracker>();
 
         ignorePlayerMask = LayerMask.GetMask("Structure", "Object");
 
@@ -126,16 +128,23 @@ public class playerBehavior : MonoBehaviour
     // Check if player is touching ground
     bool isGrounded()
     {
-        // Since the player is a square, two raycasts are needed to determine if they are on the ground
-        // One raycast from left, one from right
+        // Three raycasts are needed to determine if the player they are on the ground
+        // One from left, one from center, one from right
+
+        // Calculate player left, center, right
         Vector2 playerLeft = new Vector2(transform.position.x - 0.9f * bc.bounds.extents.x, transform.position.y);
+        Vector2 playerCenter = new Vector2(transform.position.x, transform.position.y);
         Vector2 playerRight = new Vector2(transform.position.x + 0.9f * bc.bounds.extents.x, transform.position.y);
+        
+        // Perform three raycasts
         RaycastHit2D groundCheckLeft = Physics2D.Raycast(playerLeft,
+        Vector2.down, bc.bounds.extents.y + 0.05f, ignorePlayerMask);
+        RaycastHit2D groundCheckCenter = Physics2D.Raycast(playerCenter,
         Vector2.down, bc.bounds.extents.y + 0.1f, ignorePlayerMask);
         RaycastHit2D groundCheckRight = Physics2D.Raycast(playerRight,
-        Vector2.down, bc.bounds.extents.y + 0.1f, ignorePlayerMask);
+        Vector2.down, bc.bounds.extents.y + 0.05f, ignorePlayerMask);
 
-        return groundCheckLeft || groundCheckRight;
+        return (rb.velocity.y < 3) && (groundCheckLeft || groundCheckCenter || groundCheckRight);
     }
 
     private bool IsPowerUpActive(PowerUpType powerUpType)
@@ -209,5 +218,7 @@ public class playerBehavior : MonoBehaviour
         {
             restartCanvas.GetComponent<fadeCanvas>().destroyCanvas();
         }
+        endTrack.ResetAll();
+        sManager.RestartLevel();
     }
 }

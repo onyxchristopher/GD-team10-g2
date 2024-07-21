@@ -10,7 +10,7 @@ public class bullet : MonoBehaviour
     [SerializeField]
     private ParticleSystem enemyDestroy;
 
-    private ParticleSystem enemyDestroyIstance;
+    private ParticleSystem enemyDestroyInstance;
 
     private Rigidbody2D rb;
 
@@ -27,7 +27,7 @@ public class bullet : MonoBehaviour
 
     private void spawnDestroyParticles()
     {
-        enemyDestroyIstance = Instantiate(enemyDestroy, transform.position, Quaternion.identity);
+        enemyDestroyInstance = Instantiate(enemyDestroy, transform.position, Quaternion.identity);
     }
     private void OnTriggerEnter2D(Collider2D other)
     {

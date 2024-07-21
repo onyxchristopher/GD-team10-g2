@@ -14,6 +14,7 @@ TagManager:
   - Exit Door
   - Audio
   - SceneManager
+  - Powerpack
   layers:
   - Default
   - TransparentFX

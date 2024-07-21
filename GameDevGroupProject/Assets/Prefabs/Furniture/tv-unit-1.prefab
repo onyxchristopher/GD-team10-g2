@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 2922264807952696020}
   - component: {fileID: 2922264807952696022}
   - component: {fileID: 2922264807952696021}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: tv-unit-1
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

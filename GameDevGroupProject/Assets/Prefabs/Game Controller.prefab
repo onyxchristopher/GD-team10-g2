@@ -57,6 +57,7 @@ MonoBehaviour:
   powerUpFireRed: {fileID: 8300000, guid: de812cfb519929c4aad9d296f655c81d, type: 3}
   powerUpFirePulse: {fileID: 8300000, guid: 7f4aa26d5b55226409cda231ffaf869b, type: 3}
   furnitureBounce: {fileID: 8300000, guid: 641c38e651dbf495b8e52615c870115e, type: 3}
+  powerpackFound: {fileID: 8300000, guid: 55b891eefbeee4873b01a9ab68816644, type: 3}
   levelComplete: {fileID: 8300000, guid: 6e028efa8bf2943d891a3535dcc63b6b, type: 3}
 --- !u!1 &1890375368101767861
 GameObject:
