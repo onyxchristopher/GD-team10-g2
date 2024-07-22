@@ -72,3 +72,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerpack: {fileID: 7339411906546408533, guid: 0ea7867ce35bd4178bd19fc6f643597f,
     type: 3}
+  powerpackText: {fileID: 5761285159349614259, guid: 81c4f61537b7541c19309505037669f1,
+    type: 3}
+  textOffset: {x: 0, y: 7, z: 0}
