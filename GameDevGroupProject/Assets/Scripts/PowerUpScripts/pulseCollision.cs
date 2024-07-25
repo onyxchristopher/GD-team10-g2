@@ -7,7 +7,7 @@ public class pulseCollision : MonoBehaviour
 
     soundManager sManager;
 
-    void Start()
+    void Awake()
     {
         sManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<soundManager>();
     }

@@ -109,7 +109,7 @@ public class robotBehavior : MonoBehaviour
         }
 
         //Draws fov mesh
-        if (Time.frameCount % 4 == 0)
+        if (Time.frameCount % 2 == 0)
         {
             drawFOV();
         }

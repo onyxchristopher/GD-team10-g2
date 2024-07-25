@@ -105,10 +105,6 @@ public class playerBehavior : MonoBehaviour
     {
         // Move the player left/right using input
         var xVelocity = playerMove.ReadValue<Vector2>().x;
-        if (IsPowerUpActive(PowerUpType.Green))
-        {
-            xVelocity *= 2;
-        }
         rb.velocity = new Vector2(moveSpeed * xVelocity, rb.velocity.y);
 
         // Rotate the player when they change direction
@@ -179,7 +175,7 @@ public class playerBehavior : MonoBehaviour
 
             if (IsPowerUpActive(PowerUpType.Green))
             {
-                adjustedJumpSpeed *= 2f;
+                adjustedJumpSpeed *= 1.4f;
             }
 
             rb.velocity = new Vector2(rb.velocity.x, adjustedJumpSpeed);

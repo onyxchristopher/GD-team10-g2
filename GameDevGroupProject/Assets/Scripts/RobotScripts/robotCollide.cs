@@ -14,7 +14,6 @@ public class robotCollide : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-
         rBehavior.Detected(collision.otherCollider);
     }
 }

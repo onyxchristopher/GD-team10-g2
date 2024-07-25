@@ -40,13 +40,16 @@ public class exitCheck : MonoBehaviour
             scnManager.LoadLevel(nextLevel);
             //Tp player
             pBehavior.MovePlayer(nextLevelEntry.transform);
+            //Set current level
+            scnManager.currLevel++;
             //Remove pUps
             pBehavior.ClearPowerups();
             //Update camera
             mainCam.SnapToPlayer();
             //Unload pre level
             scnManager.UnloadLevel(currentLevel);
-            //sndManager.StopBGM();
+            //Stop BGM
+            sndManager.StopBGM();
         }
     }
 

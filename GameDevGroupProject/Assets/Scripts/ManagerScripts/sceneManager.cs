@@ -9,7 +9,6 @@ public class sceneManager : MonoBehaviour
 
     private Scene persistentElements;
     private Scene[] levelCollection;
-    public Vector3[] levelStarts = new Vector3[1];
     private GameObject player;
     private playerBehavior pBehavior;
     public int currLevel;
@@ -27,7 +26,6 @@ public class sceneManager : MonoBehaviour
         pBehavior = player.GetComponent<playerBehavior>();
 
         currLevel = 1;
-        levelStarts[0] = new Vector3(6, 2, 0);
         StartGame();
 
     }
@@ -71,10 +69,10 @@ public class sceneManager : MonoBehaviour
 
     public void RestartLevel()
     {
-        SceneManager.UnloadSceneAsync("Level_1");
-        player.transform.position = levelStarts[currLevel - 1];
+        SceneManager.UnloadSceneAsync($"Level_{currLevel}");
+        player.transform.position = new Vector3(6, 150 * (currLevel - 1) + 2, 0);
         camMove.SnapToPlayer();
-        SceneManager.LoadSceneAsync("Level_1", LoadSceneMode.Additive);
+        SceneManager.LoadSceneAsync($"Level_{currLevel}", LoadSceneMode.Additive);
         pBehavior.ClearPowerups();
         
     }

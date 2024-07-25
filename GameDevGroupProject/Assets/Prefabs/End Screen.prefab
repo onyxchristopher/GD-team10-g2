@@ -400,6 +400,7 @@ GameObject:
   - component: {fileID: 2479627261317630804}
   - component: {fileID: 2479627261317630795}
   - component: {fileID: 2479627261317630794}
+  - component: {fileID: 6265348564421813401}
   m_Layer: 5
   m_Name: End Screen
   m_TagString: Untagged
@@ -495,6 +496,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &6265348564421813401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2479627261317630793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adac0c1f51c2d4e29b5de4be77fc3ce8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4105567278240602712
 GameObject:
   m_ObjectHideFlags: 0
@@ -956,4 +969,15 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6208616156730507844}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6265348564421813401}
+        m_MethodName: destroyCanvas
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

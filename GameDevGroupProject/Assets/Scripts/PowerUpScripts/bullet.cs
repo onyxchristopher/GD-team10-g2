@@ -16,7 +16,7 @@ public class bullet : MonoBehaviour
 
     private soundManager sndManager;
 
-    void Start()
+    void Awake()
     {
         sndManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<soundManager>();
         
@@ -33,9 +33,7 @@ public class bullet : MonoBehaviour
     {
         if (other.gameObject.tag == "Enemy")
         {
-            if (sndManager){
-                sndManager.PlaySFX(sndManager.enemyDefeated);
-            }
+            sndManager.PlaySFX(sndManager.enemyDefeated);
             Destroy(gameObject);
             Destroy(other.gameObject.transform.parent.gameObject);
             spawnDestroyParticles();
