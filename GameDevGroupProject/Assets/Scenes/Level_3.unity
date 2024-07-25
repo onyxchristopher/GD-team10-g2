@@ -353,6 +353,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 976008848}
     m_Modifications:
+    - target: {fileID: 323704587431119504, guid: f69bf0211aaf34b38af0ea7ac765ecd2,
+        type: 3}
+      propertyPath: launchVelocity.y
+      value: 35
+      objectReference: {fileID: 0}
     - target: {fileID: 1093972246787166041, guid: f69bf0211aaf34b38af0ea7ac765ecd2,
         type: 3}
       propertyPath: m_RootOrder
@@ -1956,6 +1961,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4853098957978313761, guid: 0fb8921192b94406aa8f2afffcaad45c,
+        type: 3}
+      propertyPath: launchVelocity.y
+      value: 35
+      objectReference: {fileID: 0}
     - target: {fileID: 4853098957978313763, guid: 0fb8921192b94406aa8f2afffcaad45c,
         type: 3}
       propertyPath: m_Name
@@ -2035,6 +2045,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: bed-4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7403561040807740107, guid: 2c8792de8fab043c4a30b51782fbed0b,
+        type: 3}
+      propertyPath: launchVelocity.y
+      value: 35
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c8792de8fab043c4a30b51782fbed0b, type: 3}
@@ -14702,6 +14717,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4853098957978313761, guid: 0fb8921192b94406aa8f2afffcaad45c,
+        type: 3}
+      propertyPath: launchVelocity.y
+      value: 35
+      objectReference: {fileID: 0}
     - target: {fileID: 4853098957978313763, guid: 0fb8921192b94406aa8f2afffcaad45c,
         type: 3}
       propertyPath: m_Name
@@ -15092,6 +15112,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 976008848}
     m_Modifications:
+    - target: {fileID: 2446381013012377555, guid: 9a19190fe65e94dab996db7297439815,
+        type: 3}
+      propertyPath: launchVelocity.y
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 5555811083548961113, guid: 9a19190fe65e94dab996db7297439815,
         type: 3}
       propertyPath: m_RootOrder
@@ -25373,6 +25398,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7732341694940849207, guid: b391fd7165391499c8cd93cbd6ab602f,
+        type: 3}
+      propertyPath: launchVelocity.y
+      value: 37
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b391fd7165391499c8cd93cbd6ab602f, type: 3}
 --- !u!4 &1752079006 stripped
@@ -25892,7 +25922,7 @@ PrefabInstance:
     - target: {fileID: -1646631383826902618, guid: 20b0e5c5d56c74c44b6e54f26c2424f8,
         type: 3}
       propertyPath: movSpeed
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2392056145237353537, guid: 20b0e5c5d56c74c44b6e54f26c2424f8,
         type: 3}

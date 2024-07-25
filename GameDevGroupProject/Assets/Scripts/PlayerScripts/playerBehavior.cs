@@ -20,7 +20,8 @@ public class playerBehavior : MonoBehaviour
 
     [SerializeField] GameObject bullet;
 
-    [SerializeField] GameObject pulse;
+    [SerializeField] GameObject pulseUp;
+    [SerializeField] GameObject pulseDown;
 
     [SerializeField] float jumpSpeed = 19f;
 
@@ -42,7 +43,7 @@ public class playerBehavior : MonoBehaviour
     // this is the power ups active on this player
     public List<powerUp> powerUpsActive = new List<powerUp>();
 
-    private Vector3 bulletFireOffset = new Vector3(0, 0.5f, 0);
+    private Vector3 fireOffset = new Vector3(0, 0.5f, 0);
 
     public void ClearPowerups()
     {
@@ -196,7 +197,7 @@ public class playerBehavior : MonoBehaviour
         if (gControl.CurrentGameState() == gameController.gameState.running && IsPowerUpActive(PowerUpType.Red))
         {
             sndManager.PlaySFX(sndManager.powerUpFireRed);
-            Instantiate(bullet, transform.position + bulletFireOffset, transform.rotation);
+            Instantiate(bullet, transform.position + fireOffset, transform.rotation);
         }
     }
 
@@ -206,11 +207,13 @@ public class playerBehavior : MonoBehaviour
         // Spawn Blue pulses above and below the player
         if (gControl.CurrentGameState() == gameController.gameState.running && IsPowerUpActive(PowerUpType.Blue))
         {
-            sndManager.PlaySFX(sndManager.powerUpFirePulse);
+            sndManager.PlaySFX(sndManager.powerUpFirePulse, 0.5f);
 
-            Instantiate(pulse, gameObject.transform.position + Vector3.up * transform.localScale.y,
+            Instantiate(pulseUp,
+                gameObject.transform.position + Vector3.up * 6 + fireOffset,
                 gameObject.transform.rotation);
-            Instantiate(pulse, gameObject.transform.position + Vector3.down * transform.localScale.y,
+            Instantiate(pulseDown,
+                gameObject.transform.position + Vector3.down * 6 + fireOffset,
                 gameObject.transform.rotation);
         }
     }

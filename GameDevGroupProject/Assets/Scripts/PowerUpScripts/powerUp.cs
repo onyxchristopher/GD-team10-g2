@@ -42,17 +42,17 @@ public class powerUp : MonoBehaviour
             //Sound effects for powerup pickups
             if(powerUpType == PowerUpType.Red)
             {
-                sndManager.PlaySFX(sndManager.powerUpPickUpRed);
+                sndManager.PlaySFX(sndManager.powerUpPickUpRed, 0.8f);
             }
 
             if (powerUpType == PowerUpType.Green)
             {
-                sndManager.PlaySFX(sndManager.powerUpPickUpGreen);
+                sndManager.PlaySFX(sndManager.powerUpPickUpGreen, 0.8f);
             }
 
             if (powerUpType == PowerUpType.Blue)
             {
-                sndManager.PlaySFX(sndManager.powerUpPickUpPulse);
+                sndManager.PlaySFX(sndManager.powerUpPickUpPulse, 0.8f);
             }
         }
     }
