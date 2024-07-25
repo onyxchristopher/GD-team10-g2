@@ -67,6 +67,12 @@ public class playerBehavior : MonoBehaviour
         return false;
     }
 
+    //Tps player
+    public void MovePlayer(Transform location)
+    {
+        transform.position = location.position;
+    }
+
     // Awake is called before Start but after every GameObject on the scene is instantiated
     void Awake()
     {
@@ -158,6 +164,8 @@ public class playerBehavior : MonoBehaviour
         return false;
     }
 
+    //++++++++++++++++++++Control scheme related++++++++++++++++++++++++++
+
     // Called when Jump button is pressed
     public void OnJump()
     {
@@ -221,4 +229,5 @@ public class playerBehavior : MonoBehaviour
         endTrack.ResetAll();
         sManager.RestartLevel();
     }
+
 }

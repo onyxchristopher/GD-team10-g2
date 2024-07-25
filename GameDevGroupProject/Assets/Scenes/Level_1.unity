@@ -11040,7 +11040,7 @@ GameObject:
   - component: {fileID: 595027797}
   m_Layer: 0
   m_Name: next-entry-door
-  m_TagString: Untagged
+  m_TagString: NextEntry
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21503,6 +21503,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2048343392}
     m_Modifications:
+    - target: {fileID: 2853950542978398371, guid: e9373f0847917433a9a65f647ede8d79,
+        type: 3}
+      propertyPath: nextLevel
+      value: Level_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2853950542978398371, guid: e9373f0847917433a9a65f647ede8d79,
+        type: 3}
+      propertyPath: prevLevel
+      value: Level_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2853950542978398371, guid: e9373f0847917433a9a65f647ede8d79,
+        type: 3}
+      propertyPath: currentLevel
+      value: Level_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2853950542978398371, guid: e9373f0847917433a9a65f647ede8d79,
+        type: 3}
+      propertyPath: nextLevelEntry
+      value: 
+      objectReference: {fileID: 595027795}
     - target: {fileID: 4508700549295769086, guid: e9373f0847917433a9a65f647ede8d79,
         type: 3}
       propertyPath: m_RootOrder
@@ -21511,12 +21531,12 @@ PrefabInstance:
     - target: {fileID: 4508700549295769086, guid: e9373f0847917433a9a65f647ede8d79,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.6
+      value: 6.59
       objectReference: {fileID: 0}
     - target: {fileID: 4508700549295769086, guid: e9373f0847917433a9a65f647ede8d79,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 141.15
+      value: 141.04
       objectReference: {fileID: 0}
     - target: {fileID: 4508700549295769086, guid: e9373f0847917433a9a65f647ede8d79,
         type: 3}
@@ -21556,6 +21576,21 @@ PrefabInstance:
     - target: {fileID: 4508700549295769086, guid: e9373f0847917433a9a65f647ede8d79,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5375960419404451548, guid: e9373f0847917433a9a65f647ede8d79,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 5.7270565
+      objectReference: {fileID: 0}
+    - target: {fileID: 5375960419404451548, guid: e9373f0847917433a9a65f647ede8d79,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 0.043602943
+      objectReference: {fileID: 0}
+    - target: {fileID: 5375960419404451548, guid: e9373f0847917433a9a65f647ede8d79,
+        type: 3}
+      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6950707638436979677, guid: e9373f0847917433a9a65f647ede8d79,

@@ -8,11 +8,14 @@ public class exitCheck : MonoBehaviour
     string nextLevel;
 
     [SerializeField] 
-    string prevLevel;
+    string currentLevel;
 
     private sceneManager scnManager;
-    private GameObject player;
+    private playerBehavior pBehavior;
     private soundManager sndManager;
+    private cameraMovement mainCam;
+
+    [SerializeField] private GameObject nextLevelEntry;
 
 
     // Start is called before the first frame update
@@ -20,18 +23,30 @@ public class exitCheck : MonoBehaviour
     {
         scnManager = GameObject.FindGameObjectWithTag("GameController").GetComponentInChildren<sceneManager>();
         sndManager = GameObject.FindGameObjectWithTag("Audio").GetComponentInChildren<soundManager>();
-        player = GameObject.FindGameObjectWithTag("Player");
+        pBehavior = GameObject.FindGameObjectWithTag("Player").GetComponent<playerBehavior>();
+        mainCam = GameObject.FindWithTag("MainCamera").GetComponent<cameraMovement>();
+        //nextLevelEntry = GameObject.FindGameObjectWithTag("NextEntry");
+
     }
 
     //If player reached exit, call sceneManager to load next level
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject == player)
+        if (other.gameObject.tag == "Player" )
         {
             sndManager.PlaySFX(sndManager.levelComplete);
-            // sndManager.StopBGM();
-            //scnManager.NextLevel(nextLevel);
-            //scnManager.UnloadScene(prevLevel);
+
+            //Load next level
+            scnManager.LoadLevel(nextLevel);
+            //Tp player
+            pBehavior.MovePlayer(nextLevelEntry.transform);
+            //Remove pUps
+            pBehavior.ClearPowerups();
+            //Update camera
+            mainCam.SnapToPlayer();
+            //Unload pre level
+            scnManager.UnloadLevel(currentLevel);
+            //sndManager.StopBGM();
         }
     }
 

@@ -12101,37 +12101,17 @@ CompositeCollider2D:
   - m_Collider: {fileID: 1207863017}
     m_ColliderPaths:
     - - X: 610000000
-        Y: 1659999900
-      - X: 610000041
-        Y: 1659999900
-      - X: 610000100
-        Y: 1659999959
-      - X: 610000100
-        Y: 1680000041
-      - X: 610000041
-        Y: 1680000100
-      - X: 599999959
-        Y: 1680000100
-      - X: 599999900
-        Y: 1680000041
-      - X: 599999900
+        Y: 1680000000
+      - X: 600000000
+        Y: 1680000000
+      - X: 600000000
         Y: 1660000000
-      - X: 10000100
+      - X: 10000000
         Y: 1660000000
-      - X: 10000100
-        Y: 1680000041
-      - X: 10000041
-        Y: 1680000100
-      - X: -41
-        Y: 1680000100
-      - X: -100
-        Y: 1680000041
-      - X: -100
-        Y: 1659999959
-      - X: -41
-        Y: 1659999900
+      - X: 10000000
+        Y: 1680000000
       - X: 0
-        Y: 1659999900
+        Y: 1680000000
       - X: 0
         Y: -150000000
       - X: 610000000
@@ -12392,29 +12372,11 @@ CompositeCollider2D:
         Y: 1050000000
       - X: 600000000
         Y: 910000000
-      - X: 530000100
+      - X: 510000000
         Y: 910000000
-      - X: 530000100
-        Y: 910000041
-      - X: 530000041
-        Y: 910000100
-      - X: 509999959
-        Y: 910000100
-      - X: 509999900
-        Y: 910000041
-      - X: 509999900
-        Y: 904687471
-      - X: 509999911
-        Y: 904687439
-      - X: 513749952
-        Y: 899999920
-      - X: 513749993
-        Y: 899999900
-      - X: 530000041
-        Y: 899999900
-      - X: 530000100
-        Y: 899999959
-      - X: 530000100
+      - X: 510000000
+        Y: 904687488
+      - X: 513750016
         Y: 900000000
       - X: 600000000
         Y: 900000000
@@ -12565,12 +12527,12 @@ CompositeCollider2D:
   m_CompositePaths:
     m_Paths:
     - - {x: 60.99997, y: -15}
-      - {x: 60.999973, y: 168.00002}
-      - {x: 59.99999, y: 167.99997}
-      - {x: 59.99996, y: 166}
-      - {x: 1.00001, y: 166.00003}
-      - {x: 0.9999748, y: 168.00002}
-      - {x: -0.00001, y: 167.99997}
+      - {x: 60.99997, y: 168}
+      - {x: 60, y: 167.99997}
+      - {x: 59.99997, y: 166}
+      - {x: 1, y: 166.00003}
+      - {x: 0.99997073, y: 168}
+      - {x: 0, y: 167.99997}
       - {x: 0.000029300001, y: -15}
     - - {x: 60, y: 151.00003}
       - {x: 41, y: 151.00003}
@@ -12701,9 +12663,9 @@ CompositeCollider2D:
       - {x: 37.375015, y: 105}
       - {x: 60, y: 104.99997}
       - {x: 59.99997, y: 91}
-      - {x: 50.999992, y: 90.99998}
-      - {x: 50.999996, y: 90.468735}
-      - {x: 51.37501, y: 89.999985}
+      - {x: 51, y: 90.99997}
+      - {x: 51.000008, y: 90.46874}
+      - {x: 51.375015, y: 90}
       - {x: 60, y: 89.99997}
       - {x: 59.99997, y: 76}
       - {x: 29, y: 75.99997}
@@ -23852,6 +23814,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 889874966}
     m_Modifications:
+    - target: {fileID: 2853950542978398371, guid: e9373f0847917433a9a65f647ede8d79,
+        type: 3}
+      propertyPath: nextLevel
+      value: Level_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2853950542978398371, guid: e9373f0847917433a9a65f647ede8d79,
+        type: 3}
+      propertyPath: prevLevel
+      value: Level_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2853950542978398371, guid: e9373f0847917433a9a65f647ede8d79,
+        type: 3}
+      propertyPath: currentLevel
+      value: Level_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2853950542978398371, guid: e9373f0847917433a9a65f647ede8d79,
+        type: 3}
+      propertyPath: nextLevelEntry
+      value: 
+      objectReference: {fileID: 2129219850}
     - target: {fileID: 4508700549295769086, guid: e9373f0847917433a9a65f647ede8d79,
         type: 3}
       propertyPath: m_RootOrder
@@ -25092,7 +25074,7 @@ GameObject:
   - component: {fileID: 2129219852}
   m_Layer: 0
   m_Name: next-entry-door
-  m_TagString: Untagged
+  m_TagString: NextEntry
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25842,6 +25824,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7605164766919277122, guid: d796837ffca50448884808b59f38cf90,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7605164766919277135, guid: d796837ffca50448884808b59f38cf90,
         type: 3}
