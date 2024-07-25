@@ -249,10 +249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerUpType: 0
-  playerJumpMultiplier: 2
-  playerSpeedMultiplier: 2
   isActive: 0
-  player: {fileID: 5429846450685989307, guid: b23e293a0f863fb4091636c480657760, type: 3}
 --- !u!58 &292841442418079955
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -266,6 +263,6 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.02, y: 0.03}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.85
+  m_Radius: 1
