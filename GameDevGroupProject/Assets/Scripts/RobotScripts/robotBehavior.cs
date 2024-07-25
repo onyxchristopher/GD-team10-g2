@@ -209,10 +209,12 @@ public class robotBehavior : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Detected(other);
+        if (other.gameObject.CompareTag("Player")){
+            Detected();
+        }
     }
 
-    public void Detected(Collider2D player)
+    public void Detected()
     {
         if (!GameObject.FindGameObjectWithTag("Respawn")){
             Instantiate(restartScreen);

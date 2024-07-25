@@ -133,7 +133,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.03
-  m_GravityScale: 2
+  m_GravityScale: 3
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -179,11 +179,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 6385079045240044444, guid: a7080d4489ede914890e57776170a56b, type: 3}
   pulse: {fileID: 4300145099817300729, guid: bd58eabf4a8a5c141bf42fde606f7e3a, type: 3}
-  jumpSpeed: 19
+  jumpSpeed: 23.5
   moveSpeed: 10
-  fallAugmentMultiplier: 0.05
-  fallAugmentThreshold: 2
-  fallAugmentMax: 40
+  fallAugmentMultiplier: 0.08
+  fallAugmentThreshold: 0
+  fallAugmentMax: -40
   powerUpsActive: []
 --- !u!114 &474968093255134918
 MonoBehaviour:

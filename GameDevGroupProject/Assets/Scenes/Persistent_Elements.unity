@@ -712,21 +712,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 5429846450685989308, guid: b23e293a0f863fb4091636c480657760,
-        type: 3}
-      propertyPath: jumpSpeed
-      value: 19
-      objectReference: {fileID: 0}
-    - target: {fileID: 5429846450685989308, guid: b23e293a0f863fb4091636c480657760,
-        type: 3}
-      propertyPath: fallAugmentMax
-      value: -40
-      objectReference: {fileID: 0}
-    - target: {fileID: 5429846450685989308, guid: b23e293a0f863fb4091636c480657760,
-        type: 3}
-      propertyPath: fallAugmentThreshold
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 5429846450685989310, guid: b23e293a0f863fb4091636c480657760,
         type: 3}
       propertyPath: m_RootOrder
