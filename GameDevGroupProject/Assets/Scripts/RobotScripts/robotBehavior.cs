@@ -39,7 +39,7 @@ public class robotBehavior : MonoBehaviour
     //Variables for drawing the fov
     [SerializeField] float fov = 25f;
 
-    [SerializeField] int numRaycasts = 2;
+    private int numRaycasts = 2;
 
     Mesh mesh;
 

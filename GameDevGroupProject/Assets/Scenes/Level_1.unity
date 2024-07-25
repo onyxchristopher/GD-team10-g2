@@ -10582,7 +10582,7 @@ PrefabInstance:
     - target: {fileID: 2392056145237353537, guid: 20b0e5c5d56c74c44b6e54f26c2424f8,
         type: 3}
       propertyPath: m_Name
-      value: Robot (3)
+      value: Robot
       objectReference: {fileID: 0}
     - target: {fileID: 2392056145237353599, guid: 20b0e5c5d56c74c44b6e54f26c2424f8,
         type: 3}
@@ -12113,7 +12113,7 @@ PrefabInstance:
     - target: {fileID: 2392056145237353537, guid: 20b0e5c5d56c74c44b6e54f26c2424f8,
         type: 3}
       propertyPath: m_Name
-      value: Robot (1)
+      value: Robot
       objectReference: {fileID: 0}
     - target: {fileID: 2392056145237353599, guid: 20b0e5c5d56c74c44b6e54f26c2424f8,
         type: 3}
@@ -19975,7 +19975,7 @@ PrefabInstance:
     - target: {fileID: 2392056145237353537, guid: 20b0e5c5d56c74c44b6e54f26c2424f8,
         type: 3}
       propertyPath: m_Name
-      value: Robot (2)
+      value: Robot
       objectReference: {fileID: 0}
     - target: {fileID: 2392056145237353599, guid: 20b0e5c5d56c74c44b6e54f26c2424f8,
         type: 3}

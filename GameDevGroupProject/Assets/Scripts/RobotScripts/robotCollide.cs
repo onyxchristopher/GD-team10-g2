@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class robotCollide : MonoBehaviour
 {
-    private robotBehavior rb;
+    private robotBehavior rBehavior;
 
     // Start is called before the first frame update
     void Start()
     {
-        rb = gameObject.GetComponentInParent<robotBehavior>();
+        rBehavior = gameObject.GetComponentInParent<robotBehavior>();
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
 
-        rb.Detected(collision.otherCollider);
+        rBehavior.Detected(collision.otherCollider);
     }
 }
