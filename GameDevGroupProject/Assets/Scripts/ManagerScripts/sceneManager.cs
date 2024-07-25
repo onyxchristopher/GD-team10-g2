@@ -30,7 +30,6 @@ public class sceneManager : MonoBehaviour
         levelStarts[0] = new Vector3(6, 2, 0);
         StartGame();
 
-        //Debug.Log("Amount of loaded sceenes " + sceneCount);
     }
 
     //Loads initial scenes for game to start
@@ -40,22 +39,20 @@ public class sceneManager : MonoBehaviour
             SceneManager.LoadSceneAsync("Level_1", LoadSceneMode.Additive);
         }
         
-        /*
-        Scene scene = SceneManager.GetSceneByName("Persistent elements");
 
-        //Loop through all scenes and only load first two. Index starts at one to keep persistent elements loaded
-        for (int i = 1; i < SceneManager.sceneCount; i++)
+        //Loop through all scenes and unload every level but level 1 and persistent elements
+        for (int i = 0; i < SceneManager.sceneCount; i++)
         {
-            scene = SceneManager.GetSceneAt(i);
+            Scene scene = SceneManager.GetSceneAt(i);
            
-            if (scene.name != "Level_1" && scene.name != "Level_2")
+            if (scene.name != "Level_1" && scene.name != "Persistent_Elements")
             {
                 SceneManager.UnloadSceneAsync(scene);
             }
-        }*/
+        }
     }
 
-    public void NextLevel(string nextLevel)
+    public void LoadLevel(string nextLevel)
     {
         //Check if there is a level to load and if its not already loaded
         if(nextLevel != "" && !SceneManager.GetSceneByName(nextLevel).isLoaded )
@@ -64,7 +61,7 @@ public class sceneManager : MonoBehaviour
         }
     }
 
-    public void UnloadScene(string level)
+    public void UnloadLevel(string level)
     {
         if(level != "")
         {

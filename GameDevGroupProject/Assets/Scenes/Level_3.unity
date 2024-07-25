@@ -2964,27 +2964,7 @@ CompositeCollider2D:
       - {x: 1, y: 151.00003}
       - {x: 1.0000294, y: 165}
       - {x: 20, y: 164.99997}
-    - - {x: 60, y: 1.0000294}
-      - {x: 41, y: 1.0000294}
-      - {x: 41.00003, y: 15}
-      - {x: 42.500008, y: 15.000004}
-      - {x: 43, y: 15.234392}
-      - {x: 42.999973, y: 16}
-      - {x: 41, y: 16.000029}
-      - {x: 41.00003, y: 30}
-      - {x: 51.500008, y: 30.000004}
-      - {x: 51.937504, y: 30.281261}
-      - {x: 52, y: 30.468752}
-      - {x: 51.999973, y: 31}
-      - {x: 40, y: 30.999971}
-      - {x: 39.999973, y: 16}
-      - {x: 30, y: 15.999971}
-      - {x: 30, y: 15.640624}
-      - {x: 30.015638, y: 15.515619}
-      - {x: 30.781254, y: 15.140621}
-      - {x: 30.890636, y: 15}
-      - {x: 40, y: 14.999971}
-      - {x: 39.999973, y: 1}
+    - - {x: 40, y: 1.0000294}
       - {x: 1, y: 1.0000294}
       - {x: 1.0000294, y: 15}
       - {x: 21.500006, y: 15.000004}
@@ -3129,6 +3109,26 @@ CompositeCollider2D:
       - {x: 49.000008, y: 15.468744}
       - {x: 49.375015, y: 15}
       - {x: 60, y: 14.999971}
+      - {x: 59.99997, y: 1}
+      - {x: 41, y: 1.0000294}
+      - {x: 41.00003, y: 15}
+      - {x: 42.500008, y: 15.000004}
+      - {x: 43, y: 15.234392}
+      - {x: 42.999973, y: 16}
+      - {x: 41, y: 16.000029}
+      - {x: 41.00003, y: 30}
+      - {x: 51.500008, y: 30.000004}
+      - {x: 51.937504, y: 30.281261}
+      - {x: 52, y: 30.468752}
+      - {x: 51.999973, y: 31}
+      - {x: 40, y: 30.999971}
+      - {x: 39.999973, y: 16}
+      - {x: 30, y: 15.999971}
+      - {x: 30, y: 15.640624}
+      - {x: 30.015638, y: 15.515619}
+      - {x: 30.781254, y: 15.140621}
+      - {x: 30.890636, y: 15}
+      - {x: 40, y: 14.999971}
     - - {x: 53.499992, y: 90}
       - {x: 54, y: 90.2344}
       - {x: 53.99997, y: 91}
@@ -13947,6 +13947,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 883409950}
     m_Modifications:
+    - target: {fileID: 2853950542978398371, guid: e9373f0847917433a9a65f647ede8d79,
+        type: 3}
+      propertyPath: nextLevel
+      value: Level_4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2853950542978398371, guid: e9373f0847917433a9a65f647ede8d79,
+        type: 3}
+      propertyPath: prevLevel
+      value: Level_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2853950542978398371, guid: e9373f0847917433a9a65f647ede8d79,
+        type: 3}
+      propertyPath: currentLevel
+      value: Level_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2853950542978398371, guid: e9373f0847917433a9a65f647ede8d79,
+        type: 3}
+      propertyPath: nextLevelEntry
+      value: 
+      objectReference: {fileID: 1418200644}
     - target: {fileID: 4508700549295769086, guid: e9373f0847917433a9a65f647ede8d79,
         type: 3}
       propertyPath: m_RootOrder
@@ -15664,7 +15684,7 @@ GameObject:
   - component: {fileID: 1418200646}
   m_Layer: 0
   m_Name: next-entry-door
-  m_TagString: Untagged
+  m_TagString: NextEntry
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

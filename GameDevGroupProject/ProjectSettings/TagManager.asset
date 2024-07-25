@@ -15,6 +15,7 @@ TagManager:
   - Audio
   - SceneManager
   - Powerpack
+  - NextEntry
   layers:
   - Default
   - TransparentFX
