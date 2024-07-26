@@ -51,9 +51,9 @@ MonoBehaviour:
   characterJump: {fileID: 8300000, guid: 7e9ee6dc04a5d40d1a5dfc4beb9865e7, type: 3}
   playerDetected: {fileID: 8300000, guid: 5844e810a25a0438f9be3a0b8f52ebaa, type: 3}
   enemyDefeated: {fileID: 8300000, guid: 380a61624a607f042ab5e96218f37633, type: 3}
-  powerUpPickUpRed: {fileID: 8300000, guid: 2c5292ba5cf254919a6b9e2b18e04f49, type: 3}
-  powerUpPickUpGreen: {fileID: 8300000, guid: 2c5292ba5cf254919a6b9e2b18e04f49, type: 3}
-  powerUpPickUpPulse: {fileID: 8300000, guid: 2c5292ba5cf254919a6b9e2b18e04f49, type: 3}
+  powerUpPickUpRed: {fileID: 8300000, guid: cf6c0e7fbef9449c98a0cdb5ea0c4d9f, type: 3}
+  powerUpPickUpGreen: {fileID: 8300000, guid: cf6c0e7fbef9449c98a0cdb5ea0c4d9f, type: 3}
+  powerUpPickUpPulse: {fileID: 8300000, guid: cf6c0e7fbef9449c98a0cdb5ea0c4d9f, type: 3}
   powerUpFireRed: {fileID: 8300000, guid: de812cfb519929c4aad9d296f655c81d, type: 3}
   powerUpFirePulse: {fileID: 8300000, guid: 7f4aa26d5b55226409cda231ffaf869b, type: 3}
   furnitureBounce: {fileID: 8300000, guid: 641c38e651dbf495b8e52615c870115e, type: 3}
@@ -277,12 +277,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55b4ded670e6a4995ade1b5e6db5a260, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyKillCount: 0
-  playerDeaths: 0
-  allowRedPowerup: 0
-  allowGreenPowerup: 0
-  allowBluePowerup: 0
-  onePowerUpOnly: 1
+  achievScreen: {fileID: 9114680313890712796, guid: b176db5131f98426fa8659b267c6f1b0,
+    type: 3}
 --- !u!1 &1890375369371277779
 GameObject:
   m_ObjectHideFlags: 0
