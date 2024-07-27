@@ -722,9 +722,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1890375369013496767, guid: 2ac35e5fc1908b141b432410725d98e0,
+      - m_Target: {fileID: 5632780124316449714, guid: e9373f0847917433a9a65f647ede8d79,
           type: 3}
-        m_MethodName: OpenAchievementScreen
+        m_MethodName: AchievementButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

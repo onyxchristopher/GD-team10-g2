@@ -29,10 +29,6 @@ public class gameController : MonoBehaviour
         starsObtained = new int[5];
     }
 
-    void Update(){
-        //Debug.Log(gameObject.activeSelf);
-    }
-
     //Return current game state
     public gameState CurrentGameState()
     {
@@ -61,10 +57,19 @@ public class gameController : MonoBehaviour
         return;
     }
 
+    /*
+    If stars earned exceed previous stars earned in that level,
+    set stars earned as the new value
+    */
     public void SetStars(int level, int stars){
-        starsObtained[level - 1] = stars;
+        // 
+        if (starsObtained[level - 1] < stars){
+            starsObtained[level - 1] = stars;
+        }
+        
     }
 
+    // Open the achievement screen
     public void OpenAchievementScreen(){
         // Display achievement screen
         Instantiate(achievScreen);

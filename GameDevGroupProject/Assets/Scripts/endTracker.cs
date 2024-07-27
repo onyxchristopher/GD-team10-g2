@@ -93,7 +93,14 @@ public class endTracker : MonoBehaviour
             starsEarned++;
         }
 
-        // If stars earned exceeds previous stars earned, update achievements
+        // Pass stars earned to permanent storage in gamecontroller
         gControl.SetStars(level, starsEarned);
+    }
+
+    public void AchievementButton(){
+        // Get a reference to the game control script again
+        // as it gets deactivated by the button press for some reason
+        gControl = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameController>();
+        gControl.OpenAchievementScreen();
     }
 }
