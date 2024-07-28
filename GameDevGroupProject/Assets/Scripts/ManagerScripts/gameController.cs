@@ -1,45 +1,32 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class gameController : MonoBehaviour
 {
-
     // Possible game states
     public enum gameState { running, pause, loading };
     private gameState currentState;
 
-    // Some stats we may want to keep track of 
 
-    // Variable to keep track of enemies killed
-    public int enemyKillCount;
+    // Prefab achievement screen
+    [SerializeField] private GameObject achievScreen;
 
-    // Variable to keep track of player deaths
-    public int playerDeaths;
+    private int[] starsObtained;
 
-    // For red powerup
-    public bool allowRedPowerup = false;
 
-    // For green powerup
-    public bool allowGreenPowerup = false;
-
-    // For blue powerup
-    public bool allowBluePowerup = false;
-
-    public bool onePowerUpOnly = true;
     // Start is called before the first frame update
     void Start()
     {
         currentState = gameState.running;
-
-        enemyKillCount = 0;
-        playerDeaths = 0;
 
         if (currentState == gameState.running)
         {
             Debug.Log("Gamestate is running");
         }
 
+        starsObtained = new int[5];
     }
 
     //Return current game state
@@ -68,6 +55,35 @@ public class gameController : MonoBehaviour
         }
 
         return;
+    }
+
+    /*
+    If stars earned exceed previous stars earned in that level,
+    set stars earned as the new value
+    */
+    public void SetStars(int level, int stars){
+        // 
+        if (starsObtained[level - 1] < stars){
+            starsObtained[level - 1] = stars;
+        }
+        
+    }
+
+    // Open the achievement screen
+    public void OpenAchievementScreen(){
+        // Display achievement screen
+        Instantiate(achievScreen);
+
+        // Iterate through all levels
+        for (int i = 1; i <= 5; i++){
+            // Iterate through all stars in current level
+            for (int j = 1; j <= 3; j++){
+                if (starsObtained[i - 1] == j){
+                    Image star = GameObject.Find($"L{i}S{j}").GetComponent<Image>();
+                    star.color = new Color32(255, 255, 255, 255);
+                }
+            }
+        }
     }
 
 }

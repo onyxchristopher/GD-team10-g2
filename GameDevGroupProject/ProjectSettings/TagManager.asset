@@ -16,6 +16,7 @@ TagManager:
   - SceneManager
   - Powerpack
   - NextEntry
+  - AchievTracker
   layers:
   - Default
   - TransparentFX

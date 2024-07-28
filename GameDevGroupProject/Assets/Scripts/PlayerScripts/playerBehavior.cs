@@ -15,7 +15,7 @@ public class playerBehavior : MonoBehaviour
     // Managers references
     private gameController gControl;
     private soundManager sndManager;
-    private sceneManager sManager;
+    private sceneManager scnManager;
     private endTracker endTrack;
 
     [SerializeField] GameObject bullet;
@@ -52,10 +52,7 @@ public class playerBehavior : MonoBehaviour
 
     public bool AddPowerUp(powerUp powerUp)
     {
-        if (gControl.onePowerUpOnly)
-        {
-            powerUpsActive.Clear();
-        }
+        powerUpsActive.Clear();
 
         // make sure no duplicate powerups
         if (powerUpsActive.All(x => x.powerUpType != powerUp.powerUpType))
@@ -84,7 +81,7 @@ public class playerBehavior : MonoBehaviour
     {
         gControl = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameController>();
         sndManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<soundManager>();
-        sManager = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<sceneManager>();
+        scnManager = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<sceneManager>();
         endTrack = GameObject.FindGameObjectWithTag("Exit Door").GetComponent<endTracker>();
 
         ignorePlayerMask = LayerMask.GetMask("Structure", "Object");
@@ -226,7 +223,7 @@ public class playerBehavior : MonoBehaviour
             restartCanvas.GetComponent<fadeCanvas>().destroyCanvas();
         }
         endTrack.ResetAll();
-        sManager.RestartLevel();
+        scnManager.RestartLevel();
     }
 
 }
