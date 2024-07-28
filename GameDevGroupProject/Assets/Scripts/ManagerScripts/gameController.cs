@@ -78,9 +78,10 @@ public class gameController : MonoBehaviour
         for (int i = 1; i <= 5; i++){
             // Iterate through all stars in current level
             for (int j = 1; j <= 3; j++){
-                if (starsObtained[i - 1] == j){
-                    Image star = GameObject.Find($"L{i}S{j}").GetComponent<Image>();
-                    star.color = new Color32(255, 255, 255, 255);
+                if (starsObtained[i - 1] >= j){
+                    GameObject.Find($"L{i}S{j}")
+                    .GetComponent<Image>()
+                    .color = new Color32(255, 255, 255, 255);
                 }
             }
         }
