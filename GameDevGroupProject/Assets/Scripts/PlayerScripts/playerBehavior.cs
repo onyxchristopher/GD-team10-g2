@@ -40,21 +40,51 @@ public class playerBehavior : MonoBehaviour
 
     private bool facingRight = true;
 
-    // this is the power ups active on this player
+    // A list of the power ups active on this player
     public List<powerUp> powerUpsActive = new List<powerUp>();
 
     private Vector3 fireOffset = new Vector3(0, 0.5f, 0);
 
+    // Particle system references
+    private ParticleSystem redParticles;
+    private ParticleSystem greenParticles;
+    private ParticleSystem blueParticles;
+
+    // Clears active powerup
     public void ClearPowerups()
     {
         powerUpsActive.Clear();
+        RemovePowerupParticles();
     }
 
+    // Removes active powerup particles from the player
+    private void RemovePowerupParticles()
+    {
+        if (redParticles.isPlaying){
+            redParticles.Stop();
+        } else if (greenParticles.isPlaying){
+            greenParticles.Stop();
+        } else if (blueParticles.isPlaying){
+            blueParticles.Stop();
+        }
+    }
+
+    // Makes a powerup usable for the player and adds particle indicators
     public bool AddPowerUp(powerUp powerUp)
     {
         powerUpsActive.Clear();
 
-        // make sure no duplicate powerups
+        RemovePowerupParticles();
+
+        if (powerUp.powerUpType == PowerUpType.Red){
+            redParticles.Play();
+        } else if (powerUp.powerUpType == PowerUpType.Green){
+            greenParticles.Play();
+        } else {
+            blueParticles.Play();
+        }
+
+        // Make sure no duplicate powerups
         if (powerUpsActive.All(x => x.powerUpType != powerUp.powerUpType))
         {
             powerUpsActive.Add(powerUp);
@@ -65,15 +95,10 @@ public class playerBehavior : MonoBehaviour
         return false;
     }
 
-    //Tps player
+    // TPs player
     public void MovePlayer(Transform location)
     {
         transform.position = location.position;
-    }
-
-    // Awake is called before Start but after every GameObject on the scene is instantiated
-    void Awake()
-    {
     }
 
     // Start is called before the first frame update
@@ -96,7 +121,12 @@ public class playerBehavior : MonoBehaviour
         // Freeze the rotation of the player
         rb.freezeRotation = true;
 
+        // Get player box collider
         bc = GetComponent<BoxCollider2D>();
+
+        redParticles = GameObject.Find("Red Particles").GetComponent<ParticleSystem>();
+        greenParticles = GameObject.Find("Green Particles").GetComponent<ParticleSystem>();
+        blueParticles = GameObject.Find("Blue Particles").GetComponent<ParticleSystem>();
     }
 
     void FixedUpdate()
