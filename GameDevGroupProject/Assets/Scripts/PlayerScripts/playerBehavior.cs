@@ -210,15 +210,7 @@ public class playerBehavior : MonoBehaviour
         }
     }
 
-    // Called when Pause button is pressed
-    public void OnPause()
-    {
-        Debug.Log("Called onpause");
-        gControl.PauseMenu();
-    }
-
     // Called when fire bullet ability button is pressed
-
     public void OnFireBullet()
     {
         if (gControl.CurrentGameState() == gameController.gameState.running && IsPowerUpActive(PowerUpType.Red))
