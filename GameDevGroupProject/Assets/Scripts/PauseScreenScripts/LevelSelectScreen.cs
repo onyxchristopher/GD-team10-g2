@@ -44,11 +44,15 @@ public class LevelSelectScreen : MonoBehaviour
 
             if (levelSelectButton.GetComponent<LevelButtonInstance>() is LevelButtonInstance levelButtonInstance)
             {
-                levelButtonInstance.SetText("Level " + actualLevelNumber);
+                levelButtonInstance.SetText($"{actualLevelNumber}");
 
                 levelButtonInstance.GoesToScene(LevelScenePrefix + actualLevelNumber);
 
                 levelButtonInstance.isEnabled = i <= CurrentlyCompletedLevels;
+            }
+            else
+            {
+                Debug.LogError($"{levelSelectButton} has no LevelButtonInstance!");
             }
         }
     }

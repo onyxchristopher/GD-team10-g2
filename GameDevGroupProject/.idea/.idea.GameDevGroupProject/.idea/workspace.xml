@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0e35e67f-2cf7-49af-8ed2-ac80c210de16" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GameDevGroupProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GameDevGroupProject/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level_1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level_1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Prototypes/LevelSelect.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Prototypes/LevelSelect.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,7 +133,7 @@
       <workItem from="1720457391029" duration="5438000" />
       <workItem from="1720529963497" duration="8000" />
       <workItem from="1720530320634" duration="1929000" />
-      <workItem from="1722148552094" duration="3406000" />
+      <workItem from="1722148552094" duration="4138000" />
     </task>
     <servers />
   </component>
