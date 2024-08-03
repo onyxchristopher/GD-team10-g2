@@ -30,6 +30,7 @@ public class endTracker : MonoBehaviour
 
     // Manager reference
     private sceneManager scnManager;
+    private soundManager sndManager;
     private gameController gControl;
 
     private int level;
@@ -102,5 +103,15 @@ public class endTracker : MonoBehaviour
         // as it gets deactivated by the button press for some reason
         gControl = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameController>();
         gControl.OpenAchievementScreen();
+    }
+
+    public void ReplayButton(){
+        sndManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<soundManager>();
+        sndManager.PlayBGM();
+    }
+
+    public void NextButton(){
+        sndManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<soundManager>();
+        sndManager.PlayBGM();
     }
 }
