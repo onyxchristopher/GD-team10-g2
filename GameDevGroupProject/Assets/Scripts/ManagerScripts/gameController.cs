@@ -12,6 +12,7 @@ public class gameController : MonoBehaviour
 
     // Prefab achievement screen
     [SerializeField] private GameObject achievScreen;
+    [SerializeField] private GameObject pauseScreen;
 
     private int[] starsObtained;
 
@@ -36,7 +37,7 @@ public class gameController : MonoBehaviour
     }
 
     //Changes game state to pause
-    public void PauseMenu()
+    public void Pause()
     {
         //Pause Game
         if (currentState == gameState.running)
@@ -55,6 +56,11 @@ public class gameController : MonoBehaviour
         }
 
         return;
+    }
+
+    public void PauseScreen()
+    {
+        Instantiate(pauseScreen);
     }
 
     /*
