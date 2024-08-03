@@ -45,6 +45,8 @@ public class gameController : MonoBehaviour
             currentState = gameState.pause;
             Time.timeScale = 0;
             Debug.Log("Game has been paused");
+            AudioListener.pause = true;
+            AudioListener.volume = 0.03f;
         }
 
         //Unpause game
@@ -53,6 +55,8 @@ public class gameController : MonoBehaviour
             currentState = gameState.running;
             Time.timeScale = 1;
             Debug.Log("Game has been unpaused");
+            AudioListener.pause = false;
+            AudioListener.volume = 1.0f;
         }
 
         return;

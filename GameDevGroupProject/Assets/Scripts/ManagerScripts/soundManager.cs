@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -36,6 +37,7 @@ public class soundManager : MonoBehaviour
     void Start()
     {
         BGMSource.clip = BGM;
+        BGMSource.ignoreListenerPause = true;
     }
 
     public void PlayBGM()
