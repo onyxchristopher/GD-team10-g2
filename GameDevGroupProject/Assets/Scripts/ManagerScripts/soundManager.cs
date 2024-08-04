@@ -34,6 +34,9 @@ public class soundManager : MonoBehaviour
     
     public AudioClip levelComplete;
 
+    public AudioClip crack;
+    public AudioClip explosion;
+
     void Start()
     {
         BGMSource.clip = BGM;

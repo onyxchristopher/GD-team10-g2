@@ -17,7 +17,7 @@ public class cameraMovement : MonoBehaviour
     void Start()
     {
         player = GameObject.FindWithTag("Player");
-        cameraOffset = new Vector3(player.transform.position.x, transform.position.y - player.transform.position.y, -10f);
+        cameraOffset = new Vector3(1, transform.position.y - player.transform.position.y, -10f);
         
         Camera cam = GetComponent<Camera>();
         float cameraHalfWidth = cam.orthographicSize * cam.aspect;
