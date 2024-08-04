@@ -5,18 +5,18 @@ using UnityEngine;
 public class pulseCollision : MonoBehaviour
 {
 
-    soundManager sManager;
+    private soundManager sndManager;
 
     void Awake()
     {
-        sManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<soundManager>();
+        sndManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<soundManager>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Enemy")
         {
-            sManager.PlaySFX(sManager.enemyDefeated);
+            sndManager.PlaySFX(sndManager.enemyDefeated);
             Destroy(other.gameObject.transform.parent.gameObject);
         }
     }
