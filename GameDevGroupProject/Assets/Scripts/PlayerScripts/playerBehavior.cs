@@ -215,8 +215,11 @@ public class playerBehavior : MonoBehaviour
     {
         if (gControl.CurrentGameState() == gameController.gameState.running && IsPowerUpActive(PowerUpType.Red))
         {
-            sndManager.PlaySFX(sndManager.powerUpFireRed);
-            Instantiate(bullet, transform.position + fireOffset, transform.rotation);
+            if (!GameObject.FindGameObjectWithTag("Bullet"))
+            {
+                sndManager.PlaySFX(sndManager.powerUpFireRed);
+                Instantiate(bullet, transform.position + fireOffset, transform.rotation);
+            }
         }
     }
 
@@ -226,14 +229,17 @@ public class playerBehavior : MonoBehaviour
         // Spawn Blue pulses above and below the player
         if (gControl.CurrentGameState() == gameController.gameState.running && IsPowerUpActive(PowerUpType.Blue))
         {
-            sndManager.PlaySFX(sndManager.powerUpFirePulse, 0.5f);
+            if (!GameObject.FindGameObjectWithTag("Pulse"))
+            {
+                sndManager.PlaySFX(sndManager.powerUpFirePulse, 0.5f);
 
-            Instantiate(pulseUp,
-                gameObject.transform.position + Vector3.up * 6 + fireOffset,
-                gameObject.transform.rotation);
-            Instantiate(pulseDown,
-                gameObject.transform.position + Vector3.down * 6 + fireOffset,
-                gameObject.transform.rotation);
+                Instantiate(pulseUp,
+                    gameObject.transform.position + Vector3.up * 6 + fireOffset,
+                    gameObject.transform.rotation);
+                Instantiate(pulseDown,
+                    gameObject.transform.position + Vector3.down * 6 + fireOffset,
+                    gameObject.transform.rotation);
+            }
         }
     }
 
@@ -246,6 +252,7 @@ public class playerBehavior : MonoBehaviour
         }
         endTrack.ResetAll();
         scnManager.RestartLevel();
+        sndManager.PlayBGM();
     }
 
 }
