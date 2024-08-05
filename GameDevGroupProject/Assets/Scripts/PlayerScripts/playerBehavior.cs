@@ -50,6 +50,38 @@ public class playerBehavior : MonoBehaviour
     private ParticleSystem greenParticles;
     private ParticleSystem blueParticles;
 
+    private Animator anim;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        gControl = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameController>();
+        sndManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<soundManager>();
+        scnManager = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<sceneManager>();
+        endTrack = GameObject.FindGameObjectWithTag("Exit Door").GetComponent<endTracker>();
+
+        ignorePlayerMask = LayerMask.GetMask("Structure", "Object");
+
+        // Make a reference for the Move action from the player input
+        playerInput = GetComponent<PlayerInput>();
+        playerMove = playerInput.actions.FindAction("Move");
+
+        // Make a reference for the rigidbody attached to the player
+        rb = GetComponent<Rigidbody2D>();
+
+        // Freeze the rotation of the player
+        rb.freezeRotation = true;
+
+        // Get player box collider
+        bc = GetComponent<BoxCollider2D>();
+
+        redParticles = GameObject.Find("Red Particles").GetComponent<ParticleSystem>();
+        greenParticles = GameObject.Find("Green Particles").GetComponent<ParticleSystem>();
+        blueParticles = GameObject.Find("Blue Particles").GetComponent<ParticleSystem>();
+        
+        anim = gameObject.GetComponentInChildren<Animator>();
+    }
+
     // Clears active powerup
     public void ClearPowerups()
     {
@@ -99,34 +131,6 @@ public class playerBehavior : MonoBehaviour
     public void MovePlayer(Transform location)
     {
         transform.position = location.position;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        gControl = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameController>();
-        sndManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<soundManager>();
-        scnManager = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<sceneManager>();
-        endTrack = GameObject.FindGameObjectWithTag("Exit Door").GetComponent<endTracker>();
-
-        ignorePlayerMask = LayerMask.GetMask("Structure", "Object");
-
-        // Make a reference for the Move action from the player input
-        playerInput = GetComponent<PlayerInput>();
-        playerMove = playerInput.actions.FindAction("Move");
-
-        // Make a reference for the rigidbody attached to the player
-        rb = GetComponent<Rigidbody2D>();
-
-        // Freeze the rotation of the player
-        rb.freezeRotation = true;
-
-        // Get player box collider
-        bc = GetComponent<BoxCollider2D>();
-
-        redParticles = GameObject.Find("Red Particles").GetComponent<ParticleSystem>();
-        greenParticles = GameObject.Find("Green Particles").GetComponent<ParticleSystem>();
-        blueParticles = GameObject.Find("Blue Particles").GetComponent<ParticleSystem>();
     }
 
     void FixedUpdate()
@@ -207,6 +211,9 @@ public class playerBehavior : MonoBehaviour
             }
 
             rb.velocity = new Vector2(rb.velocity.x, adjustedJumpSpeed);
+
+            // Animate player jumping
+            anim.SetTrigger("Jump");
         }
     }
 
@@ -249,6 +256,15 @@ public class playerBehavior : MonoBehaviour
         if (restartCanvas)
         {
             restartCanvas.GetComponent<fadeCanvas>().destroyCanvas();
+        }
+        GameObject activeFireball = GameObject.FindGameObjectWithTag("Bullet");
+        GameObject activePulse = GameObject.FindGameObjectWithTag("Pulse");
+        if (activeFireball)
+        {
+            Destroy(activeFireball);
+        } else if (activePulse)
+        {
+            Destroy(activePulse);
         }
         endTrack.ResetAll();
         scnManager.RestartLevel();

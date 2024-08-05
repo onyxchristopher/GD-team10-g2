@@ -13,6 +13,8 @@ public class antennaDish : MonoBehaviour
     private ParticleSystem blueAntennaParticles;
     private ParticleSystem yellowAntennaParticles;
 
+    [SerializeField] private GameObject victoryText;
+
     private soundManager sndManager;
 
     // Start is called before the first frame update
@@ -53,8 +55,9 @@ public class antennaDish : MonoBehaviour
 
     private void AntennaDestroyed()
     {
-        Destroy(gameObject);
         blueAntennaParticles.Play();
         yellowAntennaParticles.Play();
+        Instantiate(victoryText, new Vector3(30.5f, 810, 0), transform.rotation);
+        Destroy(gameObject);
     }
 }
