@@ -65,16 +65,21 @@ public class endTracker : MonoBehaviour
     // Evaluate player achievements and display endscreen
     void OnCollisionEnter2D(Collision2D collision){
 
+        BuildEndScreen();
+    }
+
+    public void BuildEndScreen()
+    {
         // One star for completion
         int starsEarned = 1;
 
         // Evaluate player achievements
         powerpacksFound = NumPowerpacksFound();
         robotsDestroyed = NumRobotsDestroyed();
-        
+
         // Display endscreen
         Instantiate(endScreen);
-        
+
         // Display robot/powerpack count
         robotsText = GameObject.Find("Robots Destroyed").GetComponent<Text>();
         powerpacksText = GameObject.Find("Powerpacks Found").GetComponent<Text>();
@@ -83,12 +88,14 @@ public class endTracker : MonoBehaviour
         powerpacksText.text = $"{powerpacksFound}/{totalPowerpacks}";
 
         // Display yellow star if achievement earned
-        if (robotsDestroyed == totalRobots){
+        if (robotsDestroyed == totalRobots)
+        {
             robotStar = GameObject.Find("Robot Star").GetComponent<Image>();
             robotStar.color = new Color32(255, 255, 255, 255);
             starsEarned++;
         }
-        if (powerpacksFound == totalPowerpacks){
+        if (powerpacksFound == totalPowerpacks)
+        {
             powerpackStar = GameObject.Find("Powerpack Star").GetComponent<Image>();
             powerpackStar.color = new Color32(255, 255, 255, 255);
             starsEarned++;

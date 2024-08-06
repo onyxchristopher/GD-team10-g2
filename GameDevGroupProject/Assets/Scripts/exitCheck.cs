@@ -25,7 +25,6 @@ public class exitCheck : MonoBehaviour
         sndManager = GameObject.FindGameObjectWithTag("Audio").GetComponentInChildren<soundManager>();
         pBehavior = GameObject.FindGameObjectWithTag("Player").GetComponent<playerBehavior>();
         mainCam = GameObject.FindWithTag("MainCamera").GetComponent<cameraMovement>();
-        //nextLevelEntry = GameObject.FindGameObjectWithTag("NextEntry");
 
     }
 
