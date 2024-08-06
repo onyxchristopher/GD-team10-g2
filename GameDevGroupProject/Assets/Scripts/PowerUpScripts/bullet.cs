@@ -7,10 +7,7 @@ public class bullet : MonoBehaviour
     [SerializeField]
     float speed;
 
-    [SerializeField]
-    private ParticleSystem enemyDestroy;
-
-    private ParticleSystem enemyDestroyInstance;
+    [SerializeField] private ParticleSystem enemyDestroy;
 
     private Rigidbody2D rb;
 
@@ -25,10 +22,11 @@ public class bullet : MonoBehaviour
     }
 
 
-    private void spawnDestroyParticles()
+    private void spawnDestroyParticles(Vector3 robotPosition)
     {
-        enemyDestroyInstance = Instantiate(enemyDestroy, transform.position, Quaternion.identity);
+        Instantiate(enemyDestroy, robotPosition, Quaternion.identity);
     }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Enemy")
@@ -36,7 +34,7 @@ public class bullet : MonoBehaviour
             sndManager.PlaySFX(sndManager.enemyDefeated);
             Destroy(gameObject);
             Destroy(other.gameObject.transform.parent.gameObject);
-            spawnDestroyParticles();
+            spawnDestroyParticles(other.transform.position);
         }
         else if (other.gameObject.tag == "Structure"){
             Destroy(gameObject);
