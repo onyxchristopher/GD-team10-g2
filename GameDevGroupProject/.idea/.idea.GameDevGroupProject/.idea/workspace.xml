@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0e35e67f-2cf7-49af-8ed2-ac80c210de16" name="Changes" comment="" />
+    <list default="true" id="0e35e67f-2cf7-49af-8ed2-ac80c210de16" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.GameDevGroupProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GameDevGroupProject/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/PauseScreen.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/PauseScreen.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Prototypes/LevelSelect.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Prototypes/LevelSelect.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PauseScreenScripts/LevelSelectScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PauseScreenScripts/LevelSelectScreen.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -17,14 +22,9 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/29ad182faa3f478c9310d6a2e7143c15116400/f1/820f82f9/Object.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ManagerScripts/gameController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ManagerScripts/sceneManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/bullet.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://E:/Work/GD-team10-g2/GameDevGroupProject/Assets/Scripts/bullet.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Work/GD-team10-g2/GameDevGroupProject/Assets/Scripts/PauseScreenScripts/LevelSelectScreen.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/cameraMovement.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/destroyAfterTime.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/playerBehavior.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://E:/Work/GD-team10-g2/GameDevGroupProject/Assets/Scripts/playerBehavior.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/playerMovement.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/pulseCollision.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.0.2/InputSystem/Plugins/HID/HID.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.0.2/InputSystem/Plugins/PlayerInput/PlayerInput.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/obj/Debug/.NETFramework,Version=v4.7.1.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
@@ -133,6 +133,8 @@
       <workItem from="1720530320634" duration="1929000" />
       <workItem from="1722148552094" duration="4138000" />
       <workItem from="1722350267018" duration="717000" />
+      <workItem from="1722867189999" duration="856000" />
+      <workItem from="1723039184579" duration="1100000" />
     </task>
     <servers />
   </component>

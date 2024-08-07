@@ -1,20 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UIElements;
-using Button = UnityEngine.UI.Button;
+﻿using UnityEngine;
+using UnityEngine.UI;
 
-// we are assuming all gameobjects below or children of this gameobject
-// are the menus!!!!
 public class LevelSelectScreen : MonoBehaviour
 {
-    public Button levelSelectionButton;
-    public Button achievementsButton;
 
     public GameObject levelSelectionLayout;
 
     public GameObject levelSelectButtonPrefab;
-
     // this is how levels are named in the ./Scenes folder
     // we just add the level number after this prefix
     private const string LevelScenePrefix = "Level_";
@@ -25,11 +17,6 @@ public class LevelSelectScreen : MonoBehaviour
 
     void Start()
     {
-        levelSelectionButton.onClick.AddListener(LevelSelectionButtonClicked);
-        achievementsButton.onClick.AddListener(AchievementsButtonClicked);
-
-        OpenMenuHideOthers("MainPauseMenu");
-
         InstantiateLevelButtons();
     }
 
@@ -55,24 +42,5 @@ public class LevelSelectScreen : MonoBehaviour
                 Debug.LogError($"{levelSelectButton} has no LevelButtonInstance!");
             }
         }
-    }
-
-    // hides other menus and sets the selected menu as active
-    private void OpenMenuHideOthers(string menuName)
-    {
-        foreach (var child in gameObject.transform)
-            if (child is Transform pauseScreenChild)
-                pauseScreenChild.gameObject.SetActive(pauseScreenChild.name == menuName);
-    }
-
-    private void LevelSelectionButtonClicked()
-    {
-        OpenMenuHideOthers("LevelSelectMenu");
-    }
-
-    private void AchievementsButtonClicked()
-    {
-        // or the acheivements scene
-        OpenMenuHideOthers("Achievements");
     }
 }
