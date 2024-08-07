@@ -1209,6 +1209,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 976008848}
     m_Modifications:
+    - target: {fileID: 1365924077361531929, guid: ee2eacd186c994751af6ef968d7673c0,
+        type: 3}
+      propertyPath: launchVelocity.y
+      value: 37
+      objectReference: {fileID: 0}
     - target: {fileID: 1365924077361531932, guid: ee2eacd186c994751af6ef968d7673c0,
         type: 3}
       propertyPath: m_Name

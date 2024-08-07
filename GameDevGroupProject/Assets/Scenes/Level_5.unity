@@ -51403,7 +51403,7 @@ PrefabInstance:
     - target: {fileID: 7403561040807740107, guid: 2c8792de8fab043c4a30b51782fbed0b,
         type: 3}
       propertyPath: launchVelocity.y
-      value: 40
+      value: 37
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c8792de8fab043c4a30b51782fbed0b, type: 3}
@@ -54365,7 +54365,7 @@ PrefabInstance:
     - target: {fileID: 1365924077361531929, guid: ee2eacd186c994751af6ef968d7673c0,
         type: 3}
       propertyPath: launchVelocity.y
-      value: 35
+      value: 37
       objectReference: {fileID: 0}
     - target: {fileID: 1365924077361531932, guid: ee2eacd186c994751af6ef968d7673c0,
         type: 3}
