@@ -52568,6 +52568,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 21895046}
     m_Modifications:
+    - target: {fileID: 2446381013012377555, guid: 9a19190fe65e94dab996db7297439815,
+        type: 3}
+      propertyPath: launchVelocity.y
+      value: 35
+      objectReference: {fileID: 0}
     - target: {fileID: 5555811083548961113, guid: 9a19190fe65e94dab996db7297439815,
         type: 3}
       propertyPath: m_RootOrder
