@@ -5,9 +5,6 @@ using UnityEngine.UI;
 
 public class endTracker : MonoBehaviour
 {
-    // End screen prefab
-    [SerializeField] private GameObject endScreen;
-
     // Total powerpacks found this level
     private int powerpacksFound = 0;
 
@@ -40,6 +37,7 @@ public class endTracker : MonoBehaviour
         totalPowerpacks = GameObject.FindGameObjectsWithTag("Powerpack").Length;
         totalRobots = GameObject.FindGameObjectsWithTag("Robot").Length;
         scnManager = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<sceneManager>();
+        sndManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<soundManager>();
         gControl = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameController>();
         level = scnManager.currLevel;
     }
@@ -65,11 +63,15 @@ public class endTracker : MonoBehaviour
     // Evaluate player achievements and display endscreen
     void OnCollisionEnter2D(Collision2D collision){
 
-        BuildEndScreen();
+        BuildEndScreen(gControl.endScreen);
     }
 
-    public void BuildEndScreen()
+    public void BuildEndScreen(GameObject screen)
     {
+        // Stop BGM and play completion sound
+        sndManager.StopBGM();
+        sndManager.PlaySFX(sndManager.levelComplete);
+
         // One star for completion
         int starsEarned = 1;
 
@@ -78,7 +80,7 @@ public class endTracker : MonoBehaviour
         robotsDestroyed = NumRobotsDestroyed();
 
         // Display endscreen
-        Instantiate(endScreen);
+        Instantiate(screen);
 
         // Display robot/powerpack count
         robotsText = GameObject.Find("Robots Destroyed").GetComponent<Text>();
@@ -110,6 +112,10 @@ public class endTracker : MonoBehaviour
         // as it gets deactivated by the button press for some reason
         gControl = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameController>();
         gControl.OpenAchievementScreen();
+    }
+
+    public void LevelsButton(){
+        
     }
 
     public void ReplayButton(){

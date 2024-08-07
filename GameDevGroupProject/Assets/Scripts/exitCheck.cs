@@ -33,8 +33,8 @@ public class exitCheck : MonoBehaviour
     {
         if (other.gameObject.tag == "Player" )
         {
-            sndManager.PlaySFX(sndManager.levelComplete);
-
+            //Unload pre level
+            scnManager.UnloadLevel(currentLevel);
             //Load next level
             scnManager.LoadLevel(nextLevel);
             //Tp player
@@ -45,10 +45,6 @@ public class exitCheck : MonoBehaviour
             pBehavior.ClearPowerups();
             //Update camera
             mainCam.SnapToPlayer();
-            //Unload pre level
-            scnManager.UnloadLevel(currentLevel);
-            //Stop BGM
-            sndManager.StopBGM();
         }
     }
 

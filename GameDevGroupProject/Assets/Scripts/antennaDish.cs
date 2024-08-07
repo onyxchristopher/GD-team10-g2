@@ -59,7 +59,7 @@ public class antennaDish : MonoBehaviour
         blueAntennaParticles.Play();
         yellowAntennaParticles.Play();
         Instantiate(victoryText, new Vector3(30.5f, 810, 0), transform.rotation);
-        gControl.MisionComplete();
+        gControl.MissionComplete();
         Destroy(gameObject);
 
     }

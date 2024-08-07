@@ -14,6 +14,12 @@ public class gameController : MonoBehaviour
     [SerializeField] private GameObject achievScreen;
     [SerializeField] private GameObject pauseScreen;
 
+    // End screen prefab
+    public GameObject endScreen;
+    
+    // Mission complete screen prefab
+    public GameObject completeScreen;
+
     private int[] starsObtained;
 
 
@@ -92,7 +98,7 @@ public class gameController : MonoBehaviour
         }
     }
 
-    public void MisionComplete()
+    public void MissionComplete()
     {
         StartCoroutine(EndGameCoroutine());
     }
@@ -107,7 +113,7 @@ public class gameController : MonoBehaviour
         yield return new WaitForSeconds(5);
 
         //Build endscreen
-        eTracker.BuildEndScreen();
+        eTracker.BuildEndScreen(completeScreen);
 
         Debug.Log("End of coroutine: " + Time.time);
     }
