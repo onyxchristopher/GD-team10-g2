@@ -123,7 +123,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextLevel: 
-  prevLevel: 
+  currentLevel: 
+  nextLevelEntry: {fileID: 0}
 --- !u!114 &5632780124316449714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,4 +138,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   endScreen: {fileID: 2479627261317630793, guid: 5d2c92ca6445b4f16a107149484e392a,
+    type: 3}
+  completeScreen: {fileID: 3905926373359992735, guid: da7dcb05ae8894d3b8a75019ccc53ffa,
     type: 3}

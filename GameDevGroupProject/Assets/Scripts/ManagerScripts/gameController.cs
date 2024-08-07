@@ -14,6 +14,12 @@ public class gameController : MonoBehaviour
     [SerializeField] private GameObject achievScreen;
     [SerializeField] private GameObject pauseScreen;
 
+    // End screen prefab
+    public GameObject endScreen;
+    
+    // Mission complete screen prefab
+    public GameObject completeScreen;
+
     private int[] starsObtained;
 
 
@@ -21,11 +27,6 @@ public class gameController : MonoBehaviour
     void Start()
     {
         currentState = gameState.running;
-
-        if (currentState == gameState.running)
-        {
-            Debug.Log("Gamestate is running");
-        }
 
         starsObtained = new int[5];
     }
@@ -95,6 +96,26 @@ public class gameController : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void MissionComplete()
+    {
+        StartCoroutine(EndGameCoroutine());
+    }
+
+    private IEnumerator EndGameCoroutine()
+    {
+        Debug.Log("Start of coroutine: " + Time.time);
+        //Getting reference to end of level script
+        endTracker eTracker = GameObject.FindGameObjectWithTag("Exit Door").GetComponent<endTracker>();
+
+        //Waiting for 5 seconds
+        yield return new WaitForSeconds(5);
+
+        //Build endscreen
+        eTracker.BuildEndScreen(completeScreen);
+
+        Debug.Log("End of coroutine: " + Time.time);
     }
 
 }

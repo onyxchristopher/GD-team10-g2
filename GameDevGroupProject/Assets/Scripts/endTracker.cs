@@ -5,9 +5,6 @@ using UnityEngine.UI;
 
 public class endTracker : MonoBehaviour
 {
-    // End screen prefab
-    [SerializeField] private GameObject endScreen;
-
     // Total powerpacks found this level
     private int powerpacksFound = 0;
 
@@ -40,6 +37,7 @@ public class endTracker : MonoBehaviour
         totalPowerpacks = GameObject.FindGameObjectsWithTag("Powerpack").Length;
         totalRobots = GameObject.FindGameObjectsWithTag("Robot").Length;
         scnManager = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<sceneManager>();
+        sndManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<soundManager>();
         gControl = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameController>();
         level = scnManager.currLevel;
     }
@@ -65,16 +63,25 @@ public class endTracker : MonoBehaviour
     // Evaluate player achievements and display endscreen
     void OnCollisionEnter2D(Collision2D collision){
 
+        BuildEndScreen(gControl.endScreen);
+    }
+
+    public void BuildEndScreen(GameObject screen)
+    {
+        // Stop BGM and play completion sound
+        sndManager.StopBGM();
+        sndManager.PlaySFX(sndManager.levelComplete);
+
         // One star for completion
         int starsEarned = 1;
 
         // Evaluate player achievements
         powerpacksFound = NumPowerpacksFound();
         robotsDestroyed = NumRobotsDestroyed();
-        
+
         // Display endscreen
-        Instantiate(endScreen);
-        
+        Instantiate(screen);
+
         // Display robot/powerpack count
         robotsText = GameObject.Find("Robots Destroyed").GetComponent<Text>();
         powerpacksText = GameObject.Find("Powerpacks Found").GetComponent<Text>();
@@ -83,12 +90,14 @@ public class endTracker : MonoBehaviour
         powerpacksText.text = $"{powerpacksFound}/{totalPowerpacks}";
 
         // Display yellow star if achievement earned
-        if (robotsDestroyed == totalRobots){
+        if (robotsDestroyed == totalRobots)
+        {
             robotStar = GameObject.Find("Robot Star").GetComponent<Image>();
             robotStar.color = new Color32(255, 255, 255, 255);
             starsEarned++;
         }
-        if (powerpacksFound == totalPowerpacks){
+        if (powerpacksFound == totalPowerpacks)
+        {
             powerpackStar = GameObject.Find("Powerpack Star").GetComponent<Image>();
             powerpackStar.color = new Color32(255, 255, 255, 255);
             starsEarned++;
@@ -103,6 +112,10 @@ public class endTracker : MonoBehaviour
         // as it gets deactivated by the button press for some reason
         gControl = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameController>();
         gControl.OpenAchievementScreen();
+    }
+
+    public void LevelsButton(){
+        
     }
 
     public void ReplayButton(){

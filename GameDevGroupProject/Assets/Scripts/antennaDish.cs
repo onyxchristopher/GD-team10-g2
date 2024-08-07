@@ -16,6 +16,7 @@ public class antennaDish : MonoBehaviour
     [SerializeField] private GameObject victoryText;
 
     private soundManager sndManager;
+    private gameController gControl;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +25,7 @@ public class antennaDish : MonoBehaviour
         blueAntennaParticles = GameObject.Find("antenna-particles-blue").GetComponent<ParticleSystem>();
         yellowAntennaParticles = GameObject.Find("antenna-particles-yellow").GetComponent<ParticleSystem>();
         sndManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<soundManager>();
+        gControl = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameController>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -48,7 +50,6 @@ public class antennaDish : MonoBehaviour
                 AntennaDestroyed();
                 sndManager.PlaySFX(sndManager.explosion);
             }
-            Debug.Log("Antenna hp = " + antennaHP);
         }
 
     }
@@ -58,6 +59,8 @@ public class antennaDish : MonoBehaviour
         blueAntennaParticles.Play();
         yellowAntennaParticles.Play();
         Instantiate(victoryText, new Vector3(30.5f, 810, 0), transform.rotation);
+        gControl.MissionComplete();
         Destroy(gameObject);
+
     }
 }
