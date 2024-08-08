@@ -378,7 +378,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb70b1cbcd7e40e49af547aa91ffac58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelSelectionLayout: {fileID: 6815132942266149268}
+  levelSelectionLayout: {fileID: 2642440376224895501}
   levelSelectButtonPrefab: {fileID: 8586271526421392079, guid: ab09dbf5c20df7d43b6de397b8957ff4,
     type: 3}
   LevelCount: 5
