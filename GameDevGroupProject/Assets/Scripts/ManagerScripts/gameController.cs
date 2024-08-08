@@ -12,16 +12,18 @@ public class gameController : MonoBehaviour
 
     // Prefab achievement screen
     [SerializeField] private GameObject achievScreen;
+    // Pause screen prefab
     [SerializeField] private GameObject pauseScreen;
-
+    // Pause button UI prefab
+    [SerializeField] private GameObject pauseButtonUI;
     // End screen prefab
     public GameObject endScreen;
-    
     // Mission complete screen prefab
     public GameObject completeScreen;
 
     private int[] starsObtained;
 
+    private soundManager sndManager;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +31,7 @@ public class gameController : MonoBehaviour
         currentState = gameState.running;
 
         starsObtained = new int[5];
+        Debug.Log($"Gamestate is {CurrentGameState()}");
     }
 
     //Return current game state
@@ -37,36 +40,40 @@ public class gameController : MonoBehaviour
         return currentState;
     }
 
-    //Changes game state to pause
+    //Pauses and unpauses game state
     public void Pause()
     {
-        //Pause Game
-        if (currentState == gameState.running)
-        {
-            currentState = gameState.pause;
-            Time.timeScale = 0;
-            Debug.Log("Game has been paused");
-            AudioListener.pause = true;
-            AudioListener.volume = 0.03f;
-        }
+        
+        sndManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<soundManager>();
+        sndManager.PauseBGM();
 
-        //Unpause game
-        else if (currentState == gameState.pause)
-        {
-            currentState = gameState.running;
-            Time.timeScale = 1;
-            Debug.Log("Game has been unpaused");
-            AudioListener.pause = false;
-            AudioListener.volume = 1.0f;
-        }
+        currentState = gameState.pause;
+        Time.timeScale = 0;
+        Debug.Log("Game has been paused");
+
+        return;
+    }
+
+    public void Unpause()
+    {
+        sndManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<soundManager>();
+        sndManager.PlayBGM();
+        Instantiate(pauseButtonUI);
+
+        currentState = gameState.running;
+        Time.timeScale = 1;
+        Debug.Log("Game has been unpaused");
 
         return;
     }
 
     public void PauseScreen()
     {
-        Instantiate(pauseScreen);
+        GameObject screen = Instantiate(pauseScreen);
+        screen.name = "Pause Screen";
     }
+
+    
 
     /*
     If stars earned exceed previous stars earned in that level,

@@ -18,6 +18,7 @@ TagManager:
   - NextEntry
   - AchievTracker
   - Antenna
+  - PauseUI
   layers:
   - Default
   - TransparentFX
