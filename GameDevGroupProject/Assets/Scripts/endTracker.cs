@@ -107,24 +107,31 @@ public class endTracker : MonoBehaviour
         gControl.SetStars(level, starsEarned);
     }
 
+    // Called when clicking on the achievement button
     public void AchievementButton(){
-        // Get a reference to the game control script again
-        // as it gets deactivated by the button press for some reason
+        /* Due to a Unity bug, buttons which call functions that require references to scripts
+        cannot be assigned in Start(), but must be re-fetched every time they require usage */
         gControl = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameController>();
         gControl.OpenAchievementScreen();
     }
 
+    // Called when clicking on the levels button
     public void LevelsButton(){
         
     }
 
+    // Called when clicking on the replay button
     public void ReplayButton(){
-        sndManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<soundManager>();
-        sndManager.PlayBGM();
+        gControl = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameController>();
+        gControl.Unpause();
     }
 
+    // Called when clicking on the next/unpause button
     public void NextButton(){
-        sndManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<soundManager>();
-        sndManager.PlayBGM();
+        gControl = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameController>();
+        gControl.Unpause();
     }
+
+    // Enter play mode rather than being in menus
+    
 }
