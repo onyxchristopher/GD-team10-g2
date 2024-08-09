@@ -144,7 +144,4 @@ public class endTracker : MonoBehaviour
         gControl = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameController>();
         gControl.Unpause();
     }
-
-    
-    
 }

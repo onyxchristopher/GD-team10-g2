@@ -4,14 +4,8 @@ using UnityEngine;
 
 public class exitCheck : MonoBehaviour
 {
-    [SerializeField] 
-    string nextLevel;
-
     private sceneManager scnManager;
     private gameController gControl;
-
-    [SerializeField] private GameObject nextLevelEntry;
-
 
     // Start is called before the first frame update
     void Start()
@@ -27,10 +21,10 @@ public class exitCheck : MonoBehaviour
         {
             //Unload pre level
             scnManager.UnloadCurrentLevel();
-            //Load next level
-            scnManager.LoadLevel(nextLevel);
             //Set current level
             scnManager.currLevel++;
+            //Load next level
+            scnManager.LoadLevel(scnManager.currLevel.ToString());
             // Check player's progression
             LevelProgressionCheck();
             //Pause game to avoid player moving while in UI
