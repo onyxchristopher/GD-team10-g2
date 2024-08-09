@@ -16,7 +16,6 @@ public class playerBehavior : MonoBehaviour
     private gameController gControl;
     private soundManager sndManager;
     private sceneManager scnManager;
-    private endTracker endTrack;
 
     [SerializeField] GameObject bullet;
 
@@ -58,7 +57,6 @@ public class playerBehavior : MonoBehaviour
         gControl = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameController>();
         sndManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<soundManager>();
         scnManager = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<sceneManager>();
-        endTrack = GameObject.FindGameObjectWithTag("Exit Door").GetComponent<endTracker>();
 
         ignorePlayerMask = LayerMask.GetMask("Structure", "Object");
 
@@ -128,9 +126,9 @@ public class playerBehavior : MonoBehaviour
     }
 
     // TPs player
-    public void MovePlayer(Transform location)
+    public void MovePlayer(Vector3 location)
     {
-        transform.position = location.position;
+        transform.position = location;
     }
 
     void FixedUpdate()
@@ -266,7 +264,6 @@ public class playerBehavior : MonoBehaviour
         {
             Destroy(activePulse);
         }
-        endTrack.ResetAll();
         scnManager.RestartLevel();
         sndManager.PlayBGM();
     }

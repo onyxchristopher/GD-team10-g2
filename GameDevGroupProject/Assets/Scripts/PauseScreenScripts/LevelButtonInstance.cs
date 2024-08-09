@@ -7,45 +7,29 @@ using UnityEngine.UI;
 
 public class LevelButtonInstance : MonoBehaviour
 {
+    private int targetScene;
+    private sceneManager scnManager;
+    private gameController gControl;
+
     private void Start()
     {
-        _image = this.GetComponent<Image>();
+        scnManager = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<sceneManager>();
+        gControl = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameController>();
     }
 
-    // set text of button!!!
-    public void SetText(string text)
-    {
-        var buttonTextComponent = gameObject.GetComponentInChildren<Text>();
-
-        if (buttonTextComponent != null)
-        {
-            buttonTextComponent.text = text;
-        }
-    }
-
-    private void Update()
-    {
-        if (!isEnabled)
-        {
-            _image.color = new Color(255, 255, 255, 0.25f);
-        }
-    }
-
+    // Perform all necessary operations to start the player in a level
     void GoToScene()
     {
-        if (isEnabled)
-            SceneManager.LoadScene(targetScene);
+        scnManager.UnloadCurrentLevel();
+        scnManager.currLevel = targetScene;
+        scnManager.LoadLevel(targetScene.ToString());
+        gControl.Unpause();
     }
-
-    private string targetScene;
 
     // the scene this button goes when clicked
-    public void GoesToScene(string sceneName)
+    public void GoesToScene(int sceneName)
     {
-        targetScene = "Scenes/" + sceneName;
+        targetScene = sceneName;
         this.GetComponent<Button>().onClick.AddListener(GoToScene);
     }
-
-    public bool isEnabled = true;
-    private Image _image;
 }
