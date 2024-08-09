@@ -7,13 +7,8 @@ public class exitCheck : MonoBehaviour
     [SerializeField] 
     string nextLevel;
 
-    [SerializeField] 
-    string currentLevel;
-
     private sceneManager scnManager;
-    private playerBehavior pBehavior;
     private gameController gControl;
-    private cameraMovement mainCam;
 
     [SerializeField] private GameObject nextLevelEntry;
 
@@ -22,9 +17,7 @@ public class exitCheck : MonoBehaviour
     void Start()
     {
         scnManager = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<sceneManager>();
-        pBehavior = GameObject.FindGameObjectWithTag("Player").GetComponent<playerBehavior>();
         gControl = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameController>();
-        mainCam = GameObject.FindWithTag("MainCamera").GetComponent<cameraMovement>();
     }
 
     //If player reached exit, call sceneManager to load next level
@@ -33,18 +26,14 @@ public class exitCheck : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             //Unload pre level
-            scnManager.UnloadLevel(currentLevel);
+            scnManager.UnloadCurrentLevel();
             //Load next level
             scnManager.LoadLevel(nextLevel);
-            //Tp player
-            pBehavior.MovePlayer(nextLevelEntry.transform);
             //Set current level
             scnManager.currLevel++;
-            //Remove pUps
-            pBehavior.ClearPowerups();
-            //Update camera
-            mainCam.SnapToPlayer();
-            //Pause game to avoid player moving in UI
+            // Check player's progression
+            LevelProgressionCheck();
+            //Pause game to avoid player moving while in UI
             gControl.Pause();
             //Destroy pause UI to avoid player unpausing game in menu
             GameObject pauseUI = GameObject.FindGameObjectWithTag("PauseUI");
@@ -52,6 +41,15 @@ public class exitCheck : MonoBehaviour
                 Destroy(pauseUI);
             }
             
+        }
+    }
+
+    //Check if player has completed a new level for the first time
+    private void LevelProgressionCheck()
+    {
+        if (scnManager.currLevel > gControl.highestLevelReached)
+        {
+            gControl.highestLevelReached = scnManager.currLevel;
         }
     }
 

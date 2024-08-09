@@ -281,6 +281,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   achievScreen: {fileID: 9114680313890712796, guid: b176db5131f98426fa8659b267c6f1b0,
     type: 3}
+  levelsScreen: {fileID: 6771614718394994976, guid: 7edba02cfbb72a643b6e4332f3a68422,
+    type: 3}
   pauseScreen: {fileID: 1995603499091924501, guid: b33e1da70aacc7c4db9612180df027e5,
     type: 3}
   pauseButtonUI: {fileID: 3831435115582968968, guid: 74f5bc503e2da4a07b570df15cc0dfef,

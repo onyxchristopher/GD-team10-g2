@@ -110,20 +110,33 @@ public class endTracker : MonoBehaviour
     // Called when clicking on the achievement button
     public void AchievementButton(){
         /* Due to a Unity bug, buttons which call functions that require references to scripts
-        cannot be assigned in Start(), but must be re-fetched every time they require usage */
+        must fetch said scripts in the functions in which they are used, rather than Start() */
         gControl = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameController>();
         gControl.OpenAchievementScreen();
     }
 
     // Called when clicking on the levels button
     public void LevelsButton(){
-        
+        gControl = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameController>();
+        gControl.OpenLevelsScreen();
     }
 
-    // Called when clicking on the replay button
-    public void ReplayButton(){
+    // Called when clicking on the replay button (pause screen)
+    public void ReplayCurrentButton(){
         gControl = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameController>();
         gControl.Unpause();
+        scnManager = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<sceneManager>();
+        scnManager.RestartLevel();
+    }
+
+    // Called when clicking on the replay button (end screen)
+    public void ReplayPreviousButton(){
+        gControl = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameController>();
+        gControl.Unpause();
+        scnManager = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<sceneManager>();
+        scnManager.UnloadCurrentLevel();
+        scnManager.currLevel--;
+        scnManager.LoadLevel(scnManager.currLevel.ToString());
     }
 
     // Called when clicking on the next/unpause button
@@ -132,6 +145,6 @@ public class endTracker : MonoBehaviour
         gControl.Unpause();
     }
 
-    // Enter play mode rather than being in menus
+    
     
 }
