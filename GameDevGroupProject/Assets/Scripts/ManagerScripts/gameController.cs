@@ -28,8 +28,8 @@ public class gameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         currentState = gameState.running;
-
         starsObtained = new int[5];
         Debug.Log($"Gamestate is {CurrentGameState()}");
     }
