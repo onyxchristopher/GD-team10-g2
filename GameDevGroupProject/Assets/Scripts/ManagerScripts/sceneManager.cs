@@ -6,15 +6,21 @@ using UnityEngine.SceneManagement;
 //We will use this script to everything related to Loading, Unloading scenes and information about the level.
 public class sceneManager : MonoBehaviour
 {
+    //This is how levels are named in the ./Scenes folder
+    //We just add the level number after this prefix
+    private const string LevelScenePrefix = "Level_";
 
-    private Scene persistentElements;
-    private Scene[] levelCollection;
-    private GameObject player;
-    private playerBehavior pBehavior;
+    [SerializeField] GameObject restartScreen;
+    
+    // The current level
     public int currLevel;
+
+    // Script references
     private soundManager sndManager;
     private cameraMovement camMove;
-    [SerializeField] GameObject restartScreen;
+    private gameController gControl;
+    private playerBehavior pBehavior;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -22,9 +28,9 @@ public class sceneManager : MonoBehaviour
         Screen.SetResolution(1080, 1920, true);
         sndManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<soundManager>();
         camMove = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<cameraMovement>();
+        gControl = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameController>();
 
-        player = GameObject.FindGameObjectWithTag("Player");
-        pBehavior = player.GetComponent<playerBehavior>();
+        pBehavior = GameObject.FindGameObjectWithTag("Player").GetComponent<playerBehavior>();
 
         currLevel = 1;
         StartGame();
@@ -53,29 +59,24 @@ public class sceneManager : MonoBehaviour
 
     public void LoadLevel(string nextLevel)
     {
+        string nextSceneName = LevelScenePrefix + nextLevel;
         //Check if there is a level to load and if its not already loaded
-        if(nextLevel != "" && !SceneManager.GetSceneByName(nextLevel).isLoaded )
+        if(nextSceneName != "" && !SceneManager.GetSceneByName(nextSceneName).isLoaded)
         {
-            SceneManager.LoadSceneAsync(nextLevel, LoadSceneMode.Additive);
+            SceneManager.LoadSceneAsync(nextSceneName, LoadSceneMode.Additive);
         }
+        gControl.NewLevelState();
     }
 
-    public void UnloadLevel(string level)
+    public void UnloadCurrentLevel()
     {
-        if(level != "")
-        {
-            SceneManager.UnloadSceneAsync(level);
-        }
+        SceneManager.UnloadSceneAsync(LevelScenePrefix + currLevel);
     }
 
     public void RestartLevel()
     {
-        SceneManager.UnloadSceneAsync($"Level_{currLevel}");
-        player.transform.position = new Vector3(6, 150 * (currLevel - 1) + 2, 0);
-        camMove.SnapToPlayer();
-        SceneManager.LoadSceneAsync($"Level_{currLevel}", LoadSceneMode.Additive);
-        pBehavior.ClearPowerups();
-        
+        UnloadCurrentLevel();
+        LoadLevel(currLevel.ToString());
     }
 
 }

@@ -10,20 +10,25 @@ public class gameController : MonoBehaviour
     private gameState currentState;
 
 
-    // Prefab achievement screen
+    // Prefab references
     [SerializeField] private GameObject achievScreen;
-    // Pause screen prefab
+    [SerializeField] private GameObject levelsScreen;
     [SerializeField] private GameObject pauseScreen;
-    // Pause button UI prefab
     [SerializeField] private GameObject pauseButtonUI;
-    // End screen prefab
     public GameObject endScreen;
-    // Mission complete screen prefab
     public GameObject completeScreen;
 
+    // Stars obtained per level
     private int[] starsObtained;
+    // Highest level reached by the player so far
+    public int highestLevelReached = 1;
 
+    // Script references
+    private sceneManager scnManager;
     private soundManager sndManager;
+    private playerBehavior pBehavior;
+    private cameraMovement camMove;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +37,10 @@ public class gameController : MonoBehaviour
         currentState = gameState.running;
         starsObtained = new int[5];
         Debug.Log($"Gamestate is {CurrentGameState()}");
+
+        scnManager = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<sceneManager>();
+        pBehavior = GameObject.FindGameObjectWithTag("Player").GetComponent<playerBehavior>();
+        camMove = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<cameraMovement>();
     }
 
     //Return current game state
@@ -73,22 +82,31 @@ public class gameController : MonoBehaviour
         screen.name = "Pause Screen";
     }
 
-    
+    // Reset the player to a fresh start on a level
+    public void NewLevelState()
+    {
+        //TP player to current level start
+        pBehavior.MovePlayer(new Vector3(6, 150 * (scnManager.currLevel - 1) + 2, 0));
+        //Remove powerups
+        pBehavior.ClearPowerups();
+        //Update camera
+        camMove.SnapToPlayer();
+    }
 
     /*
     If stars earned exceed previous stars earned in that level,
     set stars earned as the new value
     */
-    public void SetStars(int level, int stars){
-        // 
+    public void SetStars(int level, int stars)
+    {
         if (starsObtained[level - 1] < stars){
             starsObtained[level - 1] = stars;
         }
-        
     }
 
     // Open the achievement screen
-    public void OpenAchievementScreen(){
+    public void OpenAchievementScreen()
+    {
         // Display achievement screen
         Instantiate(achievScreen);
 
@@ -109,6 +127,12 @@ public class gameController : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void OpenLevelsScreen()
+    {
+        // Display levels screen
+        Instantiate(levelsScreen);
     }
 
     public void MissionComplete()
