@@ -758,7 +758,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 5632780124316449714, guid: e9373f0847917433a9a65f647ede8d79,
           type: 3}
-        m_MethodName: ReplayButton
+        m_MethodName: ReplayCurrentButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
