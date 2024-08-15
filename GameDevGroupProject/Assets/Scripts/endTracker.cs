@@ -96,13 +96,22 @@ public class endTracker : MonoBehaviour
             robotStar.color = new Color32(255, 255, 255, 255);
             starsEarned++;
         }
+        else
+        {
+            robotStar = GameObject.Find("Robot Star").GetComponent<Image>();
+            robotStar.color = new Color32(100, 100, 100, 255);
+        }
         if (powerpacksFound == totalPowerpacks)
         {
             powerpackStar = GameObject.Find("Powerpack Star").GetComponent<Image>();
             powerpackStar.color = new Color32(255, 255, 255, 255);
             starsEarned++;
         }
-
+        else
+        {
+            robotStar = GameObject.Find("Powerpack Star").GetComponent<Image>();
+            robotStar.color = new Color32(100, 100, 100, 255);
+        }
         // Pass stars earned to permanent storage in gamecontroller
         gControl.SetStars(level, starsEarned);
     }
