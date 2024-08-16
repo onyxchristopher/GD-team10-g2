@@ -115,15 +115,22 @@ public class gameController : MonoBehaviour
             // Iterate through all stars in current level
             for (int j = 1; j <= 3; j++){
                 if (starsObtained[i - 1] >= j){
+                    GameObject.Find($"L{i}S{j}L")
+                   .GetComponent<Image>()
+                   .color = new Color32(255, 255, 255, 255);
                     GameObject.Find($"L{i}S{j}")
                     .GetComponent<Image>()
                     .color = new Color32(255, 255, 255, 255);
+                   
                 }
                 else
                 {
-                    GameObject.Find($"L{i}S{j}")
+                    GameObject.Find($"L{i}S{j}L")
                     .GetComponent<Image>()
-                    .color = new Color32(180, 170, 169, 180);
+                    .color = new Color32(255, 255, 255, 255);
+                    
+                    
+
                 }
             }
         }
