@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3694717374254190837}
   - component: {fileID: 3694717374254190843}
   - component: {fileID: 3694717374254190836}
+  - component: {fileID: 3374934864943163776}
   m_Layer: 13
   m_Name: kitchen-2
   m_TagString: Object
@@ -93,9 +94,9 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
-  m_Offset: {x: 0.11169529, y: -3.4625244}
+  m_Offset: {x: 0.11169529, y: -0.9788027}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -106,5 +107,24 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 12.665968, y: 5.258835}
+  m_Size: {x: 12.665968, y: 0.29139137}
   m_EdgeRadius: 0
+--- !u!251 &3374934864943163776
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3694717374254190838}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 90
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1

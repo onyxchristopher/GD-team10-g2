@@ -161,6 +161,7 @@ public class gameController : MonoBehaviour
 
         //Build endscreen
         eTracker.BuildEndScreen(completeScreen);
+        Pause();
 
         Debug.Log("End of coroutine: " + Time.time);
     }
