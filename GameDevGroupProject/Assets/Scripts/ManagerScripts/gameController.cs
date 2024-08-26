@@ -63,7 +63,6 @@ public class gameController : MonoBehaviour
     {
         currentState = gameState.pause;
 
-
         sndManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<soundManager>();
         sndManager.PauseBGM();
 
