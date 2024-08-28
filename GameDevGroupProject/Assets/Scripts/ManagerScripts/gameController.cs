@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,7 +7,14 @@ using UnityEngine.UI;
 public class gameController : MonoBehaviour
 {
     // Possible game states
-    public enum gameState { running, pause, loading };
+    public enum gameState
+    {
+        running,
+        pause,
+        loading
+    };
+
+
     private gameState currentState;
 
 
@@ -20,6 +28,7 @@ public class gameController : MonoBehaviour
 
     // Stars obtained per level
     private int[] starsObtained;
+
     // Highest level reached by the player so far
     public int highestLevelReached = 1;
 
@@ -28,7 +37,7 @@ public class gameController : MonoBehaviour
     private soundManager sndManager;
     private playerBehavior pBehavior;
     private cameraMovement camMove;
-    
+
 
     // Start is called before the first frame update
     void Start()
@@ -52,15 +61,14 @@ public class gameController : MonoBehaviour
     //Pauses and unpauses game state
     public void Pause()
     {
-        
+        currentState = gameState.pause;
+
         sndManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<soundManager>();
         sndManager.PauseBGM();
 
-        currentState = gameState.pause;
         Time.timeScale = 0;
-        Debug.Log("Game has been paused");
 
-        return;
+        Debug.Log("Game has been paused " + currentState);
     }
 
     public void Unpause()
@@ -72,8 +80,6 @@ public class gameController : MonoBehaviour
         currentState = gameState.running;
         Time.timeScale = 1;
         Debug.Log("Game has been unpaused");
-
-        return;
     }
 
     public void PauseScreen()
@@ -99,7 +105,8 @@ public class gameController : MonoBehaviour
     */
     public void SetStars(int level, int stars)
     {
-        if (starsObtained[level - 1] < stars){
+        if (starsObtained[level - 1] < stars)
+        {
             starsObtained[level - 1] = stars;
         }
     }
@@ -111,7 +118,8 @@ public class gameController : MonoBehaviour
         Instantiate(achievScreen);
 
         // Iterate through all levels
-        for (int i = 1; i <= 5; i++){
+        for (int i = 1; i <= 5; i++)
+        {
             // Iterate through all stars in current level
             for (int j = 1; j <= 3; j++){
                 if (starsObtained[i - 1] >= j){
@@ -142,6 +150,11 @@ public class gameController : MonoBehaviour
         Instantiate(levelsScreen);
     }
 
+    private void FixedUpdate()
+    {
+        Debug.Log($"Game state is {CurrentGameState()}");
+    }
+
     public void MissionComplete()
     {
         StartCoroutine(EndGameCoroutine());
@@ -158,8 +171,8 @@ public class gameController : MonoBehaviour
 
         //Build endscreen
         eTracker.BuildEndScreen(completeScreen);
+        Pause();
 
         Debug.Log("End of coroutine: " + Time.time);
     }
-
 }

@@ -36,6 +36,10 @@ public class robotBehavior : MonoBehaviour
     private states myState;
     private Dictionary<states, Action> stateLogic = new Dictionary<states, Action>();
 
+    //Variable to indicate detection
+    private bool detection;
+
+
     //Variables for drawing the fov
     [SerializeField] float fov = 25f;
 
@@ -79,6 +83,9 @@ public class robotBehavior : MonoBehaviour
         epochStart = new System.DateTime(1970, 1, 1, 0, 0, 0, System.DateTimeKind.Utc);
 
         startPosition = transform.position;
+
+        //Setting detection variable on instace
+        detection = false;
 
         //Parameters for drawing the robot FOV
 
@@ -209,18 +216,28 @@ public class robotBehavior : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player")){
+        if (other.gameObject.CompareTag("Player") && !detection){
             Detected();
+            detection = true;
+
         }
     }
 
+    //Detection of player if colliding with robot or fovmesh
     public void Detected()
     {
-        if (!GameObject.FindGameObjectWithTag("Respawn")){
-            Instantiate(restartScreen);
+        if (!GameObject.FindGameObjectWithTag("Respawn"))
+        {
             sndManager.PlaySFX(sndManager.playerDetected);
-            sndManager.StopBGM();
-            sManager.RestartLevel();
+            StartCoroutine(DetectionDelay());
         }
+    }
+
+    private IEnumerator DetectionDelay()
+    {
+        yield return new WaitForSecondsRealtime(0.3f);
+        Instantiate(restartScreen);
+        sndManager.StopBGM();
+        sManager.RestartLevel();
     }
 }

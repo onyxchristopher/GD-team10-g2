@@ -5107,9 +5107,9 @@ GameObject:
   - component: {fileID: 34977433}
   - component: {fileID: 34977435}
   - component: {fileID: 34977434}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Sky
-  m_TagString: Untagged
+  m_TagString: Structure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
