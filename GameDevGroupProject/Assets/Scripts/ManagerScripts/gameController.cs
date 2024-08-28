@@ -129,16 +129,12 @@ public class gameController : MonoBehaviour
                     GameObject.Find($"L{i}S{j}")
                     .GetComponent<Image>()
                     .color = new Color32(255, 255, 255, 255);
-                   
                 }
                 else
                 {
                     GameObject.Find($"L{i}S{j}L")
                     .GetComponent<Image>()
                     .color = new Color32(255, 255, 255, 255);
-                    
-                    
-
                 }
             }
         }
