@@ -26,6 +26,7 @@ public class sceneManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Screen.SetResolution(1080, 1920, true);
         sndManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<soundManager>();
         camMove = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<cameraMovement>();
         gControl = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameController>();
