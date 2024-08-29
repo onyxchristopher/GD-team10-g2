@@ -122,17 +122,6 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "down",
-                    "id": "792de146-7647-4361-bf25-9a0b245a7079",
-                    "path": "<Keyboard>/downArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "2D Vector",
                     "id": "78533204-df6e-4d7e-ace7-e81f9fedf72d",
                     "path": "2DVector",
