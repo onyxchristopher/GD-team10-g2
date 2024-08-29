@@ -231,9 +231,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b30c328a2644cfc4ba5c8868b5ff1b94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currLevel: 0
   restartScreen: {fileID: 6472461831051202669, guid: d561775ac02894d048c7916bc2ad68c3,
     type: 3}
+  currLevel: 0
 --- !u!1 &1890375369013496764
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,6 +291,7 @@ MonoBehaviour:
     type: 3}
   completeScreen: {fileID: 3905926373359992735, guid: da7dcb05ae8894d3b8a75019ccc53ffa,
     type: 3}
+  highestLevelReached: 4
 --- !u!1 &1890375369371277779
 GameObject:
   m_ObjectHideFlags: 0
