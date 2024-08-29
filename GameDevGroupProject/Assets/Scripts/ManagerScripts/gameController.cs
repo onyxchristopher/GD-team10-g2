@@ -45,7 +45,6 @@ public class gameController : MonoBehaviour
         
         currentState = gameState.running;
         starsObtained = new int[5];
-        Debug.Log($"Gamestate is {CurrentGameState()}");
 
         scnManager = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<sceneManager>();
         pBehavior = GameObject.FindGameObjectWithTag("Player").GetComponent<playerBehavior>();
@@ -67,8 +66,6 @@ public class gameController : MonoBehaviour
         sndManager.PauseBGM();
 
         Time.timeScale = 0;
-
-        Debug.Log("Game has been paused " + currentState);
     }
 
     public void Unpause()
@@ -79,7 +76,6 @@ public class gameController : MonoBehaviour
 
         currentState = gameState.running;
         Time.timeScale = 1;
-        Debug.Log("Game has been unpaused");
     }
 
     public void PauseScreen()
@@ -146,11 +142,6 @@ public class gameController : MonoBehaviour
         Instantiate(levelsScreen);
     }
 
-    private void FixedUpdate()
-    {
-        Debug.Log($"Game state is {CurrentGameState()}");
-    }
-
     public void MissionComplete()
     {
         StartCoroutine(EndGameCoroutine());
@@ -158,7 +149,6 @@ public class gameController : MonoBehaviour
 
     private IEnumerator EndGameCoroutine()
     {
-        Debug.Log("Start of coroutine: " + Time.time);
         //Getting reference to end of level script
         endTracker eTracker = GameObject.FindGameObjectWithTag("Exit Door").GetComponent<endTracker>();
 
@@ -168,7 +158,5 @@ public class gameController : MonoBehaviour
         //Build endscreen
         eTracker.BuildEndScreen(completeScreen);
         Pause();
-
-        Debug.Log("End of coroutine: " + Time.time);
     }
 }

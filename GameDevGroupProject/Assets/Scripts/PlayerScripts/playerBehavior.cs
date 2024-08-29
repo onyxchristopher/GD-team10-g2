@@ -22,15 +22,13 @@ public class playerBehavior : MonoBehaviour
     [SerializeField] GameObject pulseUp;
     [SerializeField] GameObject pulseDown;
 
-    [SerializeField] float jumpSpeed = 19f;
+    [SerializeField] float jumpSpeed = 23.5f;
 
     [SerializeField] float moveSpeed = 10f;
 
-    [SerializeField] float fallAugmentMultiplier = 0.05f;
+    [SerializeField] float fallAugmentMultiplier = 0.06f;
 
-    [SerializeField] float fallAugmentThreshold = 3f;
-
-    [SerializeField] float fallAugmentMax = -40f;
+    [SerializeField] float fallAugmentThreshold = 0;
 
     private PlayerInput playerInput;
     private InputAction playerMove;
@@ -40,7 +38,7 @@ public class playerBehavior : MonoBehaviour
     private bool facingRight = true;
 
     // A list of the power ups active on this player
-    public List<powerUp> powerUpsActive = new List<powerUp>();
+    [HideInInspector] public List<powerUp> powerUpsActive = new List<powerUp>();
 
     private Vector3 fireOffset = new Vector3(0, 0.5f, 0);
 
@@ -54,7 +52,8 @@ public class playerBehavior : MonoBehaviour
     [SerializeField] float fastFallMultiplier = 1.5f;
     private Animator anim;
 
-    [SerializeField] float maxFallSpeed = 60f; // Adjust this value as needed
+    [SerializeField] float maxFallSpeed = 60f;
+    [SerializeField] float fastFallSpeed = 30f;
 
     // Start is called before the first frame update
     void Start()
@@ -162,12 +161,12 @@ public class playerBehavior : MonoBehaviour
             {
                 // Initiate fast fall
                 isFastFalling = true;
-                yVelocity = -maxFallSpeed; // Immediately set a downward velocity
+                yVelocity = -fastFallSpeed; // Immediately set a downward velocity
             }
             else
             {
                 // Continue fast falling
-                yVelocity = Mathf.Max(yVelocity * fastFallMultiplier, -maxFallSpeed);
+                yVelocity = Mathf.Max(yVelocity * fastFallMultiplier, -fastFallSpeed);
             }
         }
         else
@@ -175,7 +174,7 @@ public class playerBehavior : MonoBehaviour
             isFastFalling = false;
 
             // Normal fall augmentation
-            if (yVelocity < fallAugmentThreshold && yVelocity > fallAugmentMax)
+            if (yVelocity < fallAugmentThreshold && yVelocity > -maxFallSpeed)
             {
                 float fallAugment = (fallAugmentThreshold - yVelocity) * fallAugmentMultiplier;
                 yVelocity -= fallAugment;
@@ -198,13 +197,6 @@ public class playerBehavior : MonoBehaviour
         {
             facingRight = false;
             transform.Rotate(0, -180, 0);
-        }
-
-        // Increase downwards velocity linearly after a certain threshold, creating acceleration
-        if (rb.velocity.y < fallAugmentThreshold && rb.velocity.y > fallAugmentMax)
-        {
-            float fallAugment = (fallAugmentThreshold - rb.velocity.y) * fallAugmentMultiplier;
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y - fallAugment);
         }
     }
 
