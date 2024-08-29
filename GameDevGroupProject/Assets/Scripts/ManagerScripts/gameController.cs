@@ -42,8 +42,8 @@ public class gameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
         currentState = gameState.running;
+
         starsObtained = new int[5];
         Debug.Log($"Gamestate is {CurrentGameState()}");
 
@@ -121,20 +121,13 @@ public class gameController : MonoBehaviour
         for (int i = 1; i <= 5; i++)
         {
             // Iterate through all stars in current level
-            for (int j = 1; j <= 3; j++){
-                if (starsObtained[i - 1] >= j){
-                    GameObject.Find($"L{i}S{j}L")
-                   .GetComponent<Image>()
-                   .color = new Color32(255, 255, 255, 255);
-                    GameObject.Find($"L{i}S{j}")
-                    .GetComponent<Image>()
-                    .color = new Color32(255, 255, 255, 255);
-                }
-                else
+            for (int j = 1; j <= 3; j++)
+            {
+                if (starsObtained[i - 1] >= j)
                 {
-                    GameObject.Find($"L{i}S{j}L")
-                    .GetComponent<Image>()
-                    .color = new Color32(255, 255, 255, 255);
+                    GameObject.Find($"L{i}S{j}")
+                        .GetComponent<Image>()
+                        .color = new Color32(255, 255, 255, 255);
                 }
             }
         }
