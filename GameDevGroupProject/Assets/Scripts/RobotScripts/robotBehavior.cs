@@ -233,9 +233,12 @@ public class robotBehavior : MonoBehaviour
         }
     }
 
+    //Coroutine to add delay upon detection
     private IEnumerator DetectionDelay()
     {
+        Time.timeScale = 0.0f;
         yield return new WaitForSecondsRealtime(0.3f);
+        Time.timeScale = 1f;
         Instantiate(restartScreen);
         sndManager.StopBGM();
         sManager.RestartLevel();

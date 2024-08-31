@@ -62,4 +62,5 @@ public class soundManager : MonoBehaviour
     {
         SFXSource.PlayOneShot(sample, vol);
     }
+
 }
