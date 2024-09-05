@@ -25,6 +25,10 @@ public class endTracker : MonoBehaviour
     private Image robotStar;
     private Image powerpackStar;
 
+    // Image objects for gray stars
+    private Image robotStarBlank;
+    private Image powerpackStarBlank;
+
     // Manager reference
     private sceneManager scnManager;
     private soundManager sndManager;
@@ -94,15 +98,30 @@ public class endTracker : MonoBehaviour
         {
             robotStar = GameObject.Find("Robot Star").GetComponent<Image>();
             robotStar.color = new Color32(255, 255, 255, 255);
+            robotStar = GameObject.Find("Robot Star no").GetComponent<Image>();
+            robotStar.color = new Color32(255, 255, 255, 255);
             starsEarned++;
+        }
+        else
+        {
+            robotStar = GameObject.Find("Robot Star no").GetComponent<Image>();
+            robotStar.color = new Color32(255, 255, 255, 255);
         }
         if (powerpacksFound == totalPowerpacks)
         {
+            
+            powerpackStar = GameObject.Find("Powerpack Star no").GetComponent<Image>();
+            powerpackStar.color = new Color32(255, 255, 255, 255);
             powerpackStar = GameObject.Find("Powerpack Star").GetComponent<Image>();
             powerpackStar.color = new Color32(255, 255, 255, 255);
             starsEarned++;
         }
-
+        else
+        {
+            
+            powerpackStar = GameObject.Find("Powerpack Star no").GetComponent<Image>();
+            powerpackStar.color = new Color32(255, 255, 255, 255);
+        }
         // Pass stars earned to permanent storage in gamecontroller
         gControl.SetStars(level, starsEarned);
     }

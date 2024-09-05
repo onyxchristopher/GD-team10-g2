@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
 
 //We will use this script to everything related to Loading, Unloading scenes and information about the level.
 public class sceneManager : MonoBehaviour
@@ -25,6 +26,7 @@ public class sceneManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Screen.SetResolution(1080, 1920, true);
         sndManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<soundManager>();
         camMove = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<cameraMovement>();
         gControl = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameController>();
@@ -67,15 +69,28 @@ public class sceneManager : MonoBehaviour
         gControl.NewLevelState();
     }
 
-    public void UnloadCurrentLevel()
+    public bool UnloadCurrentLevel()
     {
-        SceneManager.UnloadSceneAsync(LevelScenePrefix + currLevel);
+        try
+        {
+            SceneManager.UnloadSceneAsync(LevelScenePrefix + currLevel);
+            return true;
+        }
+        catch (Exception e)
+        {
+            return false;
+        }
     }
 
     public void RestartLevel()
     {
-        UnloadCurrentLevel();
-        LoadLevel(currLevel.ToString());
+        if(UnloadCurrentLevel())
+        {
+            LoadLevel(currLevel.ToString());
+        }
+        else
+        {
+            RestartLevel();
+        }
     }
-
 }

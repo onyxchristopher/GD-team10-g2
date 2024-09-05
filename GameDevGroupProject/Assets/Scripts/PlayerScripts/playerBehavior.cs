@@ -22,15 +22,13 @@ public class playerBehavior : MonoBehaviour
     [SerializeField] GameObject pulseUp;
     [SerializeField] GameObject pulseDown;
 
-    [SerializeField] float jumpSpeed = 19f;
+    [SerializeField] float jumpSpeed = 23.5f;
 
     [SerializeField] float moveSpeed = 10f;
 
-    [SerializeField] float fallAugmentMultiplier = 0.05f;
+    [SerializeField] float fallAugmentMultiplier = 0.06f;
 
-    [SerializeField] float fallAugmentThreshold = 3f;
-
-    [SerializeField] float fallAugmentMax = -40f;
+    [SerializeField] float fallAugmentThreshold = 0;
 
     private PlayerInput playerInput;
     private InputAction playerMove;
@@ -40,7 +38,7 @@ public class playerBehavior : MonoBehaviour
     private bool facingRight = true;
 
     // A list of the power ups active on this player
-    public List<powerUp> powerUpsActive = new List<powerUp>();
+    [HideInInspector] public List<powerUp> powerUpsActive = new List<powerUp>();
 
     private Vector3 fireOffset = new Vector3(0, 0.5f, 0);
 
@@ -49,7 +47,13 @@ public class playerBehavior : MonoBehaviour
     private ParticleSystem greenParticles;
     private ParticleSystem blueParticles;
 
+    private bool isFastFalling = false;
+    private InputAction playerVerticalMove;
+    [SerializeField] float fastFallMultiplier = 1.5f;
     private Animator anim;
+
+    [SerializeField] float maxFallSpeed = 60f;
+    [SerializeField] float fastFallSpeed = 30f;
 
     // Start is called before the first frame update
     void Start()
@@ -76,8 +80,9 @@ public class playerBehavior : MonoBehaviour
         redParticles = GameObject.Find("Red Particles").GetComponent<ParticleSystem>();
         greenParticles = GameObject.Find("Green Particles").GetComponent<ParticleSystem>();
         blueParticles = GameObject.Find("Blue Particles").GetComponent<ParticleSystem>();
-        
+
         anim = gameObject.GetComponentInChildren<Animator>();
+        playerVerticalMove = playerInput.actions.FindAction("Move");
     }
 
     // Clears active powerup
@@ -90,11 +95,16 @@ public class playerBehavior : MonoBehaviour
     // Removes active powerup particles from the player
     private void RemovePowerupParticles()
     {
-        if (redParticles.isPlaying){
+        if (redParticles.isPlaying)
+        {
             redParticles.Stop();
-        } else if (greenParticles.isPlaying){
+        }
+        else if (greenParticles.isPlaying)
+        {
             greenParticles.Stop();
-        } else if (blueParticles.isPlaying){
+        }
+        else if (blueParticles.isPlaying)
+        {
             blueParticles.Stop();
         }
     }
@@ -106,11 +116,16 @@ public class playerBehavior : MonoBehaviour
 
         RemovePowerupParticles();
 
-        if (powerUp.powerUpType == PowerUpType.Red){
+        if (powerUp.powerUpType == PowerUpType.Red)
+        {
             redParticles.Play();
-        } else if (powerUp.powerUpType == PowerUpType.Green){
+        }
+        else if (powerUp.powerUpType == PowerUpType.Green)
+        {
             greenParticles.Play();
-        } else {
+        }
+        else
+        {
             blueParticles.Play();
         }
 
@@ -134,8 +149,43 @@ public class playerBehavior : MonoBehaviour
     void FixedUpdate()
     {
         // Move the player left/right using input
-        var xVelocity = playerMove.ReadValue<Vector2>().x;
-        rb.velocity = new Vector2(moveSpeed * xVelocity, rb.velocity.y);
+        var movement = playerMove.ReadValue<Vector2>();
+        var xVelocity = movement.x;
+        var yVelocity = rb.velocity.y;
+
+        // Check for downward input to increase falling speed
+        // Check for fast fall input
+        if (movement.y < -0.5f && !isGrounded())
+        {
+            if (!isFastFalling)
+            {
+                // Initiate fast fall
+                isFastFalling = true;
+                yVelocity = -fastFallSpeed; // Immediately set a downward velocity
+            }
+            else
+            {
+                // Continue fast falling
+                yVelocity = Mathf.Max(yVelocity * fastFallMultiplier, -fastFallSpeed);
+            }
+        }
+        else
+        {
+            isFastFalling = false;
+
+            // Normal fall augmentation
+            if (yVelocity < fallAugmentThreshold && yVelocity > -maxFallSpeed)
+            {
+                float fallAugment = (fallAugmentThreshold - yVelocity) * fallAugmentMultiplier;
+                yVelocity -= fallAugment;
+            }
+        }
+
+        // Clamp the fall speed to prevent excessive velocity
+        yVelocity = Mathf.Max(yVelocity, -maxFallSpeed);
+        
+        rb.velocity = new Vector2(moveSpeed * xVelocity, yVelocity);
+
 
         // Rotate the player when they change direction
         if (rb.velocity.x > 0 && !facingRight)
@@ -147,13 +197,6 @@ public class playerBehavior : MonoBehaviour
         {
             facingRight = false;
             transform.Rotate(0, -180, 0);
-        }
-
-        // Increase downwards velocity linearly after a certain threshold, creating acceleration
-        if (rb.velocity.y < fallAugmentThreshold && rb.velocity.y > fallAugmentMax)
-        {
-            float fallAugment = (fallAugmentThreshold - rb.velocity.y) * fallAugmentMultiplier;
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y - fallAugment);
         }
     }
 
@@ -167,14 +210,14 @@ public class playerBehavior : MonoBehaviour
         Vector2 playerLeft = new Vector2(transform.position.x - 0.9f * bc.bounds.extents.x, transform.position.y);
         Vector2 playerCenter = new Vector2(transform.position.x, transform.position.y);
         Vector2 playerRight = new Vector2(transform.position.x + 0.9f * bc.bounds.extents.x, transform.position.y);
-        
+
         // Perform three raycasts
         RaycastHit2D groundCheckLeft = Physics2D.Raycast(playerLeft,
-        Vector2.down, bc.bounds.extents.y + 0.05f, ignorePlayerMask);
+            Vector2.down, bc.bounds.extents.y + 0.05f, ignorePlayerMask);
         RaycastHit2D groundCheckCenter = Physics2D.Raycast(playerCenter,
-        Vector2.down, bc.bounds.extents.y + 0.1f, ignorePlayerMask);
+            Vector2.down, bc.bounds.extents.y + 0.1f, ignorePlayerMask);
         RaycastHit2D groundCheckRight = Physics2D.Raycast(playerRight,
-        Vector2.down, bc.bounds.extents.y + 0.05f, ignorePlayerMask);
+            Vector2.down, bc.bounds.extents.y + 0.05f, ignorePlayerMask);
 
         return (rb.velocity.y < 3) && (groundCheckLeft || groundCheckCenter || groundCheckRight);
     }
@@ -198,7 +241,6 @@ public class playerBehavior : MonoBehaviour
         // Only jump if the player is on the ground
         if (isGrounded() && gControl.CurrentGameState() == gameController.gameState.running)
         {
-
             sndManager.PlaySFX(sndManager.characterJump, 0.25f);
 
             var adjustedJumpSpeed = jumpSpeed;
@@ -250,22 +292,26 @@ public class playerBehavior : MonoBehaviour
 
     public void OnRestart()
     {
+        if (gControl.CurrentGameState() == gameController.gameState.pause) return;
+
         var restartCanvas = GameObject.FindGameObjectWithTag("Respawn");
         if (restartCanvas)
         {
             restartCanvas.GetComponent<fadeCanvas>().destroyCanvas();
         }
+
         GameObject activeFireball = GameObject.FindGameObjectWithTag("Bullet");
         GameObject activePulse = GameObject.FindGameObjectWithTag("Pulse");
         if (activeFireball)
         {
             Destroy(activeFireball);
-        } else if (activePulse)
+        }
+        else if (activePulse)
         {
             Destroy(activePulse);
         }
+
         scnManager.RestartLevel();
         sndManager.PlayBGM();
     }
-
 }

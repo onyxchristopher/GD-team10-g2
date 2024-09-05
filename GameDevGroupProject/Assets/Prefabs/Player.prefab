@@ -14644,8 +14644,10 @@ MonoBehaviour:
   moveSpeed: 10
   fallAugmentMultiplier: 0.06
   fallAugmentThreshold: 0
-  fallAugmentMax: -40
   powerUpsActive: []
+  fastFallMultiplier: 1.5
+  maxFallSpeed: 60
+  fastFallSpeed: 30
 --- !u!114 &474968093255134918
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -40,10 +41,9 @@ public class gameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         currentState = gameState.running;
-
         starsObtained = new int[5];
-        Debug.Log($"Gamestate is {CurrentGameState()}");
 
         scnManager = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<sceneManager>();
         pBehavior = GameObject.FindGameObjectWithTag("Player").GetComponent<playerBehavior>();
@@ -59,14 +59,12 @@ public class gameController : MonoBehaviour
     //Pauses and unpauses game state
     public void Pause()
     {
+        currentState = gameState.pause;
+
         sndManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<soundManager>();
         sndManager.PauseBGM();
 
-        currentState = gameState.pause;
         Time.timeScale = 0;
-        Debug.Log("Game has been paused");
-
-        return;
     }
 
     public void Unpause()
@@ -77,9 +75,6 @@ public class gameController : MonoBehaviour
 
         currentState = gameState.running;
         Time.timeScale = 1;
-        Debug.Log("Game has been unpaused");
-
-        return;
     }
 
     public void PauseScreen()
@@ -126,13 +121,21 @@ public class gameController : MonoBehaviour
         for (int i = 1; i <= 5; i++)
         {
             // Iterate through all stars in current level
-            for (int j = 1; j <= 3; j++)
-            {
-                if (starsObtained[i - 1] >= j)
-                {
+            for (int j = 1; j <= 3; j++){
+                if (starsObtained[i - 1] >= j){
+                    GameObject.Find($"L{i}S{j}L")
+                   .GetComponent<Image>()
+                   .color = new Color32(255, 255, 255, 255);
+
                     GameObject.Find($"L{i}S{j}")
                         .GetComponent<Image>()
                         .color = new Color32(255, 255, 255, 255);
+                }
+                else
+                {
+                    GameObject.Find($"L{i}S{j}L")
+                    .GetComponent<Image>()
+                    .color = new Color32(255, 255, 255, 255);
                 }
             }
         }
@@ -151,7 +154,6 @@ public class gameController : MonoBehaviour
 
     private IEnumerator EndGameCoroutine()
     {
-        Debug.Log("Start of coroutine: " + Time.time);
         //Getting reference to end of level script
         endTracker eTracker = GameObject.FindGameObjectWithTag("Exit Door").GetComponent<endTracker>();
 
@@ -160,7 +162,6 @@ public class gameController : MonoBehaviour
 
         //Build endscreen
         eTracker.BuildEndScreen(completeScreen);
-
-        Debug.Log("End of coroutine: " + Time.time);
+        Pause();
     }
 }
