@@ -14,7 +14,6 @@ public class gameController : MonoBehaviour
         loading
     };
 
-
     private gameState currentState;
 
 
@@ -87,6 +86,11 @@ public class gameController : MonoBehaviour
     // Reset the player to a fresh start on a level
     public void NewLevelState()
     {
+        // these are null for some reason so we need to get them right in this function
+        pBehavior = GameObject.FindGameObjectWithTag("Player").GetComponent<playerBehavior>();
+        scnManager = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<sceneManager>();
+        camMove = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<cameraMovement>();
+        
         //TP player to current level start
         pBehavior.MovePlayer(new Vector3(6, 150 * (scnManager.currLevel - 1) + 2, 0));
         //Remove powerups
@@ -122,9 +126,10 @@ public class gameController : MonoBehaviour
                     GameObject.Find($"L{i}S{j}L")
                    .GetComponent<Image>()
                    .color = new Color32(255, 255, 255, 255);
+
                     GameObject.Find($"L{i}S{j}")
-                    .GetComponent<Image>()
-                    .color = new Color32(255, 255, 255, 255);
+                        .GetComponent<Image>()
+                        .color = new Color32(255, 255, 255, 255);
                 }
                 else
                 {
