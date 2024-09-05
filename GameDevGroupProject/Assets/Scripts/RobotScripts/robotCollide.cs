@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//Logic for mesh collision 
 public class robotCollide : MonoBehaviour
 {
     private robotBehavior rBehavior;

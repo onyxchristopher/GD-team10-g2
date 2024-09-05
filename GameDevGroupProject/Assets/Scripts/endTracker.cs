@@ -38,6 +38,7 @@ public class endTracker : MonoBehaviour
 
     void Start()
     {
+        //Set all references needed
         totalPowerpacks = GameObject.FindGameObjectsWithTag("Powerpack").Length;
         totalRobots = GameObject.FindGameObjectsWithTag("Robot").Length;
         scnManager = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<sceneManager>();

@@ -5,7 +5,9 @@ using UnityEngine;
 public class antennaDish : MonoBehaviour
 {
     public int antennaHP = 4;
+    
     private SpriteRenderer sRender;
+
     [SerializeField] private Sprite crack1;
     [SerializeField] private Sprite crack2;
     [SerializeField] private Sprite crack3;
@@ -17,10 +19,11 @@ public class antennaDish : MonoBehaviour
 
     private soundManager sndManager;
     private gameController gControl;
-
+     
     // Start is called before the first frame update
     void Start()
     {
+        //Setting references needed
         sRender = GetComponent<SpriteRenderer>();
         blueAntennaParticles = GameObject.Find("antenna-particles-blue").GetComponent<ParticleSystem>();
         yellowAntennaParticles = GameObject.Find("antenna-particles-yellow").GetComponent<ParticleSystem>();
@@ -28,6 +31,7 @@ public class antennaDish : MonoBehaviour
         gControl = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameController>();
     }
 
+    //Detects pulse collision with antenna dish and reduces antenna hp
     private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.gameObject.tag == "Pulse")
@@ -54,6 +58,7 @@ public class antennaDish : MonoBehaviour
 
     }
 
+    //Plays antenna destruction animation and starts end game/mision complete sequence
     private void AntennaDestroyed()
     {
         blueAntennaParticles.Play();

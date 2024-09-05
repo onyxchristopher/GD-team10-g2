@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class cameraMovement : MonoBehaviour
 {
+    //Variable to hold player reference
     private GameObject player;
+
+    //Camera related variables
+
     private Vector3 cameraOffset;
     private Vector3 velocity = Vector3.zero;
+
     [SerializeField] float smoothingTime;
+
+    //Camera bonds
     private int levelLeftBound = -7;
     private int levelRightBound = 69;
     private float cameraLeftBound;

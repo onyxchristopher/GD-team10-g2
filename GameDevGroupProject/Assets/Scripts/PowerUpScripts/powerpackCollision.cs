@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class powerpackCollision : MonoBehaviour
 {
+    
     [SerializeField] private GameObject powerpack;
     [SerializeField] private GameObject powerpackText;
     [SerializeField] private Vector3 textOffset;
@@ -14,6 +15,7 @@ public class powerpackCollision : MonoBehaviour
         sndManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<soundManager>();
     }
 
+    //Check collision of player with powerup
     void OnTriggerEnter2D(Collider2D other){
         if (other.gameObject.CompareTag("Player")){
             Instantiate(powerpack, transform.position, transform.rotation);

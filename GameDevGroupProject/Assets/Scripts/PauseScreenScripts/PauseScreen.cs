@@ -20,12 +20,6 @@ public class PauseScreen : MonoBehaviour
                 pauseScreenChild.gameObject.SetActive(pauseScreenChild.name == menuName);
     }
 
-    private void LevelSelectionButtonClicked()
-    {
-        // Load the LevelSelectScreen scene
-        //   UnityEngine.SceneManagement.SceneManager.LoadScene("LevelSelectScreen");
-    }
-
     private void AchievementsButtonClicked()
     {
         OpenMenuHideOthers("Achievements");

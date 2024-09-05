@@ -14,9 +14,7 @@ public class gameController : MonoBehaviour
         loading
     };
 
-
     private gameState currentState;
-
 
     // Prefab references
     [SerializeField] private GameObject achievScreen;
@@ -37,7 +35,6 @@ public class gameController : MonoBehaviour
     private soundManager sndManager;
     private playerBehavior pBehavior;
     private cameraMovement camMove;
-
 
     // Start is called before the first frame update
     void Start()
@@ -78,6 +75,7 @@ public class gameController : MonoBehaviour
         Time.timeScale = 1;
     }
 
+    //Instantiates pause screen
     public void PauseScreen()
     {
         GameObject screen = Instantiate(pauseScreen);
@@ -142,6 +140,7 @@ public class gameController : MonoBehaviour
         Instantiate(levelsScreen);
     }
 
+    //Starts engame sequence 
     public void MissionComplete()
     {
         StartCoroutine(EndGameCoroutine());
