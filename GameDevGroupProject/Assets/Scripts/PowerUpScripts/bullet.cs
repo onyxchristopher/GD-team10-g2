@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class bullet : MonoBehaviour
 {
+    // Properties and rigid body needed for red powerup physics 
     [SerializeField]
     float speed;
 
-    [SerializeField] private ParticleSystem enemyDestroy;
-
     private Rigidbody2D rb;
 
-    private soundManager sndManager;
+    //Variables for references to particles and sound manager
+    [SerializeField] private ParticleSystem enemyDestroy;
 
+    private soundManager sndManager;
+    
+    //Set bullet properties on instantiation
     void Awake()
     {
         sndManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<soundManager>();
@@ -27,6 +30,7 @@ public class bullet : MonoBehaviour
         Instantiate(enemyDestroy, robotPosition, Quaternion.identity);
     }
 
+    //Check bullet collision with enemy
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Enemy")

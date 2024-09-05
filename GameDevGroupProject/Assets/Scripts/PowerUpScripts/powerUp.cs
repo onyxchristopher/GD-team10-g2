@@ -5,6 +5,7 @@ using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+//Possible powerups
 public enum PowerUpType
 {
     Red,
@@ -26,10 +27,12 @@ public class powerUp : MonoBehaviour
 
     void Start()
     {
+        //Necessary references to player and sound manager
         sndManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<soundManager>();
         pBehavior = GameObject.FindWithTag("Player").GetComponent<playerBehavior>();
     }
 
+    //Check collision and logic to assign powerup to player
     void OnTriggerEnter2D(Collider2D other)
     {
         if (pBehavior != null && other.gameObject.CompareTag("Player"))

@@ -60,13 +60,8 @@ public class robotBehavior : MonoBehaviour
 
     private SpriteRenderer childSprite;
 
+    //Reference to restart screen
     [SerializeField] GameObject restartScreen;
-
-    void Awake()
-    {
-       
-    }
-
     void Start()
     {
         //Setting up manager references
@@ -115,13 +110,14 @@ public class robotBehavior : MonoBehaviour
             toExecute();
         }
 
-        //Draws fov mesh
+        //Draws fov mesh every 2 frames to reduce lag and keep smooth update
         if (Time.frameCount % 2 == 0)
         {
             drawFOV();
         }
     }
 
+    //State machine functions
     private void MoveEnemy()
     {
         this.transform.Translate(new Vector2(faceDir, 0) * movSpeed * Time.deltaTime);
@@ -150,6 +146,8 @@ public class robotBehavior : MonoBehaviour
     {
         return myState;
     }
+
+    //Draw robot fov
     private void drawFOV()
     {
         //Check if any other polygon collider is currently on scene
@@ -197,6 +195,7 @@ public class robotBehavior : MonoBehaviour
             }
         }
 
+        //Draw mesh with obtained vertices
         mesh.vertices = vertices;
         mesh.uv = uvs;
         mesh.triangles = triangles;
@@ -214,6 +213,7 @@ public class robotBehavior : MonoBehaviour
         childSprite.flipX = !childSprite.flipX;
     }
 
+    //Detects collision with player
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player") && !detection){
@@ -229,6 +229,7 @@ public class robotBehavior : MonoBehaviour
         if (!GameObject.FindGameObjectWithTag("Respawn"))
         {
             sndManager.PlaySFX(sndManager.playerDetected);
+            gController.Pause();
             StartCoroutine(DetectionDelay());
         }
     }
@@ -236,9 +237,8 @@ public class robotBehavior : MonoBehaviour
     //Coroutine to add delay upon detection
     private IEnumerator DetectionDelay()
     {
-        Time.timeScale = 0.0f;
         yield return new WaitForSecondsRealtime(0.3f);
-        Time.timeScale = 1f;
+        gController.Unpause();
         Instantiate(restartScreen);
         sndManager.StopBGM();
         sManager.RestartLevel();

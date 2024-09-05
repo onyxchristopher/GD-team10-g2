@@ -17,11 +17,13 @@ public class playerBehavior : MonoBehaviour
     private soundManager sndManager;
     private sceneManager scnManager;
 
+    // Inspector parameters to assign powerup prefabs
     [SerializeField] GameObject bullet;
 
     [SerializeField] GameObject pulseUp;
     [SerializeField] GameObject pulseDown;
 
+    // Variables controlling jump. Hard coded values that felt good on testing
     [SerializeField] float jumpSpeed = 23.5f;
 
     [SerializeField] float moveSpeed = 10f;
@@ -30,9 +32,15 @@ public class playerBehavior : MonoBehaviour
 
     [SerializeField] float fallAugmentThreshold = 0;
 
+    [SerializeField] float maxFallSpeed = 60f;
+
+    [SerializeField] float fastFallSpeed = 30f;
+
+    //Input system
     private PlayerInput playerInput;
     private InputAction playerMove;
 
+    //Layer mask for collision logic
     private LayerMask ignorePlayerMask;
 
     private bool facingRight = true;
@@ -50,14 +58,13 @@ public class playerBehavior : MonoBehaviour
     private bool isFastFalling = false;
     private InputAction playerVerticalMove;
     [SerializeField] float fastFallMultiplier = 1.5f;
-    private Animator anim;
 
-    [SerializeField] float maxFallSpeed = 60f;
-    [SerializeField] float fastFallSpeed = 30f;
+    private Animator anim;
 
     // Start is called before the first frame update
     void Start()
     {
+        //Refernces to game managers
         gControl = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameController>();
         sndManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<soundManager>();
         scnManager = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<sceneManager>();
@@ -67,6 +74,7 @@ public class playerBehavior : MonoBehaviour
         // Make a reference for the Move action from the player input
         playerInput = GetComponent<PlayerInput>();
         playerMove = playerInput.actions.FindAction("Move");
+        playerVerticalMove = playerInput.actions.FindAction("Move");
 
         // Make a reference for the rigidbody attached to the player
         rb = GetComponent<Rigidbody2D>();
@@ -77,12 +85,13 @@ public class playerBehavior : MonoBehaviour
         // Get player box collider
         bc = GetComponent<BoxCollider2D>();
 
+        //References to pwerup particles 
         redParticles = GameObject.Find("Red Particles").GetComponent<ParticleSystem>();
         greenParticles = GameObject.Find("Green Particles").GetComponent<ParticleSystem>();
         blueParticles = GameObject.Find("Blue Particles").GetComponent<ParticleSystem>();
 
+        //Reference to animator
         anim = gameObject.GetComponentInChildren<Animator>();
-        playerVerticalMove = playerInput.actions.FindAction("Move");
     }
 
     // Clears active powerup
@@ -290,8 +299,10 @@ public class playerBehavior : MonoBehaviour
         }
     }
 
+    //Allows restart level keybind
     public void OnRestart()
     {
+        //Avoids restart call while on pause menu
         if (gControl.CurrentGameState() == gameController.gameState.pause) return;
 
         var restartCanvas = GameObject.FindGameObjectWithTag("Respawn");
@@ -300,6 +311,7 @@ public class playerBehavior : MonoBehaviour
             restartCanvas.GetComponent<fadeCanvas>().destroyCanvas();
         }
 
+        //Destroys any active powerups in game before restart
         GameObject activeFireball = GameObject.FindGameObjectWithTag("Bullet");
         GameObject activePulse = GameObject.FindGameObjectWithTag("Pulse");
         if (activeFireball)
@@ -311,6 +323,7 @@ public class playerBehavior : MonoBehaviour
             Destroy(activePulse);
         }
 
+        //Reloads level and restarts BGM
         scnManager.RestartLevel();
         sndManager.PlayBGM();
     }

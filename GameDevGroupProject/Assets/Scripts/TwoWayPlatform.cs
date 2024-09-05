@@ -23,8 +23,13 @@ public class TwoWayPlatform : MonoBehaviour
 
     private IEnumerator DropThroughPlatform()
     {
-        effector.rotationalOffset = 180f; // Temporarily disable the one-way collision
-        yield return new WaitForSeconds(waitTime); // Wait for a moment
-        effector.rotationalOffset = 0f; // Re-enable the one-way collision
+        // Temporarily disable the one-way collision
+        effector.rotationalOffset = 180f;
+
+        // Wait for a moment
+        yield return new WaitForSeconds(waitTime);
+
+        // Re-enable the one-way collision
+        effector.rotationalOffset = 0f; 
     }
 }
