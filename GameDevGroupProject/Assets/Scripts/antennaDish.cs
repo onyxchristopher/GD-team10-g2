@@ -28,6 +28,7 @@ public class antennaDish : MonoBehaviour
         gControl = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameController>();
     }
 
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.gameObject.tag == "Pulse")
