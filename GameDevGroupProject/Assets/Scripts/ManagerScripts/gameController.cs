@@ -61,6 +61,9 @@ public class gameController : MonoBehaviour
 
         sndManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<soundManager>();
         sndManager.PauseBGM();
+        
+        GameObject pauseUI = GameObject.FindGameObjectWithTag("PauseUI");
+        Destroy(pauseUI);
 
         Time.timeScale = 0;
     }
