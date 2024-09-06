@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-//Possible powerups
+// all possible powerups
 public enum PowerUpType
 {
     Red,
