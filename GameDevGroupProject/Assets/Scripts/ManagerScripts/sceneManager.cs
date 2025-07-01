@@ -21,13 +21,9 @@ public class sceneManager : MonoBehaviour
     private cameraMovement camMove;
     private gameController gControl;
     private playerBehavior pBehavior;
-    
 
-    // Start is called before the first frame update
     void Start()
     {
-        //Set resolution and neccesary references
-        Screen.SetResolution(1080, 1920, true);
         sndManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<soundManager>();
         camMove = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<cameraMovement>();
         gControl = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameController>();
@@ -35,27 +31,29 @@ public class sceneManager : MonoBehaviour
         pBehavior = GameObject.FindGameObjectWithTag("Player").GetComponent<playerBehavior>();
 
         currLevel = 1;
-        StartGame();
-    }
-
-    //Loads initial scenes for game to start
-    public void StartGame()
-    {
-        if (!SceneManager.GetSceneByName("Level_1").isLoaded){
+        // Load level 1 if it is not loaded
+        if (!SceneManager.GetSceneByName("Level_1").isLoaded)
+        {
             SceneManager.LoadSceneAsync("Level_1", LoadSceneMode.Additive);
         }
-        
 
-        //Loop through all scenes and unload every level but level 1 and persistent elements
+        // Unload any scenes other than level 1 and persistent elements
+        List<string> scenesToUnload = new List<string>();
+
         for (int i = 0; i < SceneManager.sceneCount; i++)
         {
             Scene scene = SceneManager.GetSceneAt(i);
-           
+
             if (scene.name != "Level_1" && scene.name != "Persistent_Elements")
             {
-                SceneManager.UnloadSceneAsync(scene);
+                scenesToUnload.Add(scene.name);
             }
         }
+        for (int i = 0; i < scenesToUnload.Count; i++)
+        {
+            SceneManager.UnloadSceneAsync(scenesToUnload[i]);
+        }
+        
     }
 
     public void LoadLevel(string nextLevel)
@@ -78,6 +76,7 @@ public class sceneManager : MonoBehaviour
         }
         catch (Exception e)
         {
+            Debug.Log(e);
             return false;
         }
     }

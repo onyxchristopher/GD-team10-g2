@@ -88,7 +88,6 @@ public class gameController : MonoBehaviour
     // Reset the player to a fresh start on a level
     public void NewLevelState()
     {
-        // these are null for some reason so we need to get them right in this function
         pBehavior = GameObject.FindGameObjectWithTag("Player").GetComponent<playerBehavior>();
         scnManager = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<sceneManager>();
         camMove = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<cameraMovement>();
@@ -119,24 +118,18 @@ public class gameController : MonoBehaviour
         // Display achievement screen
         Instantiate(achievScreen);
 
+        // Get achievement stars container
+        Transform achievementStars = GameObject.FindWithTag("AchievementStars").transform;
+
         // Iterate through all levels
-        for (int i = 1; i <= 5; i++)
+        for (int i = 0; i < 5; i++)
         {
             // Iterate through all stars in current level
-            for (int j = 1; j <= 3; j++){
-                if (starsObtained[i - 1] >= j){
-                    GameObject.Find($"L{i}S{j}L")
-                   .GetComponent<Image>()
-                   .color = new Color32(255, 255, 255, 255);
-
-                    GameObject.Find($"L{i}S{j}")
-                        .GetComponent<Image>()
-                        .color = new Color32(255, 255, 255, 255);
-                }
-                else
+            for (int j = 0; j < 3; j++)
+            {
+                if (starsObtained[i] >= j + 1)
                 {
-                    GameObject.Find($"L{i}S{j}L")
-                    .GetComponent<Image>()
+                    achievementStars.GetChild(i).GetChild(j).GetComponent<Image>()
                     .color = new Color32(255, 255, 255, 255);
                 }
             }
@@ -149,7 +142,7 @@ public class gameController : MonoBehaviour
         Instantiate(levelsScreen);
     }
 
-    //Starts engame sequence 
+    //Starts endgame sequence
     public void MissionComplete()
     {
         StartCoroutine(EndGameCoroutine());

@@ -44,14 +44,6 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
-                },
-                {
-                    "name": "Restart",
-                    "type": "Button",
-                    "id": "89a85864-ccd1-47b1-a930-0b6783770d69",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -208,10 +200,26 @@
                     "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
-                },
+                }
+            ]
+        },
+        {
+            "name": "RestartMap",
+            "id": "08950a11-4802-412d-b08a-1a6d10895613",
+            "actions": [
+                {
+                    "name": "Restart",
+                    "type": "Button",
+                    "id": "30a1ff8a-891d-46b6-8943-12d54ea9b917",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
                 {
                     "name": "",
-                    "id": "32fb0bba-f5e6-4fb2-9773-ad4039317779",
+                    "id": "bddda348-33f7-44fa-9186-d884dd6683f6",
                     "path": "<Keyboard>/r",
                     "interactions": "",
                     "processors": "",

@@ -24,8 +24,7 @@ public class LevelSelectScreen : MonoBehaviour
             // actual level numbers start at 1, not 0
             int actualLevelNumber = i + 1;
 
-            // find the button object for this level
-            GameObject levelButton = GameObject.Find($"LevelButton{actualLevelNumber}");
+            GameObject levelButton = transform.GetChild(actualLevelNumber + 2).gameObject;
 
             // get the script component attached to the button
             LevelButtonInstance levelButtonInstance = levelButton.GetComponent<LevelButtonInstance>();
