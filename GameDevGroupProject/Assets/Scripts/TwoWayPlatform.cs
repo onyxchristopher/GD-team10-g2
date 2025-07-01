@@ -9,6 +9,7 @@ public class TwoWayPlatform : MonoBehaviour
 
     void Start()
     {
+        // get the platform effector component attached to this object
         effector = GetComponent<PlatformEffector2D>();
     }
 
@@ -17,6 +18,7 @@ public class TwoWayPlatform : MonoBehaviour
         // Allow player to drop through the platform by pressing the down arrow key
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
+            // start the coroutine to handle dropping through the platform
             StartCoroutine(DropThroughPlatform());
         }
     }
