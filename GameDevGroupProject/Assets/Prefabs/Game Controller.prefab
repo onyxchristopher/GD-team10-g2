@@ -291,7 +291,7 @@ MonoBehaviour:
     type: 3}
   completeScreen: {fileID: 3905926373359992735, guid: da7dcb05ae8894d3b8a75019ccc53ffa,
     type: 3}
-  highestLevelReached: 4
+  highestLevelReached: 1
 --- !u!1 &1890375369371277779
 GameObject:
   m_ObjectHideFlags: 0

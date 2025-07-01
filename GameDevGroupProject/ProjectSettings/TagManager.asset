@@ -19,6 +19,7 @@ TagManager:
   - AchievTracker
   - Antenna
   - PauseUI
+  - AchievementStars
   layers:
   - Default
   - TransparentFX

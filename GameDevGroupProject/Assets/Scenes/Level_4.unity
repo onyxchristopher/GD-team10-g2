@@ -24264,6 +24264,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: kitchen-3
       objectReference: {fileID: 0}
+    - target: {fileID: 8349679697276439461, guid: 46778b864c511490da1093cdc331bc06,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 11.284422
+      objectReference: {fileID: 0}
+    - target: {fileID: 8349679697276439461, guid: 46778b864c511490da1093cdc331bc06,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: -1.4819708
+      objectReference: {fileID: 0}
     - target: {fileID: 8606199533428305892, guid: 46778b864c511490da1093cdc331bc06,
         type: 3}
       propertyPath: m_RootOrder

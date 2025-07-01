@@ -53020,7 +53020,7 @@ MonoBehaviour:
   crack1: {fileID: 21300000, guid: 1f435f16aee7646b3b1afe3fcbb1b33b, type: 3}
   crack2: {fileID: 21300000, guid: 5f04a2ea33df241fea49aacecbd3ad18, type: 3}
   crack3: {fileID: 21300000, guid: 698f45ae50f414fe19e0838027229abd, type: 3}
-  victoryText: {fileID: 3670081714057846920, guid: 7a7ed64ef252f42548b34f8934312b81,
+  victoryTextCanvas: {fileID: 334824904453184218, guid: 6adb4f1497700487a8cbe6735c620cef,
     type: 3}
 --- !u!50 &1619494646
 Rigidbody2D:

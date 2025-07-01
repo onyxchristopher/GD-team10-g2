@@ -37,7 +37,7 @@ public class playerBehavior : MonoBehaviour
     [SerializeField] float fastFallSpeed = 30f;
 
     //Input system
-    private PlayerInput playerInput;
+    public PlayerInput playerInput;
     private InputAction playerMove;
 
     //Layer mask for collision logic
@@ -76,6 +76,9 @@ public class playerBehavior : MonoBehaviour
         playerMove = playerInput.actions.FindAction("Move");
         playerVerticalMove = playerInput.actions.FindAction("Move");
 
+        // Disables restart key
+        playerInput.actions.FindActionMap("RestartMap").Disable();
+
         // Make a reference for the rigidbody attached to the player
         rb = GetComponent<Rigidbody2D>();
 
@@ -85,12 +88,12 @@ public class playerBehavior : MonoBehaviour
         // Get player box collider
         bc = GetComponent<BoxCollider2D>();
 
-        //References to pwerup particles 
+        // References to powerup particles 
         redParticles = GameObject.Find("Red Particles").GetComponent<ParticleSystem>();
         greenParticles = GameObject.Find("Green Particles").GetComponent<ParticleSystem>();
         blueParticles = GameObject.Find("Blue Particles").GetComponent<ParticleSystem>();
 
-        //Reference to animator
+        // Reference to animator
         anim = gameObject.GetComponentInChildren<Animator>();
     }
 
@@ -192,7 +195,7 @@ public class playerBehavior : MonoBehaviour
 
         // Clamp the fall speed to prevent excessive velocity
         yVelocity = Mathf.Max(yVelocity, -maxFallSpeed);
-        
+
         rb.velocity = new Vector2(moveSpeed * xVelocity, yVelocity);
 
 
@@ -299,9 +302,10 @@ public class playerBehavior : MonoBehaviour
         }
     }
 
-    //Allows restart level keybind
+    // Allows restart level keybind
     public void OnRestart()
     {
+        playerInput.actions.FindActionMap("RestartMap").Disable();
         //Avoids restart call while on pause menu
         if (gControl.CurrentGameState() == gameController.gameState.pause) return;
 
@@ -318,13 +322,18 @@ public class playerBehavior : MonoBehaviour
         {
             Destroy(activeFireball);
         }
-        else if (activePulse)
+        if (activePulse)
         {
             Destroy(activePulse);
         }
 
-        //Reloads level and restarts BGM
-        scnManager.RestartLevel();
+        // Enable the gameplay actionmap when restarting
+        playerInput.actions.FindActionMap("Gameplay").Enable();
         sndManager.PlayBGM();
+    }
+
+    public void ResetVelocity()
+    {
+        rb.velocity = Vector2.zero;
     }
 }

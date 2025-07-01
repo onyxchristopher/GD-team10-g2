@@ -25,10 +25,6 @@ public class endTracker : MonoBehaviour
     private Image robotStar;
     private Image powerpackStar;
 
-    // Image objects for gray stars
-    private Image robotStarBlank;
-    private Image powerpackStarBlank;
-
     // Manager reference
     private sceneManager scnManager;
     private soundManager sndManager;
@@ -94,34 +90,19 @@ public class endTracker : MonoBehaviour
         robotsText.text = $"{robotsDestroyed}/{totalRobots}";
         powerpacksText.text = $"{powerpacksFound}/{totalPowerpacks}";
 
-        // Display yellow star if achievement earned
+        // Display yellow star if the corresponding achievement is earned
         if (robotsDestroyed == totalRobots)
         {
             robotStar = GameObject.Find("Robot Star").GetComponent<Image>();
             robotStar.color = new Color32(255, 255, 255, 255);
-            robotStar = GameObject.Find("Robot Star no").GetComponent<Image>();
-            robotStar.color = new Color32(255, 255, 255, 255);
             starsEarned++;
         }
-        else
-        {
-            robotStar = GameObject.Find("Robot Star no").GetComponent<Image>();
-            robotStar.color = new Color32(255, 255, 255, 255);
-        }
+
         if (powerpacksFound == totalPowerpacks)
         {
-            
-            powerpackStar = GameObject.Find("Powerpack Star no").GetComponent<Image>();
-            powerpackStar.color = new Color32(255, 255, 255, 255);
             powerpackStar = GameObject.Find("Powerpack Star").GetComponent<Image>();
             powerpackStar.color = new Color32(255, 255, 255, 255);
             starsEarned++;
-        }
-        else
-        {
-            
-            powerpackStar = GameObject.Find("Powerpack Star no").GetComponent<Image>();
-            powerpackStar.color = new Color32(255, 255, 255, 255);
         }
         // Pass stars earned to permanent storage in gamecontroller
         gControl.SetStars(level, starsEarned);
@@ -129,8 +110,6 @@ public class endTracker : MonoBehaviour
 
     // Called when clicking on the achievement button
     public void AchievementButton(){
-        /* Due to a Unity bug, buttons which call functions that require references to scripts
-        must fetch said scripts in the functions in which they are used, rather than Start() */
         gControl = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameController>();
         gControl.OpenAchievementScreen();
     }

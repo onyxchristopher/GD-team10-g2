@@ -15,7 +15,7 @@ public class antennaDish : MonoBehaviour
     private ParticleSystem blueAntennaParticles;
     private ParticleSystem yellowAntennaParticles;
 
-    [SerializeField] private GameObject victoryText;
+    [SerializeField] private GameObject victoryTextCanvas;
 
     private soundManager sndManager;
     private gameController gControl;
@@ -63,9 +63,8 @@ public class antennaDish : MonoBehaviour
     {
         blueAntennaParticles.Play();
         yellowAntennaParticles.Play();
-        Instantiate(victoryText, new Vector3(30.5f, 810, 0), transform.rotation);
+        Instantiate(victoryTextCanvas);
         gControl.MissionComplete();
         Destroy(gameObject);
-
     }
 }

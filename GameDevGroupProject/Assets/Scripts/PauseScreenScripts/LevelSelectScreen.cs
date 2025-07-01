@@ -19,7 +19,7 @@ public class LevelSelectScreen : MonoBehaviour
         {
             int actualLevelNumber = i + 1;
 
-            GameObject levelButton = GameObject.Find($"LevelButton{actualLevelNumber}");
+            GameObject levelButton = transform.GetChild(actualLevelNumber + 2).gameObject;
 
             LevelButtonInstance levelButtonInstance = levelButton.GetComponent<LevelButtonInstance>();
             
